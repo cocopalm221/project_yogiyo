@@ -1,12 +1,6 @@
 import React from "react";
-import { BsFillStarFill } from "react-icons/bs";
 const CateNav = () => {
-  return (
-    <div>
-      CateNav
-      <BsFillStarFill />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default CateNav;
