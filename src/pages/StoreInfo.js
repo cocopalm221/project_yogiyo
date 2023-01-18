@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import DetailTabMenu from "./components/DetailTabMenu";
-import DetailStarRating from "./components/DetailStarRating";
-import DetailMain from "./components/DetailMain";
-import DetailReview from "./components/DetailReview";
-import DetailInfo from "./components/DetailInfo";
-import DetailCart from "./components/DetailCart";
+import DetailTabMenu from "../components/DetailTabMenu";
+import DetailStarRating from "../components/DetailStarRating";
+import DetailMain from "../components/DetailMain";
+import DetailReview from "../components/DetailReview";
+import DetailInfo from "../components/DetailInfo";
+import DetailCart from "../components/DetailCart";
 
 const StoreInfo = () => {
   const [tabCount, setTabCount] = useState(0);
