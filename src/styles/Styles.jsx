@@ -39,7 +39,7 @@ export const headerInner = styled.div`
     }
     button {
       position: absolute;
-      right: 0%;
+      right:120px;
       border-radius: 0 20px 20px 0;
       font-size: 2rem;
       width: 50px;
@@ -70,6 +70,9 @@ export const headerInner = styled.div`
 `;
 
 //Main
+export const bannerwrap = styled.div`
+  background: #817a7a;
+`
 
 export const swiperPrev = styled.div`
   position: absolute;
