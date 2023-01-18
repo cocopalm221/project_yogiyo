@@ -4,10 +4,11 @@ import Main from "./Main";
 import MainNav from "./pages/MainNav";
 import Login from "./pages/Login";
 import Payment from "./pages/Payment";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
 import SignUp from "./pages/SignUp";
 import Footer from "./components/Footer";
+import StoreInfo from "./pages/StoreInfo";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/login" element={<Login/>}></Route>
           <Route path="/payment" element={<Payment/>}></Route>
           <Route path="/signup" element={<SignUp/>}></Route>
+          <Route path="/storeinfo" element={<StoreInfo/>}></Route>
         </Routes>
       </>
       <Footer/>
