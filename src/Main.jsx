@@ -39,7 +39,7 @@ const Main = () => {
           height: "600px",
           backgroundColor: "#fcdae6ff",
         }}
-        spaceBetween={50}
+        spaceBetween={30}
         initialSlide={1}
         slidesPerView={1}
         navigation={{
@@ -51,9 +51,9 @@ const Main = () => {
         grabCursor={true}
         coverflowEffect={{
           rotate: 15,
-          stretch: 10,
-          depth: 100,
-          modifier: 1,
+          stretch: 5,
+          depth: 50,
+          modifier: 2,
           slideShadows: true,
         }}
         
