@@ -6,9 +6,6 @@ import Login from "./pages/Login";
 import Payment from "./pages/Payment";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Home from "./pages/Home";
-import Header from "./components/Header";
-import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Footer from "./components/Footer";
 
@@ -23,8 +20,10 @@ const App = () => {
           <Route path="/mainnav" element={<MainNav/>}></Route>
           <Route path="/login" element={<Login/>}></Route>
           <Route path="/payment" element={<Payment/>}></Route>
+          <Route path="/signup" element={<SignUp/>}></Route>
         </Routes>
       </>
+      <Footer/>
     </Router>
   );
 };
