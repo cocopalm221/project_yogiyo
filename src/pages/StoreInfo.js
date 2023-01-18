@@ -11,7 +11,7 @@ const StoreInfo = () => {
   const [tabCount, setTabCount] = useState(0);
 
   return (
-    <div>
+    <div className="mt-8">
       <div className="grid grid-cols-12 gap-5 max-w-7xl mx-auto my-2">
         <div className="md:col-span-8 col-span-12">
           {/* top */}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 import { CgCloseR } from "react-icons/cg";
 import { FaTrash } from "react-icons/fa";
@@ -6,10 +6,24 @@ import CartModal from "./CartModal";
 
 const DetailCart = () => {
   const [cartModalVisible, setCartModalVisible] = useState(false);
+  const cartRef = useRef();
+  const HEADER_HEIGHT = 100;
+  const handleScroll = () => {
+    if (window.scrollY > HEADER_HEIGHT) {
+      cartRef.current.classList.add("sticky", "top-2.5");
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
-      <div className="md:col-span-4 max-w-sm h-fit">
+      <div className="md:col-span-4 max-w-sm h-fit" ref={cartRef}>
         <div className="border rounded-t-xl overflow-hidden">
           <div className="bg-[#333] text-white p-3 flex items-center justify-between">
             주문표
@@ -22,8 +36,8 @@ const DetailCart = () => {
           </div>
           {/* 장바구니 갯수 0 이면 ?  */}
           {/* <div className="text-center py-14">
-      <p>주문표에 담긴 메뉴가 없습니다.</p>
-    </div> */}
+            <p>주문표에 담긴 메뉴가 없습니다.</p>
+          </div> */}
           {/* 장바구니 0이 아니면  : */}
           <div className="p-4 border-b">
             <div className="pb-4">
