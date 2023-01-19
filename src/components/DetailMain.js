@@ -300,7 +300,6 @@ const InputBox = styled.div`
   flex-direction: column;
   border-bottom: 1px solid #d9d9d9;
   padding: 4px 16px 16px;
-  }
 `;
 const InputTitle = styled.div`
   > p {
