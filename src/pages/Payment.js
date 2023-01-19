@@ -17,11 +17,13 @@ const Payment = () => {
     });
   };
 
-  const handleComplete = (data) => {
+  const handleComplete = (e, data) => {
+    e.preventDefault()
     setPopup(!popup);
   };
 
-  const clickHandler = () => {
+  const clickHandler = (e) => {
+    e.preventDefault();
     setpaySwitch(!paySwitch);
   };
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import LoginDiv from "../styles/LoginCss";
-import Logo from "../styles/images/logo2.png";
+// import Logo from "../../public/images/logo2.png";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -21,7 +21,7 @@ const Login = () => {
     <div>
       <LoginDiv>
         <NavLink to={"/"}>
-          <img src={Logo} alt="logo" className="login-logo" />
+          <img src="/images/logo2.png" alt="logo" className="login-logo" />
         </NavLink>
         <h2>로그인</h2>
         <form>

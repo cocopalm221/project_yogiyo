@@ -18,7 +18,6 @@ import axios from "axios";
 SwiperCore.use([Navigation, Pagination, Autoplay, Mousewheel]);
 
 const Main = () => {
-
   const [banners, setBanners] = useState([]);
 
   useEffect(() => {
@@ -34,14 +33,12 @@ const Main = () => {
   return (
     <div className="mainDiv">
       <Swiper
-        style={{
-          width: "100%",
-          height: "600px",
-          backgroundColor: "#fcdae6ff",
-        }}
-        spaceBetween={30}
-        initialSlide={1}
+        modules={[EffectCoverflow, Pagination, Navigation, Mousewheel]}
         slidesPerView={1}
+        spaceBetween={30}
+        pagination={{
+          clickable: true,
+        }}
         navigation={{
           nextEl: ".swiper-next",
           prevEl: ".swiper-prev",
@@ -49,19 +46,17 @@ const Main = () => {
         mousewheel={true}
         effect={"coverflow"}
         grabCursor={true}
+        Parallax={true}
         coverflowEffect={{
           rotate: 15,
           stretch: 5,
-          depth: 50,
+          depth: 30,
           modifier: 2,
           slideShadows: true,
         }}
-        
-        pagination={{ clickable: true }}
-        modules={[EffectCoverflow, Pagination, Navigation, Mousewheel]}
+        className="mySwiper"
         loop={true}
         autoplay={true}
-        className="mySwiper"
       >
         <s.swiperPrev>
           <div className="swiper-button swiper-prev">
@@ -69,8 +64,12 @@ const Main = () => {
           </div>
         </s.swiperPrev>
         {banners.slice(0, 10).map((banner, idx) => (
-          <SwiperSlide key={banner.id} virtualIndex={idx}>
-            <img src={banner.url} alt="idx" />
+          <SwiperSlide
+            key={banner.id}
+            virtualIndex={idx}
+            style={{ textAlign: "center" }}
+          >
+            <img src={banner.url} alt="idx" style={{ display: "inline" }} />
           </SwiperSlide>
         ))}
         <s.swiperNext>
