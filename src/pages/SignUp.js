@@ -1,6 +1,6 @@
 import React from "react";
 import SignDiv from "../styles/SignupCss";
-import Logo from "../styles/images/logo2.png";
+// import Logo from "../../public/images/logo.png";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
@@ -9,7 +9,7 @@ const SignUp = () => {
     <div>
       <SignDiv>
         <NavLink to={"/"}>
-          <img src={Logo} alt="logo" className="login-logo" />
+          <img src="../../public/images/logo.png" alt="logo" className="login-logo" />
         </NavLink>
         <h2>회원가입</h2>
         <form>

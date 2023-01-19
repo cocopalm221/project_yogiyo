@@ -7,14 +7,13 @@ export const headerInner = styled.div`
   background: #fa0050;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  
 
-  .title {
-    color: white;
-    font-size: 3rem;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  img {
+    width:145px;
+    height:50px;
+    object-fit: contain;
+    transform: translate(50%, 50%);
   }
 
   .search-list {
@@ -82,7 +81,7 @@ export const swiperPrev = styled.div`
   cursor: pointer;
   .swiper-prev {
     font-size: 5rem;
-    color: #fff;
+    color:blue;
   }
 `;
 
@@ -94,7 +93,7 @@ export const swiperNext = styled.div`
   cursor: pointer;
   .swiper-next {
     font-size: 5rem;
-    color: #fff;
+    color:blue;
   }
 `;
 
@@ -256,7 +255,7 @@ export const login = styled.form`
 `;
 
 // Payment
-export const payment = styled.div`
+export const payment = styled.form`
   margin: 0;
   display: flex;
   justify-content: space-evenly;

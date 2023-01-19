@@ -1,10 +1,10 @@
 import React from "react";
-import FtLogo from "../styles/images/logo3.png";
+// import FtLogo from "../public/images/logo3.png";
 
 const Footer = () => {
   return (
     <div className="flex justify-center w-full my-16">
-      <img src={FtLogo} alt="footer-logo" className="w-20"></img>
+      <img src="images/logo3.png" alt="footer-logo" className="w-20"></img>
       <div className="ml-12 text-sm">
         <a className="after:content-['|'] after:mx-2.5">
           서울시 서초구 서초대로38길 12 마제스타시티 타워2 17층
