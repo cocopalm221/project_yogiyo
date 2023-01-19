@@ -9,7 +9,8 @@ import Footer from "./components/Footer";
 import StoreInfo from "./pages/StoreInfo";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-
+import WishList from "./pages/WishList";
+import MyPage from "./pages/MyPage";
 
 const App = () => {
   return (
@@ -18,14 +19,17 @@ const App = () => {
       <>
         <Routes>
           <Route index element={<Main />} />
-          <Route path="/mainnav" element={<MainNav/>}></Route>
-          <Route path="/login" element={<Login/>}></Route>
-          <Route path="/payment" element={<Payment/>}></Route>
-          <Route path="/signup" element={<SignUp/>}></Route>
-          <Route path="/StoreInfo" element={<StoreInfo/>}></Route>
+          <Route path="/mainnav" element={<MainNav />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/payment" element={<Payment />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
+          <Route path="/StoreInfo" element={<StoreInfo />}></Route>
+          <Route path="/mypage" element={<MyPage />}>
+            <Route path="wishList" element={<WishList />} />
+          </Route>
         </Routes>
       </>
-      <Footer/>
+      <Footer />
     </Router>
   );
 };

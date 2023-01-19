@@ -7,7 +7,7 @@ const MyPageCate = () => {
   const cateRef = useRef([]);
   const [cateTabCount, setCateTabCount] = useState();
   return (
-    <div className="fixed top-48 left-32 border rounded-xl border-[#999] overflow-hidden cursor-pointer">
+    <div className="fixed top-48 left-0 border rounded-xl border-[#999] overflow-hidden cursor-pointer">
       <div className="text-2xl">
         <div
           className={`px-16 py-4 border-b border-[#999] hover:bg-[#fa0050] hover:text-white ${
