@@ -33,17 +33,25 @@ const CateNav = ({ banners }) => {
               <img src={banner.url} alt="" />
               <div className="storeinfo">
                 <span className="title">파스토보이{banner.id}</span>
-                <div className="title-info">
-                  <span className="star">
-                    <AiFillStar className="text-yellow-400" />
+                <div>
+                  <span className="text-lg text-yellow-400 drop-shadow-sm shadow-black">
+                    <AiFillStar className="inline text-yellow-400 text-xl mr-2" />
+                    5.0
                   </span>
-                  <span className="review">리뷰 600</span>
-                  <span className="comment">사장님댓글 6600</span>
-                </div>
-                <div className="title-payment">
-                  <span className="here">요기서결제</span>
-                  <span className="deliver">5000원 이상 배달</span>
-                  <span className="time">25~35분</span>
+                  <span className="before:content-['|'] before:mx-2.5">
+                    리뷰 600
+                  </span>
+                  <span className="before:content-['|'] before:mx-2.5">
+                    사장님댓글 6600
+                  </span>
+                  <br />
+                  <span className="text-rose-600">요기서결제</span>
+                  <span className="before:content-['|'] before:mx-2.5 text-gray-500">
+                    5000원 이상 배달
+                  </span>
+                  <span className="before:content-['|'] before:mx-2.5 text-gray-500">
+                    25~35분
+                  </span>
                 </div>
               </div>
             </div>

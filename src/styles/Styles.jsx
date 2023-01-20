@@ -178,35 +178,6 @@ export const storeinner = styled.div`
         font-size: 1.2rem;
         font-weight: 600;
       }
-      .titie-info {
-        display: flex;
-        svg {
-          width: 10px;
-          height: 10px;
-          display: inline-block;
-        }
-      }
-    }
-
-    .title-info {
-      .review {
-        border-right: 2px solid gray;
-        padding-right: 5px;
-      }
-      .comment {
-        padding-left: 5px;
-      }
-    }
-
-    .title-payment {
-      .here {
-        border-right: 2px solid gray;
-        padding-right: 5px;
-        color: #fa0050;
-      }
-      .deliver {
-        padding-left: 5px;
-      }
     }
   }
 `;
