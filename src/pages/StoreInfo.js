@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import DetailTabMenu from "../components/DetailTabMenu";
-import DetailStarRating from "../components/DetailStarRating";
+import StarRating from "../components/StarRating";
 import DetailMain from "../components/DetailMain";
 import DetailReview from "../components/DetailReview";
 import DetailInfo from "../components/DetailInfo";
@@ -22,11 +22,11 @@ const StoreInfo = () => {
                 <img src="/images/temp.png" alt="logo" className="w-full" />
               </div>
               <div className="pl-5">
-                <div className="flex items-center pt-2">
-                  <DetailStarRating starRatio={4.6} />
+                <div className="flex items-center pt-1">
+                  <StarRating starRatio={4.6} width={90} />
                   <p className="pt-1 ml-2">4.6</p>
                 </div>
-                <div className="text-sm pt-1 leading-relaxed text-[#999]">
+                <div className="text-sm leading-relaxed text-[#999]">
                   {/* <p className="text-[#FA0050]">16,900원 이상 주문 시 할인</p> */}
                   <p>
                     최소주문금액 <span className="text-black">15,000원</span>
