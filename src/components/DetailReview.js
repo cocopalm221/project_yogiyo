@@ -1,28 +1,28 @@
 import React from "react";
-import DetailStarRating from "./DetailStarRating";
+import StarRating from "./StarRating";
 import { ImStarFull } from "react-icons/im";
 import { TbMessageCircle2 } from "react-icons/tb";
 
 const DetailReview = () => {
   return (
     <div>
-      <div className="flex justify-center items-center border border-t-0 py-8">
+      <div className="flex justify-center items-center border border-t-0 py-7">
         <div className="flex flex-col items-center pr-8">
           <p className="text-5xl tracking-wide pb-1">4.6</p>
-          <DetailStarRating starRatio={4.6} />
+          <StarRating starRatio={4.6} width={110} />
         </div>
         <div className="text-xs px-8 border-l">
           <div className="flex items-center pb-1">
             <p className="w-7">맛</p>
-            <DetailStarRating starRatio={4.8} />
+            <StarRating starRatio={4.8} />
           </div>
           <div className="flex items-center pb-1">
             <p className="w-7">양</p>
-            <DetailStarRating starRatio={4.7} />
+            <StarRating starRatio={4.3} />
           </div>
           <div className="flex items-center">
             <p className="w-7">배달</p>
-            <DetailStarRating starRatio={4.7} />
+            <StarRating starRatio={4.7} />
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@ const DetailReview = () => {
             <span className="text-xs text-[#999999]">어제</span>
           </li>
           <li className="flex items-center my-1">
-            <DetailStarRating starRatio="3.4" />
+            <StarRating starRatio="3.4" />
             <span className="flex items-center text-xs text-[#999999]">
               <span className="text-[#e0e0e0] mx-1">ㅣ</span>
               맛 <ImStarFull color="#FFA400" size="17px" className="mx-1" /> 5

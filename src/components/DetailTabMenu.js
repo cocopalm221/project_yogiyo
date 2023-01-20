@@ -6,19 +6,19 @@ const DetailTabMenu = ({ tabCount, setTabCount }) => {
     <TabContainer>
       <div
         onClick={() => setTabCount(0)}
-        className={`${tabCount === 0 ? "active" : ""}`}
+        className={`${tabCount === 0 && "active"}`}
       >
         메뉴<span>126</span>
       </div>
       <div
         onClick={() => setTabCount(1)}
-        className={`${tabCount === 1 ? "active" : ""}`}
+        className={`${tabCount === 1 && "active"}`}
       >
         클린리뷰<span>1856</span>
       </div>
       <div
         onClick={() => setTabCount(2)}
-        className={`${tabCount === 2 ? "active" : ""}`}
+        className={`${tabCount === 2 && "active"}`}
       >
         정보
       </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 import { CgCloseR } from "react-icons/cg";
 import { FaTrash } from "react-icons/fa";
@@ -6,24 +6,10 @@ import CartModal from "./CartModal";
 
 const DetailCart = () => {
   const [cartModalVisible, setCartModalVisible] = useState(false);
-  const cartRef = useRef();
-  const HEADER_HEIGHT = 100;
-  const handleScroll = () => {
-    if (window.scrollY > HEADER_HEIGHT) {
-      cartRef.current.classList.add("sticky", "top-2.5");
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <>
-      <div className="md:col-span-4 max-w-sm h-fit" ref={cartRef}>
+      <div className="md:col-span-4 max-w-sm h-fit sticky top-2.5">
         <div className="border rounded-t-xl overflow-hidden">
           <div className="bg-[#333] text-white p-3 flex items-center justify-between">
             주문표

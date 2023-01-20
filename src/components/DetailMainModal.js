@@ -81,7 +81,7 @@ const ModalInner = styled.div`
   background-color: #fff;
   width: 460px;
   height: 600px;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   overflow: hidden;
@@ -89,6 +89,7 @@ const ModalInner = styled.div`
   @media screen and (max-width: 768px) {
     width: 100vw;
     height: 100vh;
+    top: 50%;
   }
 `;
 
