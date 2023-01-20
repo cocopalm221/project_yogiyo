@@ -110,7 +110,7 @@ export const showAll = styled.button`
 
 export const bannersList = styled.ul`
   width: 100%;
-  padding: 4rem;
+  padding: 5rem;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   justify-items: center;
@@ -132,8 +132,11 @@ export const catenav = styled.div`
   list-style: none;
   padding: 2rem;
   gap: 15px;
+  .cateAll-bt {
+    font-weight: 900;
+  }
   button {
-    width: 100px;
+    width: 120px;
     border: 1px solid #fa0050;
     white-space: nowrap;
     overflow: hidden;
@@ -146,29 +149,35 @@ export const catenav = styled.div`
 export const stores = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  padding: 2rem;
-  gap: 2rem;
+  grid-template-columns: repeat(2, 0fr);
+  gap: 1rem;
   justify-content: center;
+  justify-items: center;
 `;
 export const storeinner = styled.div`
-  height: 250px;
-  width: 650px;
+  width: 600px;
+  height: 180px;
   border-radius: 15px;
   border: 1px solid #767676;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: flex-start;
   .store-inner {
     display: flex;
-
+    align-items: center;
+    margin-left: 2rem;
     img {
-      width: 80px;
-      height: 80px;
+      width: 120px;
+      height: 120px;
+      margin-right: 2.5rem;
     }
     .storeinfo {
       display: flex;
       flex-direction: column;
+      .title {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
       .titie-info {
         display: flex;
         svg {
@@ -193,6 +202,7 @@ export const storeinner = styled.div`
       .here {
         border-right: 2px solid gray;
         padding-right: 5px;
+        color: #fa0050;
       }
       .deliver {
         padding-left: 5px;

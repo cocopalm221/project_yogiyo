@@ -10,6 +10,7 @@ const CateNav = ({ banners }) => {
     <>
       <s.catenav>
         <button
+          className="cateAll-bt"
           onClick={() => {
             navigator("/");
           }}
@@ -34,7 +35,7 @@ const CateNav = ({ banners }) => {
                 <span className="title">파스토보이{banner.id}</span>
                 <div className="title-info">
                   <span className="star">
-                    <AiFillStar />
+                    <AiFillStar className="text-yellow-400" />
                   </span>
                   <span className="review">리뷰 600</span>
                   <span className="comment">사장님댓글 6600</span>
