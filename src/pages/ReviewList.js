@@ -1,11 +1,10 @@
 import React from "react";
-import { ImHeart, ImStarFull } from "react-icons/im";
 
-const WishList = () => {
+const ReviewList = () => {
   return (
     <div className="col-span-9 max-w-5xl ml-8">
       <h1 className="p-4 font-bold text-2xl border-b-2 border-black">
-        찜 목록
+        리뷰 목록
       </h1>
       {/* main */}
       <div className="grid lg:grid-cols-2 gap-4 mt-8">
@@ -17,22 +16,19 @@ const WishList = () => {
           <div className="p-4">
             <p className="pb-1.5 text-xl">파스토보이</p>
             <div className="flex items-center text-sm">
-              <ImStarFull color="#ffa400" size="20" />
-              <span className="pl-2">4.5</span>
-              <span className="pl-1"> (6,709)</span>
+              <span>배달주문</span>
               <span className="px-1"> · </span>
-              <span>포장가능</span>
+              <span>2022.10.15</span>
             </div>
           </div>
-          <ImHeart
-            className="absolute right-6 top-[50%] translate-y-[-50%]"
-            color="#fa0050"
-            size="28"
-          />
+          <div className="flex flex-col absolute right-6 top-[50%] translate-y-[-50%]">
+            <button className="text-[#767676] text-sm pb-1">수정</button>
+            <button className="text-[#767676] text-sm">삭제</button>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default WishList;
+export default ReviewList;
