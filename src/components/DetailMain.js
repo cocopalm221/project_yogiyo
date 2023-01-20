@@ -3,11 +3,13 @@ import styled from "styled-components";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import DetailMainModal from "./DetailMainModal";
 import DetailSwiper from "./DetailSwiper";
+import { GrClose } from "react-icons/gr";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 
 const DetailMain = () => {
   const menuRef = useRef([]);
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisibleId, setModalVisibleId] = useState();
 
   const openModal = () => {
     setModalVisible(true);
@@ -183,7 +185,23 @@ const DetailMain = () => {
         </DetailMenuBox>
       </ul>
       {modalVisible && (
-        <DetailMainModal visible={modalVisible} onClose={closeModal}>
+        <DetailMainModal
+          visible={modalVisible}
+          onClose={closeModal}
+          width={460}
+          height={600}
+          top={40}
+        >
+          {/* modal header */}
+          <div className="relative flex justify-center border-b h-[60px] bg-white">
+            <p className="text-[17px] leading-[60px]">메뉴상세</p>
+            <GrClose
+              className="absolute right-4 top-[50%] translate-y-[-50%] cursor-pointer"
+              size="20"
+              onClick={closeModal}
+            />
+          </div>
+          {/* modal content */}
           <div className="h-[83%] overflow-y-scroll">
             <div>
               <img
@@ -247,11 +265,25 @@ const DetailMain = () => {
             <div className="flex justify-between items-center p-4 pb-5 font-bold bg-[#f0f0f0]">
               <p>총 주문금액</p>
               <div className="text-end">
-                <p className="text-2xl  text-[#fa0050]">9,900원</p>
+                <p className="text-2xl text-[#fa0050]">9,900원</p>
                 <p className="text-xs font-medium">(최소주문금액 5,000원)</p>
               </div>
             </div>
           </div>
+          {/* modal footer */}
+          <form
+            className="h-[48px] flex fixed w-full bottom-0"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
+            <button className="bg-[#555] text-white font-bold w-1/2">
+              주문표에 추가
+            </button>
+            <button className="bg-[#fa0050] text-white font-bold w-1/2">
+              주문하기
+            </button>
+          </form>
         </DetailMainModal>
       )}
     </>

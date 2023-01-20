@@ -68,7 +68,6 @@ const StoreInfo = () => {
               <DetailInfo />
             </div>
           </>
-          {/* <DetailTabContent tabCount={tabCount} /> */}
           {/* cart */}
         </div>
         <DetailCart />
@@ -77,7 +76,4 @@ const StoreInfo = () => {
   );
 };
 
-// const DetailTabContent = ({ tabCount }) => {
-//   return [<DetailMain />, <DetailReview />, <DetailInfo />][tabCount];
-// };
 export default StoreInfo;
