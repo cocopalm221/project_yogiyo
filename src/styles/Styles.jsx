@@ -3,46 +3,49 @@ import styled from "styled-components";
 //Header
 
 export const headerInner = styled.div`
-  height: 100px;
+  height: 70px;
   background: #fa0050;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  
+  align-items: center;
 
   img {
-    width:145px;
-    height:50px;
+    width: 7.5rem;
     object-fit: contain;
-    transform: translate(50%, 50%);
+    margin: 0 auto;
+    cursor: pointer;
   }
 
   .search-list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
     .compass {
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: #fff;
       margin-right: 10px;
+      cursor: pointer;
     }
     .searcher {
-      width: 300px;
-      height: 50px;
+      width: 400px;
+      height: 40px;
       border-radius: 20px;
       transition: all 1s;
+      padding: 2px 15px;
       &:focus {
-        background-color: #c99090;
+        background-color: #e0e0e0;
         outline: none;
       }
     }
     button {
       position: absolute;
-      right:120px;
+      right: 0px;
       border-radius: 0 20px 20px 0;
       font-size: 2rem;
       width: 50px;
-      height: 50px;
+      height: 40px;
       background: #fa0050;
       color: #fff;
       border: 1px solid #fff;
@@ -59,7 +62,7 @@ export const headerInner = styled.div`
     align-items: center;
     button {
       background: #fff;
-      padding: 10px 25px;
+      padding: 8px 25px;
       border-radius: 20px;
     }
     .menu {
@@ -71,7 +74,7 @@ export const headerInner = styled.div`
 //Main
 export const bannerwrap = styled.div`
   background: #817a7a;
-`
+`;
 
 export const swiperPrev = styled.div`
   position: absolute;
@@ -81,7 +84,7 @@ export const swiperPrev = styled.div`
   cursor: pointer;
   .swiper-prev {
     font-size: 5rem;
-    color:blue;
+    color: blue;
   }
 `;
 
@@ -93,7 +96,7 @@ export const swiperNext = styled.div`
   cursor: pointer;
   .swiper-next {
     font-size: 5rem;
-    color:blue;
+    color: blue;
   }
 `;
 
@@ -371,12 +374,12 @@ export const payment = styled.form`
     width: 50%;
     display: flex;
     flex-direction: column;
-    gap:4rem 0;
+    gap: 4rem 0;
     .paylist {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap:2rem 0;
+      gap: 2rem 0;
       .paylisttitle {
         width: 100%;
         font-size: 1.5rem;
@@ -408,13 +411,13 @@ export const payment = styled.form`
       }
     }
 
-    .choosepay{
+    .choosepay {
       display: flex;
       flex-direction: column;
-      width:100%;
-      gap:2rem;
-      margin:0;
-      .choosepaytitle{
+      width: 100%;
+      gap: 2rem;
+      margin: 0;
+      .choosepaytitle {
         width: 100%;
         font-size: 1.5rem;
         background: #ddd8d8;
@@ -424,26 +427,26 @@ export const payment = styled.form`
         padding: 10px 5px;
         margin: 0;
       }
-      .coupon{
-        width:100%;
-        display:flex;
-        margin:0;
-        label{
-          width:calc(100%-75%-100px);
+      .coupon {
+        width: 100%;
+        display: flex;
+        margin: 0;
+        label {
+          width: calc(100%-75%-100px);
           font-size: 1.5rem;
           display: flex;
           justify-content: center;
           align-items: center;
         }
-        input{
-          width:75%;
+        input {
+          width: 75%;
           background: #b8b2b2;
-          padding:1rem 0;
+          padding: 1rem 0;
         }
-        .apply{
-          width:80px;
+        .apply {
+          width: 80px;
           background: black;
-          color:#fff;
+          color: #fff;
           border-radius: 20px;
           margin-left: 1rem;
         }
