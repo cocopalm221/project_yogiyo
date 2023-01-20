@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 import { CgCloseR } from "react-icons/cg";
 import { FaTrash } from "react-icons/fa";
-import CartModal from "./CartModal";
+import DetailMainModal from "./DetailMainModal";
 
 const DetailCart = () => {
   const [cartModalVisible, setCartModalVisible] = useState(false);
 
+  const closeModal = () => {
+    setCartModalVisible(false);
+  };
   return (
     <>
       <div className="md:col-span-4 max-w-sm h-fit sticky top-2.5">
@@ -64,10 +67,30 @@ const DetailCart = () => {
         </button>
       </div>
       {cartModalVisible && (
-        <CartModal
+        <DetailMainModal
           visible={cartModalVisible}
-          setCartModalVisible={setCartModalVisible}
-        />
+          onClose={closeModal}
+          width={598}
+          top={15}
+        >
+          <div>
+            <div className="bg-[#333] px-4 py-3 text-white">저기요</div>
+            <div className="text-sm p-4 border-b">
+              주문 메뉴를 모두 삭제하시겠습니까?
+            </div>
+            <div className="text-sm text-end py-2 px-4">
+              <button
+                className="text-[#fa0050] border border-[#fa0050] py-1.5 px-3 mr-2"
+                onClick={closeModal}
+              >
+                취소
+              </button>
+              <button className="text-white bg-[#fa0050] border border-[#fa0050] py-1.5 px-3">
+                확인
+              </button>
+            </div>
+          </div>
+        </DetailMainModal>
       )}
     </>
   );

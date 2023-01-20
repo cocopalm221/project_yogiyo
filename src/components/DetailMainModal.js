@@ -1,8 +1,16 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { GrClose } from "react-icons/gr";
 
-const DetailMainModal = ({ visible, onClose, children }) => {
+const DetailMainModal = ({
+  visible,
+  onClose,
+  children,
+  width,
+  height,
+  top,
+  modalVisibleId,
+  setModalVisibleId,
+}) => {
   useEffect(() => {
     document.body.style.cssText = `
     position: fixed; 
@@ -22,39 +30,12 @@ const DetailMainModal = ({ visible, onClose, children }) => {
       e.stopPropagation();
     }
   };
-  const close = (e) => {
-    if (onClose) {
-      onClose();
-      e.stopPropagation();
-    }
-  };
 
   return (
     <>
       <ModalWrapper visible={visible} onClick={onMaskClick}>
-        <ModalInner>
-          <div className="flex justify-center border-b h-[60px] bg-white">
-            <p className="text-[17px] leading-[60px]">메뉴상세</p>
-            <GrClose
-              className="absolute right-4 top-5 cursor-pointer"
-              size="20"
-              onClick={close}
-            />
-          </div>
+        <ModalInner width={width} height={height} top={top}>
           {children}
-          <form
-            className="h-[48px] flex fixed w-full bottom-0"
-            onClick={(e) => {
-              e.preventDefault();
-            }}
-          >
-            <button className="bg-[#555] text-white font-bold w-1/2">
-              주문표에 추가
-            </button>
-            <button className="bg-[#fa0050] text-white font-bold w-1/2">
-              주문하기
-            </button>
-          </form>
         </ModalInner>
       </ModalWrapper>
     </>
@@ -79,9 +60,9 @@ const ModalInner = styled.div`
   position: absolute;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
   background-color: #fff;
-  width: 460px;
-  height: 600px;
-  top: 40%;
+  width: ${(props) => props.width && props.width + "px"};
+  height: ${(props) => (props.height ? props.height + "px" : "auto")};
+  top: ${(props) => props.top && props.top + "%"};
   left: 50%;
   transform: translate(-50%, -50%);
   overflow: hidden;
