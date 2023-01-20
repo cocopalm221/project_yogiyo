@@ -10,7 +10,7 @@ export const headerInner = styled.div`
   align-items: center;
 
   img {
-    width: 7.5rem;
+    width: 130px;
     object-fit: contain;
     margin: 0 auto;
     cursor: pointer;
@@ -32,8 +32,8 @@ export const headerInner = styled.div`
       width: 400px;
       height: 40px;
       border-radius: 20px;
-      transition: all 1s;
       padding: 2px 15px;
+      transition: all 1s;
       &:focus {
         background-color: #e0e0e0;
         outline: none;
@@ -56,17 +56,16 @@ export const headerInner = styled.div`
   }
 
   .buttons {
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 1;
+    gap: 10px;
     button {
       background: #fff;
-      padding: 8px 25px;
+      height: 40px;
+      padding: 0 15px;
       border-radius: 20px;
-    }
-    .menu {
-      margin-left: 10px;
     }
   }
 `;
@@ -84,7 +83,7 @@ export const swiperPrev = styled.div`
   cursor: pointer;
   .swiper-prev {
     font-size: 5rem;
-    color: blue;
+    color: #aaaaaa;
   }
 `;
 
@@ -96,7 +95,7 @@ export const swiperNext = styled.div`
   cursor: pointer;
   .swiper-next {
     font-size: 5rem;
-    color: blue;
+    color: #aaaaaa;
   }
 `;
 
@@ -114,6 +113,7 @@ export const bannersList = styled.ul`
   padding: 4rem;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
   gap: 2rem;
 
   li {
@@ -128,17 +128,18 @@ export const bannersList = styled.ul`
 //CateNav
 export const catenav = styled.div`
   display: flex;
+  justify-content: center;
   list-style: none;
   padding: 2rem;
+  gap: 15px;
   button {
-    width: 160px;
-    height: 60px;
+    width: 100px;
     border: 1px solid #fa0050;
     white-space: nowrap;
     overflow: hidden;
-    border-radius: 20px;
-    padding: 0.5rem;
-    font-weight: 550;
+    border-radius: 15px;
+    padding: 0.3rem 1rem;
+    font-weight: 500;
   }
 `;
 

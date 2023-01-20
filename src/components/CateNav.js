@@ -1,13 +1,21 @@
 import React from "react";
 import * as s from "../styles/Styles";
-import { Link } from "react-router-dom";
-import { AiFillStar} from "react-icons/ai";
+import { Link, useNavigate } from "react-router-dom";
+import { FiSearch } from "react-icons/fi";
+import { AiFillStar } from "react-icons/ai";
 
 const CateNav = ({ banners }) => {
+  const navigator = useNavigate();
   return (
     <>
       <s.catenav>
-        <button>전체보기</button>
+        <button
+          onClick={() => {
+            navigator("/");
+          }}
+        >
+          전체보기
+        </button>
         {banners.slice(0, 8).map((banner) => (
           <li key={banner.id}>
             <Link to="/">
@@ -25,7 +33,9 @@ const CateNav = ({ banners }) => {
               <div className="storeinfo">
                 <span className="title">파스토보이{banner.id}</span>
                 <div className="title-info">
-                  <span className="star"><AiFillStar/></span>
+                  <span className="star">
+                    <AiFillStar />
+                  </span>
                   <span className="review">리뷰 600</span>
                   <span className="comment">사장님댓글 6600</span>
                 </div>
