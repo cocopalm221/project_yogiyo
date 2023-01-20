@@ -13,6 +13,7 @@ const MyPageCate = () => {
           }`}
           onClick={() => {
             setCateTabCount(0);
+            navigate("/mypage/orderlist");
           }}
         >
           주문내역
@@ -33,6 +34,7 @@ const MyPageCate = () => {
           }`}
           onClick={() => {
             setCateTabCount(2);
+            navigate("/mypage/reviewlist");
           }}
         >
           리뷰목록
@@ -43,6 +45,7 @@ const MyPageCate = () => {
           }`}
           onClick={() => {
             setCateTabCount(3);
+            navigate("/mypage/wishlist");
           }}
         >
           찜목록
