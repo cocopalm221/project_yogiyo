@@ -3,46 +3,49 @@ import styled from "styled-components";
 //Header
 
 export const headerInner = styled.div`
-  height: 100px;
+  height: 70px;
   background: #fa0050;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  
+  align-items: center;
 
   img {
-    width:145px;
-    height:50px;
+    width: 130px;
     object-fit: contain;
-    transform: translate(50%, 50%);
+    margin: 0 auto;
+    cursor: pointer;
   }
 
   .search-list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
     .compass {
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: #fff;
       margin-right: 10px;
+      cursor: pointer;
     }
     .searcher {
-      width: 300px;
-      height: 50px;
+      width: 400px;
+      height: 40px;
       border-radius: 20px;
+      padding: 2px 15px;
       transition: all 1s;
       &:focus {
-        background-color: #c99090;
+        background-color: #e0e0e0;
         outline: none;
       }
     }
     button {
       position: absolute;
-      right:120px;
+      right: 0px;
       border-radius: 0 20px 20px 0;
       font-size: 2rem;
       width: 50px;
-      height: 50px;
+      height: 40px;
       background: #fa0050;
       color: #fff;
       border: 1px solid #fff;
@@ -53,17 +56,16 @@ export const headerInner = styled.div`
   }
 
   .buttons {
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 1;
+    gap: 10px;
     button {
       background: #fff;
-      padding: 10px 25px;
+      height: 40px;
+      padding: 0 15px;
       border-radius: 20px;
-    }
-    .menu {
-      margin-left: 10px;
     }
   }
 `;
@@ -71,7 +73,7 @@ export const headerInner = styled.div`
 //Main
 export const bannerwrap = styled.div`
   background: #817a7a;
-`
+`;
 
 export const swiperPrev = styled.div`
   position: absolute;
@@ -81,7 +83,7 @@ export const swiperPrev = styled.div`
   cursor: pointer;
   .swiper-prev {
     font-size: 5rem;
-    color:blue;
+    color: #aaaaaa;
   }
 `;
 
@@ -93,7 +95,7 @@ export const swiperNext = styled.div`
   cursor: pointer;
   .swiper-next {
     font-size: 5rem;
-    color:blue;
+    color: #aaaaaa;
   }
 `;
 
@@ -108,9 +110,10 @@ export const showAll = styled.button`
 
 export const bannersList = styled.ul`
   width: 100%;
-  padding: 4rem;
+  padding: 5rem;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
   gap: 2rem;
 
   li {
@@ -125,46 +128,56 @@ export const bannersList = styled.ul`
 //CateNav
 export const catenav = styled.div`
   display: flex;
+  justify-content: center;
   list-style: none;
   padding: 2rem;
+  gap: 15px;
+  .cateAll-bt {
+    font-weight: 900;
+  }
   button {
-    width: 160px;
-    height: 60px;
+    width: 120px;
     border: 1px solid #fa0050;
     white-space: nowrap;
     overflow: hidden;
-    border-radius: 20px;
-    padding: 0.5rem;
-    font-weight: 550;
+    border-radius: 15px;
+    padding: 0.3rem 1rem;
+    font-weight: 500;
   }
 `;
 
 export const stores = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  padding: 2rem;
-  gap: 2rem;
+  grid-template-columns: repeat(2, 0fr);
+  gap: 1rem;
   justify-content: center;
+  justify-items: center;
 `;
 export const storeinner = styled.div`
-  height: 250px;
-  width: 650px;
+  width: 600px;
+  height: 180px;
   border-radius: 15px;
   border: 1px solid #767676;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: flex-start;
   .store-inner {
     display: flex;
-
+    align-items: center;
+    margin-left: 2rem;
     img {
-      width: 80px;
-      height: 80px;
+      width: 120px;
+      height: 120px;
+      margin-right: 2.5rem;
     }
     .storeinfo {
       display: flex;
       flex-direction: column;
+      .title {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
       .titie-info {
         display: flex;
         svg {
@@ -189,6 +202,7 @@ export const storeinner = styled.div`
       .here {
         border-right: 2px solid gray;
         padding-right: 5px;
+        color: #fa0050;
       }
       .deliver {
         padding-left: 5px;
@@ -371,12 +385,12 @@ export const payment = styled.form`
     width: 50%;
     display: flex;
     flex-direction: column;
-    gap:4rem 0;
+    gap: 4rem 0;
     .paylist {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap:2rem 0;
+      gap: 2rem 0;
       .paylisttitle {
         width: 100%;
         font-size: 1.5rem;
@@ -408,13 +422,13 @@ export const payment = styled.form`
       }
     }
 
-    .choosepay{
+    .choosepay {
       display: flex;
       flex-direction: column;
-      width:100%;
-      gap:2rem;
-      margin:0;
-      .choosepaytitle{
+      width: 100%;
+      gap: 2rem;
+      margin: 0;
+      .choosepaytitle {
         width: 100%;
         font-size: 1.5rem;
         background: #ddd8d8;
@@ -424,26 +438,26 @@ export const payment = styled.form`
         padding: 10px 5px;
         margin: 0;
       }
-      .coupon{
-        width:100%;
-        display:flex;
-        margin:0;
-        label{
-          width:calc(100%-75%-100px);
+      .coupon {
+        width: 100%;
+        display: flex;
+        margin: 0;
+        label {
+          width: calc(100%-75%-100px);
           font-size: 1.5rem;
           display: flex;
           justify-content: center;
           align-items: center;
         }
-        input{
-          width:75%;
+        input {
+          width: 75%;
           background: #b8b2b2;
-          padding:1rem 0;
+          padding: 1rem 0;
         }
-        .apply{
-          width:80px;
+        .apply {
+          width: 80px;
           background: black;
-          color:#fff;
+          color: #fff;
           border-radius: 20px;
           margin-left: 1rem;
         }
