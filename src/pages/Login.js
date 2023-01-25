@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import LoginDiv from "../styles/LoginCss";
-// import Logo from "../../public/images/logo2.png";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
+
+  
+
 
   const SignInFunc = (e) => {
     e.preventDefault();

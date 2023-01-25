@@ -25,7 +25,12 @@ const CateNav = ({ banners }) => {
           </li>
         ))}
       </s.catenav>
-
+      <button
+        type="button"
+        className="py-2 px-4 border-black border rounded-xl"
+      >
+        정렬 기준 선택
+      </button>
       <s.stores>
         {banners.slice(0, 10).map((banner) => (
           <s.storeinner key={banner.id}>
