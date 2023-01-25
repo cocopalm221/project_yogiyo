@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { AiOutlineCloseSquare } from "react-icons/ai";
+import { GrClose } from "react-icons/gr";
+import DetailMainModal from "../components/DetailMainModal";
+import StarRating from "../components/StarRating";
 
 const ReviewList = () => {
+  const [reviewModalVisibleId, setReviewModalVisibleId] = useState(false);
+  const closeModal = () => {
+    setReviewModalVisibleId(false);
+  };
   return (
     <div className="col-span-9 max-w-5xl ml-8">
       <h1 className="p-4 font-bold text-2xl border-b-2 border-black">
@@ -9,7 +17,12 @@ const ReviewList = () => {
       {/* main */}
       <div className="grid lg:grid-cols-2 gap-4 mt-8">
         {/* 박스 map */}
-        <div className="flex border border-[#999] rounded-lg p-4 relative">
+        <div
+          className="flex border border-[#999] rounded-lg p-4 relative"
+          onClick={() => {
+            setReviewModalVisibleId(true);
+          }}
+        >
           <div className="w-24">
             <img src="/images/temp.png" alt="" className="w-full" />
           </div>
@@ -26,7 +39,39 @@ const ReviewList = () => {
             <button className="text-[#767676] text-sm">삭제</button>
           </div>
         </div>
-      </div>
+      </div>{" "}
+      {reviewModalVisibleId && (
+        <DetailMainModal
+          width={700}
+          height={800}
+          top={50}
+          visible={reviewModalVisibleId}
+          onClose={closeModal}
+        >
+          {/* 헤더 */}
+          <div className="relative flex justify-between items-center h-12 bg-[#fa0050] text-white px-4 font-bold text-lg">
+            <p>작성한 리뷰</p>
+            <AiOutlineCloseSquare size="26" className="cursor-pointer" />
+          </div>
+          {/* 내용 */}
+          <div className="py-8 px-8">
+            <div className="flex">
+              <div className="w-36">
+                <img src="/images/temp.png" alt="" className="w-full" />
+              </div>
+              <div className="ml-6 mt-3">
+                <h1 className="text-xl font-bold">수우미칠곡본접</h1>
+                <div className="flex items-center pt-1 pb-2">
+                  <p className="border text-sm px-1 border-[#999]">배달주문</p>
+                  <p className="pl-4">2022.10.15</p>
+                </div>
+                <StarRating starRatio={4.6} />
+              </div>
+              <div></div>
+            </div>
+          </div>
+        </DetailMainModal>
+      )}
     </div>
   );
 };
