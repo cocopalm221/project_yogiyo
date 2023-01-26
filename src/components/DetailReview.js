@@ -1,35 +1,35 @@
 import React from "react";
-import DetailStarRating from "./DetailStarRating";
+import StarRating from "./StarRating";
 import { ImStarFull } from "react-icons/im";
 import { TbMessageCircle2 } from "react-icons/tb";
 
 const DetailReview = () => {
   return (
-    <div>
-      <div className="flex justify-center items-center border border-t-0 py-8">
+    <>
+      <div className="flex justify-center items-center border border-t-0 py-7">
         <div className="flex flex-col items-center pr-8">
           <p className="text-5xl tracking-wide pb-1">4.6</p>
-          <DetailStarRating starRatio={4.6} />
+          <StarRating starRatio={4.6} width={110} />
         </div>
         <div className="text-xs px-8 border-l">
           <div className="flex items-center pb-1">
             <p className="w-7">맛</p>
-            <DetailStarRating starRatio={4.8} />
+            <StarRating starRatio={4.8} />
           </div>
           <div className="flex items-center pb-1">
             <p className="w-7">양</p>
-            <DetailStarRating starRatio={4.7} />
+            <StarRating starRatio={4.3} />
           </div>
           <div className="flex items-center">
             <p className="w-7">배달</p>
-            <DetailStarRating starRatio={4.7} />
+            <StarRating starRatio={4.7} />
           </div>
         </div>
       </div>
       <div className="border border-t-0 text-xs">
         <p className="p-4">
           리뷰 <strong>2917</strong>개
-          <span className="text-[#999999] mx-1">I</span>
+          <span className="text-[#999] mx-1">I</span>
           사장님댓글 <strong>439</strong>개
         </p>
       </div>
@@ -38,19 +38,19 @@ const DetailReview = () => {
         <ul className="p-4 border border-t-0">
           <li>
             <strong className="mr-2">hk**님</strong>
-            <span className="text-xs text-[#999999]">어제</span>
+            <span className="text-xs text-[#999]">어제</span>
           </li>
           <li className="flex items-center my-1">
-            <DetailStarRating starRatio="3.4" />
-            <span className="flex items-center text-xs text-[#999999]">
-              <span className="text-[#e0e0e0] mx-1">ㅣ</span>
-              맛 <ImStarFull color="#FFA400" size="17px" className="mx-1" /> 5
-              양 <ImStarFull color="#FFA400" size="17px" className="mx-1" /> 5
-              배달 <ImStarFull color="#FFA400" size="17px" className="mx-1" /> 5
+            <StarRating starRatio={3.4} />
+            <span className="flex items-center text-xs text-[#999] gap-1">
+              <span className="text-[#e0e0e0]">ㅣ</span>
+              맛 <ImStarFull color="#FFA400" size="17px" /> 5 양
+              <ImStarFull color="#FFA400" size="17px" /> 5 배달
+              <ImStarFull color="#FFA400" size="17px" /> 5
             </span>
           </li>
-          <li className="w-1/2 mt-3">
-            <img src="images/temp.png" className="w-full" alt="temp" />
+          <li className="flex items-center w-full mt-3 gap-2">
+            <img src="/images/temp.png" className="w-1/2 " alt="temp" />
           </li>
           <li>
             <p className="text-[#d1bc44] text-sm my-3">
@@ -64,9 +64,9 @@ const DetailReview = () => {
             </p>
           </li>
           <li className="bg-[#f0f0f0] rounded p-4">
-            <div className="flex">
+            <div className="flex gap-2">
               <TbMessageCircle2 className="scale-x-[-1]" size="20" />
-              <strong className="mx-2">사장님</strong>
+              <strong>사장님</strong>
             </div>
             <div className="pl-6">
               정말 죄송합니다...사진을 보니 너무 속상하네요 😭 다음에 이런 일이
@@ -78,7 +78,7 @@ const DetailReview = () => {
           </li>
         </ul>
       </div>
-    </div>
+    </>
   );
 };
 

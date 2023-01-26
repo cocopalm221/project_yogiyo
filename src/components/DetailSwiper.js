@@ -31,7 +31,7 @@ const DetailSwiper = () => {
       {/* map */}
       <SwiperSlide>
         <div className="w-40 border">
-          <img src="images/menutemp.png" className="w-full" alt="메뉴이미지" />
+          <img src="/images/menutemp.png" className="w-full" alt="메뉴이미지" />
           <div className="p-2">
             <p className="whitespace-nowrap truncate font-bold">
               피자(중)+피자(중)
@@ -42,7 +42,7 @@ const DetailSwiper = () => {
       </SwiperSlide>
       <SwiperSlide>
         <div className="w-40 border">
-          <img src="images/menutemp.png" className="w-full" alt="메뉴이미지" />
+          <img src="/images/menutemp.png" className="w-full" alt="메뉴이미지" />
           <div className="p-2">
             <p className="whitespace-nowrap truncate font-bold">
               피자(중)+피자(중)
@@ -53,7 +53,7 @@ const DetailSwiper = () => {
       </SwiperSlide>
       <SwiperSlide>
         <div className="w-40 border">
-          <img src="images/menutemp.png" className="w-full" alt="메뉴이미지" />
+          <img src="/images/menutemp.png" className="w-full" alt="메뉴이미지" />
           <div className="p-2">
             <p className="whitespace-nowrap truncate font-bold">
               피자(중)+피자(중)
@@ -64,7 +64,7 @@ const DetailSwiper = () => {
       </SwiperSlide>
       <SwiperSlide>
         <div className="w-40 border">
-          <img src="images/menutemp.png" className="w-full" alt="메뉴이미지" />
+          <img src="/images/menutemp.png" className="w-full" alt="메뉴이미지" />
           <div className="p-2">
             <p className="whitespace-nowrap truncate font-bold">
               피자(중)+피자(중)
@@ -75,7 +75,7 @@ const DetailSwiper = () => {
       </SwiperSlide>
       <SwiperSlide>
         <div className="w-40 border">
-          <img src="images/menutemp.png" className="w-full" alt="메뉴이미지" />
+          <img src="/images/menutemp.png" className="w-full" alt="메뉴이미지" />
           <div className="p-2">
             <p className="whitespace-nowrap truncate font-bold">
               피자(중)+피자(중)
@@ -86,7 +86,7 @@ const DetailSwiper = () => {
       </SwiperSlide>
       <SwiperSlide>
         <div className="w-40 border">
-          <img src="images/menutemp.png" className="w-full" alt="메뉴이미지" />
+          <img src="/images/menutemp.png" className="w-full" alt="메뉴이미지" />
           <div className="p-2">
             <p className="whitespace-nowrap truncate font-bold">
               피자(중)+피자(중)
@@ -101,12 +101,13 @@ const DetailSwiper = () => {
 
 const SwiperContainer = styled(Swiper)`
   padding-bottom: 8px;
+  z-index: 0;
   .swiper-wrapper {
     padding: 15px;
   }
   .swiper-button-prev {
     left: 0;
-    background: url("images/btn-left.png") no-repeat;
+    background: url("/images/btn-left.png") no-repeat;
     width: 40px;
     height: 40px;
     background-size: 40px;
@@ -117,7 +118,7 @@ const SwiperContainer = styled(Swiper)`
   }
   .swiper-button-next {
     right: 0;
-    background: url("images/btn-right.png") no-repeat;
+    background: url("/images/btn-right.png") no-repeat;
     width: 40px;
     height: 40px;
     background-size: 40px;
