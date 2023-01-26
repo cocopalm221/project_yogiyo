@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import WishList from "./pages/WishList";
 import MyPage from "./pages/MyPage";
+import MyInfo from "./pages/MyInfo";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/StoreInfo" element={<StoreInfo />}></Route>
           <Route path="/mypage" element={<MyPage />}>
             <Route path="wishList" element={<WishList />} />
+            <Route path="myinfo" element={<MyInfo />} />
           </Route>
         </Routes>
       </>

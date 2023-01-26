@@ -7,11 +7,10 @@ export const headerInner = styled.div`
   background: #fa0050;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  
 
   img {
-    width:145px;
-    height:50px;
+    width: 145px;
+    height: 50px;
     object-fit: contain;
     transform: translate(50%, 50%);
   }
@@ -38,7 +37,7 @@ export const headerInner = styled.div`
     }
     button {
       position: absolute;
-      right:120px;
+      right: 120px;
       border-radius: 0 20px 20px 0;
       font-size: 2rem;
       width: 50px;
@@ -71,7 +70,7 @@ export const headerInner = styled.div`
 //Main
 export const bannerwrap = styled.div`
   background: #817a7a;
-`
+`;
 
 export const swiperPrev = styled.div`
   position: absolute;
@@ -81,7 +80,7 @@ export const swiperPrev = styled.div`
   cursor: pointer;
   .swiper-prev {
     font-size: 5rem;
-    color:blue;
+    color: blue;
   }
 `;
 
@@ -93,7 +92,7 @@ export const swiperNext = styled.div`
   cursor: pointer;
   .swiper-next {
     font-size: 5rem;
-    color:blue;
+    color: blue;
   }
 `;
 
@@ -123,18 +122,17 @@ export const bannersList = styled.ul`
 `;
 
 //CateNav
-export const catenav = styled.div`
+export const catenav = styled.ul`
   display: flex;
   list-style: none;
   padding: 2rem;
+  gap:0 1.5rem;
   button {
-    width: 160px;
-    height: 60px;
     border: 1px solid #fa0050;
-    white-space: nowrap;
+    width: 140px;
+    height: 50px;
     overflow: hidden;
     border-radius: 20px;
-    padding: 0.5rem;
     font-weight: 550;
   }
 `;
@@ -147,6 +145,7 @@ export const stores = styled.div`
   gap: 2rem;
   justify-content: center;
 `;
+
 export const storeinner = styled.div`
   height: 250px;
   width: 650px;
@@ -256,19 +255,16 @@ export const login = styled.form`
 
 // Payment
 export const payment = styled.form`
-  margin: 0;
   display: flex;
   justify-content: space-evenly;
   padding: 10px 2rem 0 2rem;
   .leftpay {
-    margin: 0;
     padding: 1rem;
     border: 2px solid black;
     width: 50%;
     display: flex;
     flex-direction: column;
     h1 {
-      margin: 0;
       background: #3b3939;
       box-shadow: 1px 1px 3px 1px #dadce0;
       font-size: 2.5rem;
@@ -276,7 +272,6 @@ export const payment = styled.form`
       font-weight: 600;
     }
     .deliverinfo {
-      margin: 0;
       display: flex;
       flex-direction: column;
       gap: 1rem 0;
@@ -285,7 +280,6 @@ export const payment = styled.form`
         height: 50px;
         outline: none;
         background: whitesmoke;
-        margin: 0;
         margin-left: 80px;
       }
       .infotitle {
@@ -295,52 +289,46 @@ export const payment = styled.form`
         box-shadow: 1px 1px 3px 1px #dadce0;
         border: 1px solid black;
         padding: 10px 5px;
-        margin: 0;
       }
       .address_search {
         display: flex;
-        margin: 0;
         gap: 0 2rem;
         label {
           font-size: 1.5rem;
           display: flex;
           justify-content: center;
           align-items: center;
-          margin: 0;
         }
         input {
           width: 85%;
           height: 50px;
           outline: none;
           background: whitesmoke;
-          margin: 0;
         }
       }
 
       .number {
         display: flex;
-        margin: 0;
+
         margin-bottom: 1rem;
         label {
           font-size: 1.3rem;
           display: flex;
           justify-content: center;
           align-items: center;
-          margin: 0;
         }
         input {
           width: 85%;
           height: 50px;
           outline: none;
           background: whitesmoke;
-          margin: 0;
         }
       }
     }
     .deliverreq {
       display: flex;
       flex-direction: column;
-      margin: 0;
+
       .reqtitle {
         font-size: 1.5rem;
         background: #ddd8d8;
@@ -348,7 +336,6 @@ export const payment = styled.form`
         box-shadow: 1px 1px 3px 1px #dadce0;
         border: 1px solid black;
         padding: 10px 5px;
-        margin: 0;
       }
       .text {
         display: flex;
@@ -365,18 +352,17 @@ export const payment = styled.form`
     }
   }
   .newLeftpay {
-    margin: 0;
     padding: 1rem;
     border: 2px solid black;
     width: 50%;
     display: flex;
     flex-direction: column;
-    gap:4rem 0;
+    gap: 4rem 0;
     .paylist {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap:2rem 0;
+      gap: 2rem 0;
       .paylisttitle {
         width: 100%;
         font-size: 1.5rem;
@@ -385,7 +371,6 @@ export const payment = styled.form`
         box-shadow: 1px 1px 3px 1px #dadce0;
         border: 1px solid black;
         padding: 10px 5px;
-        margin: 0;
       }
       .cashorcard {
         display: flex;
@@ -408,13 +393,13 @@ export const payment = styled.form`
       }
     }
 
-    .choosepay{
+    .choosepay {
       display: flex;
       flex-direction: column;
-      width:100%;
-      gap:2rem;
-      margin:0;
-      .choosepaytitle{
+      width: 100%;
+      gap: 2rem;
+
+      .choosepaytitle {
         width: 100%;
         font-size: 1.5rem;
         background: #ddd8d8;
@@ -422,28 +407,27 @@ export const payment = styled.form`
         box-shadow: 1px 1px 3px 1px #dadce0;
         border: 1px solid black;
         padding: 10px 5px;
-        margin: 0;
       }
-      .coupon{
-        width:100%;
-        display:flex;
-        margin:0;
-        label{
-          width:calc(100%-75%-100px);
+      .coupon {
+        width: 100%;
+        display: flex;
+
+        label {
+          width: calc(100%-75%-100px);
           font-size: 1.5rem;
           display: flex;
           justify-content: center;
           align-items: center;
         }
-        input{
-          width:75%;
+        input {
+          width: 75%;
           background: #b8b2b2;
-          padding:1rem 0;
+          padding: 1rem 0;
         }
-        .apply{
-          width:80px;
+        .apply {
+          width: 80px;
           background: black;
-          color:#fff;
+          color: #fff;
           border-radius: 20px;
           margin-left: 1rem;
         }
@@ -456,10 +440,9 @@ export const payment = styled.form`
     width: 22%;
     display: flex;
     flex-direction: column;
-    margin: 0;
+
     justify-content: space-between;
     .menulist {
-      margin: 0;
       display: flex;
       flex-direction: column;
       gap: 1rem 0;
@@ -471,7 +454,7 @@ export const payment = styled.form`
         font-size: 2.5rem;
         color: white;
         font-weight: 600;
-        margin: 0;
+
         width: 100%;
       }
       .storename {
@@ -482,7 +465,6 @@ export const payment = styled.form`
         box-shadow: 1px 1px 3px 1px #dadce0;
         border: 1px solid black;
         padding: 10px 5px;
-        margin: 0;
       }
       .totalpay {
         width: 100%;
@@ -497,5 +479,86 @@ export const payment = styled.form`
       color: #fff;
       margin-bottom: 1rem;
     }
+  }
+`;
+
+// MyInfo
+
+export const myinfo = styled.form`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  input{
+    outline: none;
+    transition: all 0.5s;
+    &:hover{
+      background: #cecaca;
+    }
+  }
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:1.5rem 0;
+  }
+
+  .totalinfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem 0;
+    .password,
+    .passwordcheck,
+    .address,
+    .number,
+    .email {
+      display: flex;
+      justify-content: space-between;
+      gap: 0 2rem;
+      label {
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+      input {
+        border: 1px solid gray;
+        width: 300px;
+        border-radius: 10px;
+      }
+    }
+    .nickname {
+      display: flex;
+      justify-content: space-between;
+      gap: 0 2rem;
+      label {
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+      input {
+        border: 1px solid gray;
+        width: 300px;
+        border-radius: 10px;
+        transform: translateX(135px);
+      }
+      .nickchange {
+        transform: translateX(120px);
+        background: #fa0050;
+        color: #fff;
+        border-radius: 10px;
+        padding: 0.5rem;
+      }
+    }
+  }
+  .confirm {
+    width: 200px;
+    padding: 10px 15px;
+    background-color: #fa0050;
+    border: 1px solid #fff;
+    color: #fff;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    font-weight: 600;
+    transform: translateX(100%);
+    margin-top: 2rem;
   }
 `;

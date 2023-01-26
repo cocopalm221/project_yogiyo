@@ -7,7 +7,7 @@ const MainNav = () => {
 
   useEffect(()=>{
     const fetchBanner = async () => {
-      const response = await axios.get('https://jsonplaceholder.typicode.com/albums/1/photos');
+      const response = await axios.get('https://jsonplaceholder.typicode.com/photos');
       setBanners(response.data);
     }
     fetchBanner();

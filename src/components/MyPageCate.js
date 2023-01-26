@@ -27,7 +27,7 @@ const MyPageCate = () => {
           }`}
           ref={(elem) => (cateRef.current[1] = elem)}
           onClick={() => {
-            navigate("/wishlist");
+            navigate("/myinfo");
             setCateTabCount(1);
           }}
         >

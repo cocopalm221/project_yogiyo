@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import LoginDiv from "../styles/LoginCss";
 // import Logo from "../../public/images/logo2.png";
 import { NavLink, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,6 +16,26 @@ const Login = () => {
     }
     if (!pw) {
       return alert("비밀번호를 입력하세요.");
+    }
+
+    let body = {
+      miId: email,
+      miPwd: pw,
+    };
+
+    try {
+      axios
+        .post("http://192.168.9.114:9244/member/login", body)
+        .then((response) => {
+          if (response.data.status) {
+            alert("로그인 성공");
+            console.log(response.data);
+          } else {
+            alert("로그인 실패");
+          }
+        });
+    } catch (error) {
+      console.log(error);
     }
   };
   return (
@@ -41,6 +62,7 @@ const Login = () => {
             maxLength={10}
             placeholder="비밀번호를 입력하세요. / 최소 4자 ~ 최대 10자"
             value={pw}
+            autoComplete="on"
             onChange={(e) => setPw(e.target.value)}
           />
           <span className="flex justify-end">아이디 찾기 | 비밀번호 찾기</span>
@@ -59,4 +81,4 @@ const Login = () => {
   );
 };
 
-export default Login
+export default Login;

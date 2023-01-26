@@ -6,7 +6,6 @@ const Payment = () => {
   const [enroll_company, setEnroll_company] = useState({
     address: "",
   });
-
   const [popup, setPopup] = useState(false);
   const [paySwitch, setpaySwitch] = useState(true);
 

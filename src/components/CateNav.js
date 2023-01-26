@@ -1,29 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import * as s from "../styles/Styles";
 import { Link } from "react-router-dom";
-import { AiFillStar} from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
+import axios from "axios";
 
-const CateNav = ({ banners }) => {
+const CateNav = () => {
+  const [banners, setBanners] = useState([]);
+
+  useEffect(()=>{
+    const fetchBanner = async () => {
+      const response = await axios.get('https://jsonplaceholder.typicode.com/photos');
+      setBanners(response.data);
+    }
+    fetchBanner();
+  },[])
+
+  const [storeCates, setstoreCate] = useState([]);
+  useEffect(() => {
+    const fetchstoreCate = async () => {
+      const response = await axios.get('http://192.168.0.9:9244/mypage/storecate?page=0');
+      setstoreCate(response.data.storeCate.storeCate);
+    }
+    fetchstoreCate();
+  })
+
   return (
     <>
       <s.catenav>
-        <button>전체보기</button>
-        {banners.slice(0, 8).map((banner) => (
-          <li key={banner.id}>
-            <Link to="/">
-              <button>{banner.title}</button>
-            </Link>
+        {storeCates.map((storeCate) => (
+          <li key={storeCate.scSeq}>
+            <button>{storeCate.scName}</button>
           </li>
         ))}
       </s.catenav>
-
       <s.stores>
         {banners.slice(0, 10).map((banner) => (
           <s.storeinner key={banner.id}>
             <div className="store-inner">
               <img src={banner.url} alt="" />
               <div className="storeinfo">
-                <span className="title">파스토보이{banner.id}</span>
+                <span className="title">{banner.title}</span>
                 <div className="title-info">
                   <span className="star"><AiFillStar/></span>
                   <span className="review">리뷰 600</span>
