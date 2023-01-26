@@ -17,7 +17,7 @@ const Header = () => {
     <div className="header">
       <s.headerInner>
         <img
-          src="images/logo.png"
+          src="/images/logo.png"
           className="title"
           alt="logo"
           onClick={goMain}

@@ -5,9 +5,9 @@ import DetailMainModal from "../components/DetailMainModal";
 import StarRating from "../components/StarRating";
 
 const ReviewList = () => {
-  const [reviewModalVisibleId, setReviewModalVisibleId] = useState(false);
+  const [reviewModalVisible, setReviewModalVisible] = useState(false);
   const closeModal = () => {
-    setReviewModalVisibleId(false);
+    setReviewModalVisible(false);
   };
   return (
     <div className="col-span-9 max-w-5xl ml-8">
@@ -20,7 +20,7 @@ const ReviewList = () => {
         <div
           className="flex border border-[#999] rounded-lg p-4 relative"
           onClick={() => {
-            setReviewModalVisibleId(true);
+            setReviewModalVisible(true);
           }}
         >
           <div className="w-24">
@@ -40,12 +40,12 @@ const ReviewList = () => {
           </div>
         </div>
       </div>{" "}
-      {reviewModalVisibleId && (
+      {reviewModalVisible && (
         <DetailMainModal
           width={700}
           height={800}
           top={50}
-          visible={reviewModalVisibleId}
+          visible={reviewModalVisible}
           onClose={closeModal}
         >
           {/* 헤더 */}

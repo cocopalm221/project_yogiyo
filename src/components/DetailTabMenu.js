@@ -26,7 +26,7 @@ const DetailTabMenu = ({ tabCount, setTabCount }) => {
   );
 };
 
-const TabContainer = styled.div`
+const TabContainer = styled.nav`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   text-align: center;

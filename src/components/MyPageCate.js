@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 
 const MyPageCate = () => {
   const navigate = useNavigate();
-  const [cateTabCount, setCateTabCount] = useState();
+  const [cateTabCount, setCateTabCount] = useState(0);
   return (
     <div className="col-span-2 h-fit sticky top-8 mt-16 border rounded border-[#999] overflow-hidden cursor-pointer">
       <div className="text-lg text-center">
