@@ -9,14 +9,16 @@ import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 const DetailMain = () => {
   const menuRef = useRef([]);
   const [modalVisible, setModalVisible] = useState(false);
-  const [modalVisibleId, setModalVisibleId] = useState();
+  const [modalVisibleId, setModalVisibleId] = useState("");
 
-  const openModal = () => {
+  const openModal = (id) => {
     setModalVisible(true);
+    setModalVisibleId(id);
   };
 
   const closeModal = () => {
     setModalVisible(false);
+    setModalVisibleId("");
   };
 
   return (
