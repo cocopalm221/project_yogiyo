@@ -2,6 +2,7 @@ import * as s from "../styles/Styles";
 import { Link } from "react-router-dom";
 
 const CateList = ({ banners }) => {
+  
   return (
     <div className="cate-list">
       <s.bannersList>

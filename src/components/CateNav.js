@@ -6,6 +6,9 @@ import { AiFillStar } from "react-icons/ai";
 
 const CateNav = ({ banners }) => {
   const navigator = useNavigate();
+  const gostore = () => {
+    navigator("/storeinfo/:storeId");
+  };
   return (
     <>
       <s.catenav>
@@ -15,6 +18,7 @@ const CateNav = ({ banners }) => {
             navigator("/");
           }}
         >
+          <FiSearch className="inline mb-1 mr-1" />
           전체보기
         </button>
         {banners.slice(0, 8).map((banner) => (
@@ -34,7 +38,7 @@ const CateNav = ({ banners }) => {
       <s.stores>
         {banners.slice(0, 10).map((banner) => (
           <s.storeinner key={banner.id}>
-            <div className="store-inner">
+            <div className="store-inner" onClick={gostore}>
               <img src={banner.url} alt="" />
               <div className="storeinfo">
                 <span className="title">파스토보이{banner.id}</span>

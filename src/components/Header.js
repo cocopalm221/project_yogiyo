@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { FiSearch } from "react-icons/fi";
 import { FiCompass } from "react-icons/fi";
+import { FaUser } from "react-icons/fa";
 import * as s from "../styles/Styles";
 import { useSelector } from "react-redux";
 
