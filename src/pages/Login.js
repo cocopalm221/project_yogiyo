@@ -22,7 +22,7 @@ const Login = () => {
     }
 
     let body = {
-      miId: email,
+      miId: userID,
       miPwd: pw,
     };
 
