@@ -8,8 +8,6 @@ const DetailMainModal = ({
   width,
   height,
   top,
-  modalVisibleId,
-  setModalVisibleId,
 }) => {
   useEffect(() => {
     document.body.style.cssText = `

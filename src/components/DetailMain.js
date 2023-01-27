@@ -6,8 +6,10 @@ import DetailSwiper from "./DetailSwiper";
 import { GrClose } from "react-icons/gr";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 
-const DetailMain = () => {
+const DetailMain = ({ menuData }) => {
   const menuRef = useRef([]);
+
+  console.log(menuData);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalVisibleId, setModalVisibleId] = useState("");
 
@@ -37,56 +39,6 @@ const DetailMain = () => {
         >
           <h3 className="title">
             인기메뉴
-            <MdKeyboardArrowDown size={20} />
-          </h3>
-          <ul className="list">
-            {/* li map */}
-            <li
-              className="menu-list-item"
-              onClick={(e) => {
-                e.stopPropagation();
-                openModal();
-              }}
-            >
-              <img
-                src="/images/menutemp.png"
-                alt="메뉴"
-                className="w-36 mr-4"
-              />
-              <div>
-                <p className="font-bold">반반한 피자 (2가지 맛)</p>
-                <p className="text-sm text-[#999]">설명설명</p>
-                <p>18,400원</p>
-              </div>
-            </li>
-            <li
-              className="menu-list-item"
-              onClick={(e) => {
-                e.stopPropagation();
-                openModal();
-              }}
-            >
-              <img
-                src="/images/menutemp.png"
-                alt="메뉴"
-                className="w-36 mr-4"
-              />
-              <div>
-                <p className="font-bold">반반한 피자 (2가지 맛)</p>
-                <p className="text-sm text-[#999]">설명설명</p>
-                <p>18,400원</p>
-              </div>
-            </li>
-          </ul>
-        </MenuWrap>
-        <MenuWrap
-          ref={(elem) => (menuRef.current[1] = elem)}
-          onClick={() => {
-            menuRef.current[1].classList.toggle("active");
-          }}
-        >
-          <h3 className="title">
-            1인분 주문
             <MdKeyboardArrowDown size={20} />
           </h3>
           <ul className="list">

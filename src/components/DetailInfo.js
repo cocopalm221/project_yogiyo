@@ -42,83 +42,98 @@ const DetailInfoWrapper = styled.div`
     }
   }
 `;
-const DetailInfo = () => {
+const DetailInfo = ({ infoData }) => {
   return (
     <DetailInfoWrapper>
-      <div className="info-box">
-        <div className="info-title">
-          <HiOutlineSpeakerphone size="18" />
-          <p>사장님알림</p>
-        </div>
-        <div className="info-content">
-          <div>
-            <span>내용</span>
+      {infoData.map((data) => (
+        <div key={data.siSeq}>
+          {data.sdiOwnerNotice && (
+            <div className="info-box">
+              <div className="info-title">
+                <HiOutlineSpeakerphone size="18" />
+                <p>사장님알림</p>
+              </div>
+              <div className="info-content">
+                <div className="flex flex-col">
+                  <img src={data.onilmgPath} alt="사장님알림이미지" />
+                  <span>{data.sdiOwnerNotice}</span>
+                </div>
+              </div>
+            </div>
+          )}
+          <div className="info-box">
+            <div className="info-title">
+              <BiStore size="18" />
+              <p>업체정보</p>
+            </div>
+            <div className="info-content">
+              <div>
+                <p>영업시간</p>
+                <span>{data.sdiOpenClose}</span>
+              </div>
+              <div>
+                <p>전화번호</p>
+                <span>{data.sdiPhone} (요기요 제공 번호)</span>
+              </div>
+              <div>
+                <p>주소</p>
+                <span> {data.sdiAdress}</span>
+              </div>
+              <div>
+                <p>부가정보</p>
+                <span>세스코멤버스 사업장</span>
+              </div>
+            </div>
+          </div>
+          <div className="info-box">
+            <div className="info-title">
+              <AiOutlineCreditCard size="18" />
+              <p>결제정보</p>
+            </div>
+            <div className="info-content">
+              <div>
+                <p>최소주문금액</p>
+                <span>15,000원</span>
+              </div>
+              <div>
+                <p>결제수단</p>
+                <span>
+                  {data.sdiPayment === 0 && "신용카드, 현금"}
+                  {data.sdiPayment === 1 && "신용카드"}
+                  {data.sdiPayment === 2 && "현금"}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="info-box">
+            <div className="info-title">
+              <GrDocumentUser size="18px" />
+              <p>사업자정보</p>
+            </div>
+            <div className="info-content">
+              <div>
+                <p>상호명</p>
+                <span>{data.biName}</span>
+              </div>
+              <div>
+                <p>사업자등록번호</p>
+                <span>{data.biBusinessNumber}</span>
+              </div>
+            </div>
+          </div>
+          <div className="info-box">
+            <div className="info-title">
+              <BsSignpost size="18" />
+              <p>원산지 정보</p>
+            </div>
+            <div className="info-content">
+              <div>
+                <span>{data.sdiOrigin}</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="info-box">
-        <div className="info-title">
-          <BiStore size="18" />
-          <p>업체정보</p>
-        </div>
-        <div className="info-content">
-          <div>
-            <p>영업시간</p>
-            <span>11:30 - 12:30</span>
-          </div>
-          <div>
-            <p>주소</p>
-            <span> 대구광역시 동구 신천동 538-49 1층</span>
-          </div>
-          <div>
-            <p>부가정보</p>
-            <span>세스코멤버스 사업장</span>
-          </div>
-        </div>
-      </div>
-      <div className="info-box">
-        <div className="info-title">
-          <AiOutlineCreditCard size="18" />
-          <p>결제정보</p>
-        </div>
-        <div className="info-content">
-          <div>
-            <p>최소주문금액</p>
-            <span>15,000원</span>
-          </div>
-          <div>
-            <p>결제수단</p>
-            <span>신용카드, 현금,요기서결제</span>
-          </div>
-        </div>
-      </div>
-      <div className="info-box">
-        <div className="info-title">
-          <GrDocumentUser size="18px" />
-          <p>사업자정보</p>
-        </div>
-        <div className="info-content">
-          <div>
-            <p>상호명</p>
-            <span>주식회사우주소년</span>
-          </div>
-          <div>
-            <p>사업자등록번호</p>
-            <span>148-86-01339</span>
-          </div>
-        </div>
-      </div>
-      <div className="info-box">
-        <div className="info-title">
-          <BsSignpost size="18" />
-          <p>원산지 정보</p>
-        </div>
-        <div className="info-content">
-          <div>
-            <span>원산지 정보 </span>
-          </div>
-        </div>
-      </div>
+      ))}
     </DetailInfoWrapper>
   );
 };

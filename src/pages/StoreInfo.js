@@ -8,13 +8,53 @@ import DetailMain from "../components/DetailMain";
 import DetailReview from "../components/DetailReview";
 import DetailInfo from "../components/DetailInfo";
 import DetailCart from "../components/DetailCart";
+import axios from "axios";
+import { useEffect } from "react";
 
 const StoreInfo = () => {
+  const [menuData, setMenuData] = useState([]);
+  const [reviewData, setReviewData] = useState([]);
+  const [infoData, setInfoData] = useState([]);
   const [tabCount, setTabCount] = useState(0);
+
   const { storeId } = useParams();
 
-  console.log(storeId);
+  const fetchData = async () => {
+    try {
+      const params = {
+        siseq: storeId,
+      };
 
+      const resultMenu = await axios.get(
+        "http://192.168.0.9:9244/menu/list?siSeq=12"
+      );
+      const resultInfo = await axios.get(
+        "http://192.168.0.9:9244/store/detail",
+        {
+          params,
+        }
+      );
+      const resultReview = await axios.get(
+        "http://192.168.0.9:9244/store/review",
+        {
+          params,
+        }
+      );
+
+      setMenuData(resultMenu.data.list);
+      setInfoData(resultInfo.data.result.list);
+      setReviewData(resultReview.data.result.list);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(menuData);
+  // console.log(infoData);
+  // console.log(reviewData);
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <section className="flex gap-5 max-w-7xl mx-auto mb-2 mt-8">
       <section className="md:w-8/12 w-full">
@@ -34,8 +74,14 @@ const StoreInfo = () => {
                   최소주문금액 <span className="text-black">15,000원</span>
                 </p>
                 <p>
-                  결제 <span className="text-black">신용카드,현금,</span>
-                  <span className="text-brand">요기서결제</span>
+                  결제
+                  {infoData.map((data) => (
+                    <span className="text-black" key={data.siSeq}>
+                      {data.sdiPayment === 0 && " 신용카드, 현금"}
+                      {data.sdiPayment === 1 && " 신용카드"}
+                      {data.sdiPayment === 2 && " 현금"}
+                    </span>
+                  ))}
                 </p>
                 <p>
                   배달시간 <span className="text-black">46분~56분</span>
@@ -43,34 +89,36 @@ const StoreInfo = () => {
               </div>
             </div>
           </div>
-          <div
-            className="border-t p-3 flex items-center cursor-pointer"
-            onClick={() => {
-              setTabCount(2);
-            }}
-          >
-            <p className="flex gap-1 items-center mr-10 whitespace-nowrap text-sm">
-              <HiOutlineSpeakerphone />
-              사장님 알림
-            </p>
-            <pre className="truncate text-xs">
-              💥 네오피자 본점 👍🏻 리뷰이벤트 [사이드메뉴만 주문시 참여불가] 1.
-              치즈 추가토핑 (두판 피자의 경우 한판만 적용) 2. 치즈크러스트 (두판
-              피자의 경우 한판만 적용)
-            </pre>
-          </div>
+          {infoData.map(
+            (data) =>
+              data.sdiOwnerNotice && (
+                <div
+                  key={data.siSeq}
+                  className="border-t p-3 flex items-center cursor-pointer"
+                  onClick={() => {
+                    setTabCount(2);
+                  }}
+                >
+                  <p className="flex gap-1 items-center mr-10 whitespace-nowrap text-sm">
+                    <HiOutlineSpeakerphone />
+                    사장님 알림
+                  </p>
+                  <pre className="truncate text-xs">{data.sdiOwnerNotice}</pre>
+                </div>
+              )
+          )}
         </div>
         {/* main */}
         <div>
           <DetailTabMenu tabCount={tabCount} setTabCount={setTabCount} />
           <div className={tabCount === 0 ? "block" : "hidden"}>
-            <DetailMain />
+            <DetailMain menuData={menuData} />
           </div>
           <div className={tabCount === 1 ? "block" : "hidden"}>
-            <DetailReview />
+            <DetailReview reviewData={reviewData} />
           </div>
           <div className={tabCount === 2 ? "block" : "hidden"}>
-            <DetailInfo />
+            <DetailInfo infoData={infoData} />
           </div>
         </div>
       </section>
