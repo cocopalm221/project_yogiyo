@@ -46,7 +46,6 @@ const Main = () => {
         mousewheel={true}
         effect={"coverflow"}
         grabCursor={true}
-        Parallax={true}
         coverflowEffect={{
           rotate: 15,
           stretch: 5,
