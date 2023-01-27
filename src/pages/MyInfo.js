@@ -1,55 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Post from "../components/Post";
-import MyPageCate from "../components/MyPageCate";
 import axios from "axios";
 import * as s from "../styles/Styles";
 
 const MyInfo = () => {
-  const [pw, setPw] = useState("");
+  const user = useSelector((state) => state.userInfo);
+  console.log(user);
+  const [pw, setPw] = useState(user.miPwd);
   const [newpw, setNewpw] = useState("");
-  const [checkNickname, setCheckNickname] = useState("");
-  const [number, setNumber] = useState("");
-  const [email, setEmail] = useState("");
-
-  const [nicknameMsg, setNicknameMsg] = useState("");
+  const [checkNickname, setCheckNickname] = useState(user.miNickname);
+  const [number, setNumber] = useState(user.miPhone);
 
   const [enroll_company, setEnroll_company] = useState({
-    address: "",
+    address: user.miAddress,
   });
   const [popup, setPopup] = useState(false);
-
-  const handleInput = (e) => {
+  const handleChange = (event) => {
     setEnroll_company({
       ...enroll_company,
-      [e.target.name]: e.target.value,
+      [event.target.name]: event.target.value,
     });
   };
-
-  const handleComplete = (e, data) => {
-    e.preventDefault();
-    setPopup(!popup);
+  const handleSubmit = (event) => {
+    event.preventDefault();
   };
 
-  const onCheckNickname = async (e) => {
+  const handleComplete = (e) => {
     e.preventDefault();
-    // const body = {
-    //   miNickname : checkNickname,
-    // }
-    try {
-      const res = await axios.get("http://192.168.0.9:9244/mypage/update");
-      const { result } = res.data.status;
-      if (!result) {
-        setNicknameMsg("이미 등록된 닉네임입니다. 다시 입력해주세요.");
-        alert({ nicknameMsg });
-        setCheckNickname(false);
-      } else {
-        setNicknameMsg("사용 가능한 닉네임입니다.😊");
-        alert({ nicknameMsg });
-        setCheckNickname(true);
-      }
-    } catch (err) {
-      console.log(err);
-    }
+    setPopup(!popup);
   };
 
   const onConfirm = async (e) => {
@@ -61,6 +40,7 @@ const MyInfo = () => {
       nickname: checkNickname,
       address: enroll_company.address,
     };
+    console.log(body);
     try {
       axios
         .patch("http://192.168.0.9:9244/mypage/update", body)
@@ -76,8 +56,18 @@ const MyInfo = () => {
     }
   };
 
+  // useEffect(() => {
+  //   const newInfo = {
+  //     pw: user.miPwd,
+  //     newpw: "",
+  //     checkNickname: user.miNickname,
+  //     number: user.miPhone,
+  //   };
+  //   setUserData(newInfo);
+  // }, [user.miNickname, user.miPhone, user.miPwd]);
+
   return (
-    <s.myinfo>
+    <s.myinfo onSubmit={handleSubmit}>
       <div className="myinfo">
         <h1>계정 정보 수정</h1>
         <div className="totalinfo">
@@ -87,6 +77,7 @@ const MyInfo = () => {
               type="password"
               id="defaultpassword"
               value={pw}
+              name="pw"
               placeholder="영문+숫자+특수문자 조합 10자리 이상"
               onChange={(e) => setPw(e.target.value)}
               autoComplete="on"
@@ -98,6 +89,7 @@ const MyInfo = () => {
               type="password"
               id="newpassword"
               value={newpw}
+              name="newpw"
               placeholder="변경할 비밀번호를 입력"
               required
               minLength={10}
@@ -106,21 +98,30 @@ const MyInfo = () => {
               autoComplete="on"
             />
           </div>
+          <div className="number">
+            <label htmlFor="number">전화번호</label>
+            <input
+              type="text"
+              id="number"
+              name="number"
+              placeholder="(수정가능)"
+              value={number}
+              onChange={(e) => setNumber(e.target.value)}
+            />
+          </div>
           <div className="nickname">
             <label htmlFor="nickname">닉네임</label>
             <input
               type="text"
               id="nickname"
               placeholder="변경할 닉네임을 입력"
+              name="checkNickname"
               required
               maxLength={20}
               minLength={3}
               value={checkNickname}
               onChange={(e) => setCheckNickname(e.target.value)}
             />
-            <button className="nickchange" onClick={(e) => onCheckNickname(e)}>
-              닉네임 변경
-            </button>
           </div>
           <div className="address">
             <label htmlFor="inputaddress">주소입력</label>
@@ -129,33 +130,13 @@ const MyInfo = () => {
               id="inputaddress"
               placeholder="클릭시 주소검색"
               required={true}
-              onChange={handleInput}
+              onChange={handleChange}
               value={enroll_company.address}
               onClick={handleComplete}
             />
             {popup && (
               <Post company={enroll_company} setcompany={setEnroll_company} />
             )}
-          </div>
-          <div className="number">
-            <label htmlFor="number">전화번호</label>
-            <input
-              type="text"
-              id="number"
-              placeholder="(수정가능)"
-              value={number}
-              onChange={(e) => setNumber(e.target.value)}
-            />
-          </div>
-          <div className="email">
-            <label htmlFor="email">이메일</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              placeholder="(수정가능)"
-              onChange={(e) => setEmail(e.target.value)}
-            />
           </div>
         </div>
         <button className="confirm" onClick={(e) => onConfirm(e)}>

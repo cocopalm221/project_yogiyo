@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import LoginDiv from "../styles/LoginCss";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../store/userslice";
 import axios from "axios";
 
 const Login = () => {
@@ -8,10 +10,9 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
 
-  
+  const dispatch = useDispatch();
 
-
-  const SignInFunc = (e) => {
+  const SignInFunc = async (e) => {
     e.preventDefault();
     if (!email) {
       return alert("이메일을 입력하세요.");
@@ -27,14 +28,21 @@ const Login = () => {
 
     try {
       axios
-        .post("http://192.168.9.114:9244/member/login", body)
+        .post("http://192.168.0.9:9244/member/login", body)
         .then((response) => {
+          console.log(response);
           if (response.data.status) {
             alert("로그인 성공");
-            console.log(response.data);
+            console.log(response.data.loginUser);
+            dispatch(login(response.data.loginUser));
+            navigate("/mypage/myinfo");
           } else {
             alert("로그인 실패");
+            console.log(response.data.status);
           }
+        })
+        .catch((err) => {
+          console.log(err);
         });
     } catch (error) {
       console.log(error);

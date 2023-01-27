@@ -23,7 +23,7 @@ const MyPageCate = () => {
             cateTabCount === 1 && "bg-[#fa0050] text-white"
           }`}
           onClick={() => {
-            navigate("/myinfo");
+            navigate("/mypage/myinfo");
             setCateTabCount(1);
           }}
         >
