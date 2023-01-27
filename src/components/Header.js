@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router";
 import { FiSearch } from "react-icons/fi";
 import { FiCompass } from "react-icons/fi";
+import { FaUser } from "react-icons/fa";
 import * as s from "../styles/Styles";
 
 const Header = () => {
@@ -11,6 +12,9 @@ const Header = () => {
   };
   const goLogin = () => {
     navigate("/login");
+  };
+  const goMypage = () => {
+    navigate("/mypage");
   };
 
   return (
@@ -37,6 +41,9 @@ const Header = () => {
           </button>
         </div>
         <div className="buttons">
+          <button className="user" onClick={goMypage}>
+            <FaUser />
+          </button>
           <button className="login" onClick={goLogin}>
             로그인
           </button>

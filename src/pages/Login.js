@@ -1,24 +1,32 @@
 import React, { useState } from "react";
 import LoginDiv from "../styles/LoginCss";
 import { NavLink, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [userID, setUserId] = useState("");
   const [pw, setPw] = useState("");
-
-  
-
 
   const SignInFunc = (e) => {
     e.preventDefault();
-    if (!email) {
-      return alert("이메일을 입력하세요.");
+    if (!userID) {
+      return alert("아이디를 입력하세요.");
     }
     if (!pw) {
       return alert("비밀번호를 입력하세요.");
     }
   };
+  axios
+    .post("http://192.168.0.9:9244/member/login", {
+      miId: userID,
+      miPwd: pw,
+    })
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => console.log(err));
+
   return (
     <div>
       <LoginDiv>
@@ -27,13 +35,13 @@ const Login = () => {
         </NavLink>
         <h2>로그인</h2>
         <form>
-          <label>이메일</label>
+          <label>아이디</label>
           <input
-            type="email"
+            type="text"
             required
-            placeholder="이메일을 입력하세요."
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            placeholder="아이디를 입력하세요."
+            value={userID}
+            onChange={(e) => setUserId(e.target.value)}
           />
           <label>비밀번호</label>
           <input
@@ -61,4 +69,4 @@ const Login = () => {
   );
 };
 
-export default Login
+export default Login;

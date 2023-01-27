@@ -61,6 +61,7 @@ export const headerInner = styled.div`
     align-items: center;
     flex: 1;
     gap: 10px;
+    white-space: nowrap;
     button {
       background: #fff;
       height: 40px;
@@ -271,14 +272,6 @@ export const payment = styled.form`
       display: flex;
       flex-direction: column;
       gap: 10px 0;
-      > input {
-        width: 85%;
-        height: 50px;
-        outline: none;
-        background: whitesmoke;
-        margin: 0;
-        margin-left: 80px;
-      }
       .infotitle {
         font-size: 1rem;
         font-weight: 600;
@@ -288,12 +281,11 @@ export const payment = styled.form`
       }
       .address_search {
         display: flex;
-        margin: 0;
         gap: 0 2rem;
         padding: 0 16px;
+        white-space: nowrap;
         input {
           width: 85%;
-          height: 50px;
           outline: none;
           background: whitesmoke;
           padding: 5px 10px;
@@ -307,9 +299,9 @@ export const payment = styled.form`
         margin: 0;
         margin-bottom: 1rem;
         padding: 0 16px;
+        white-space: nowrap;
         input {
           width: 85%;
-          height: 50px;
           outline: none;
           background: whitesmoke;
           margin-left: 10px;
@@ -373,12 +365,18 @@ export const payment = styled.form`
           border: 1px solid #d1d1d1;
           border-radius: 20px;
           padding: 1rem 4rem;
+          :hover {
+            box-shadow: inset 1px 1px 3px 1px rgba(0, 0, 0, 0.5);
+          }
         }
         .card {
           font-size: 1.2rem;
           border: 1px solid #d1d1d1;
           border-radius: 20px;
           padding: 1rem 4rem;
+          :hover {
+            box-shadow: inset 1px 1px 3px 1px rgba(0, 0, 0, 0.5);
+          }
         }
       }
     }

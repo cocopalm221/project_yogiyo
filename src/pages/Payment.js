@@ -37,11 +37,8 @@ const Payment = () => {
           <div className="deliverinfo">
             <h1>결제하기</h1>
             <span className="infotitle">배달 정보</span>
-            <div className="address_search">
-              <label
-                htmlFor="address"
-                className="flex justify-center items-center"
-              >
+            <div className="address_search relative">
+              <label htmlFor="address" className="mt-1">
                 주소
               </label>
               <input
@@ -60,10 +57,7 @@ const Payment = () => {
               )}
             </div>
             <div className="number">
-              <label
-                htmlFor="number"
-                className="flex justify-center items-center"
-              >
+              <label htmlFor="number" className="mt-1">
                 전화번호
               </label>
               <input
@@ -86,7 +80,7 @@ const Payment = () => {
             <div className="paylisttitle">결제 수단</div>
             <div className="cashorcard">
               <button className="cash">
-                <BsCashCoin className="inline mr-2 mb-1" />
+                <BsCashCoin className="inline mr-2 mb-1 " />
                 현금결제
               </button>
               <button className="card">
