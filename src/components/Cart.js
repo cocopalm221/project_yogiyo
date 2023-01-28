@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 import { CgCloseR } from "react-icons/cg";
 import { FaTrash } from "react-icons/fa";
-import DetailMainModal from "./DetailMainModal";
+import Modal from "./Modal";
 
-const DetailCart = () => {
+const Cart = () => {
   const [cartModalVisible, setCartModalVisible] = useState(false);
 
   const openModal = () => {
@@ -59,7 +59,7 @@ const DetailCart = () => {
       </button>
 
       {cartModalVisible && (
-        <DetailMainModal
+        <Modal
           visible={cartModalVisible}
           onClose={closeModal}
           width={598}
@@ -82,10 +82,10 @@ const DetailCart = () => {
               </button>
             </div>
           </div>
-        </DetailMainModal>
+        </Modal>
       )}
     </>
   );
 };
 
-export default DetailCart;
+export default Cart;

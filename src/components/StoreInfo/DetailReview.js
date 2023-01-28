@@ -1,8 +1,8 @@
 import React from "react";
-import StarRating from "./StarRating";
 import { ImStarFull } from "react-icons/im";
 import { TbMessageCircle2 } from "react-icons/tb";
-import timeForToday from "../util/date";
+import timeForToday from "../../util/date";
+import StarRating from "../StarRating";
 
 const DetailReview = ({ reviewData }) => {
   return (

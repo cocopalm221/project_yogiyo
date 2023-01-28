@@ -1,15 +1,13 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { HiOutlineSpeakerphone } from "react-icons/hi";
-import DetailTabMenu from "../components/DetailTabMenu";
-import StarRating from "../components/StarRating";
-import DetailMain from "../components/DetailMain";
-import DetailReview from "../components/DetailReview";
-import DetailInfo from "../components/DetailInfo";
-import DetailCart from "../components/DetailCart";
 import axios from "axios";
-import { useEffect } from "react";
+import { HiOutlineSpeakerphone } from "react-icons/hi";
+import StarRating from "../components/StarRating";
+import Cart from "../components/Cart";
+import DetailTabMenu from "../components/StoreInfo/DetailTabMenu";
+import DetailMain from "../components/StoreInfo/DetailMain";
+import DetailReview from "../components/StoreInfo/DetailReview";
+import DetailInfo from "../components/StoreInfo/DetailInfo";
 
 const StoreInfo = () => {
   const [menuData, setMenuData] = useState([]);
@@ -52,6 +50,7 @@ const StoreInfo = () => {
   // console.log(menuData);
   // console.log(infoData);
   // console.log(reviewData);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -124,7 +123,7 @@ const StoreInfo = () => {
       </section>
       {/* cart */}
       <section className="max-w-sm h-fit sticky top-2.5">
-        <DetailCart />
+        <Cart />
       </section>
     </section>
   );

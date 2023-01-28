@@ -1,16 +1,15 @@
 import React, { useRef, useState } from "react";
-import styled from "styled-components";
-import { MdKeyboardArrowDown } from "react-icons/md";
-import DetailMainModal from "./DetailMainModal";
-import DetailSwiper from "./DetailSwiper";
-import { GrClose } from "react-icons/gr";
-import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
-import convertToComma from "../util/comma";
 import { v4 as uuid } from "uuid";
+import styled from "styled-components";
+import { GrClose } from "react-icons/gr";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
+import DetailSwiper from "./DetailSwiper";
+import Modal from "../Modal";
+import convertToComma from "../../util/comma";
 
 const DetailMain = ({ menuData }) => {
   const menuRef = useRef([]);
-
   const [modalVisible, setModalVisible] = useState(false);
   const [modalVisibleId, setModalVisibleId] = useState("");
 
@@ -19,12 +18,11 @@ const DetailMain = ({ menuData }) => {
     setModalVisibleId(id);
   };
 
-  const closeModal = () => {
+  const closeModal = (e) => {
+    e.stopPropagation();
     setModalVisible(false);
     setModalVisibleId("");
   };
-
-  // console.log(menuData);
 
   const tempMenuData = menuData.map((menu) => {
     return {
@@ -40,7 +38,8 @@ const DetailMain = ({ menuData }) => {
       }) === i
     );
   });
-
+  console.log(menuData);
+  const [totalPrice, setTotalPrice] = useState(0);
   return (
     <>
       <section className="border border-t-0">
@@ -57,11 +56,11 @@ const DetailMain = ({ menuData }) => {
             className={index === 0 && "active"}
             key={index}
           >
-            <h3 className="title">
+            <h3 className="flex justify-between items-center bg-[#e5e7eb] px-4 py-3 cursor-pointer">
               {menu.mcName}
               <MdKeyboardArrowDown size={20} />
             </h3>
-            <ul className="list">
+            <ul className="flex flex-col cursor-pointer h-0 overflow-hidden">
               {menu.mcExplanation && (
                 <p className="border-b px-4 py-2 text-xs text-[#957e6e]">
                   {menu.mcExplanation}
@@ -72,7 +71,7 @@ const DetailMain = ({ menuData }) => {
                 (list) =>
                   menu.mcName === list.mcName && (
                     <li
-                      className="menu-list-item"
+                      className="flex py-4 px-2.5 items-center border-b border-[#e5e7eb] last:border-0"
                       onClick={(e) => {
                         e.stopPropagation();
                         openModal(list.mniSeq);
@@ -89,7 +88,7 @@ const DetailMain = ({ menuData }) => {
                         <p>{convertToComma(list.mniPrice)}원</p>
                       </div>
                       {modalVisible && modalVisibleId === list.mniSeq && (
-                        <DetailMainModal
+                        <Modal
                           visible={modalVisible}
                           onClose={closeModal}
                           width={480}
@@ -100,7 +99,7 @@ const DetailMain = ({ menuData }) => {
                           <div className="relative flex justify-center items-center border-b p-4 text-xl">
                             <p>메뉴상세</p>
                             <GrClose
-                              className="absolute right-4 top-[50%] translate-y-[-50%] cursor-pointer"
+                              className="absolute right-4 cursor-pointer"
                               onClick={closeModal}
                             />
                           </div>
@@ -129,26 +128,26 @@ const DetailMain = ({ menuData }) => {
                               })
                               .map((pluscate) => (
                                 <InputWrap key={uuid()}>
-                                  <p className="input-title">
+                                  <h3 className="font-bold py-3">
                                     {pluscate.pcName}
                                     {pluscate.pcEssentialChoice === 0 ? (
-                                      <span className="text-brand">
+                                      <span className="text-xs font-normal ml-1.5 text-brand">
                                         (필수선택)
                                       </span>
                                     ) : (
                                       <span>(추가선택가능)</span>
                                     )}
-                                  </p>
+                                  </h3>
                                   {list.plusmenu.map(
                                     (pm) =>
                                       pluscate.pcName === pm.pcName && (
                                         <div
-                                          className="input-list"
+                                          className="flex flex-col items-between"
                                           key={uuid()}
                                         >
                                           {console.log(pm)}
-                                          <label>
-                                            <div>
+                                          <label className="flex justify-between items-center text-sm mb-3.5 cursor-pointer">
+                                            <div className="flex items-center">
                                               {pm.pcMultiChoice === 0 ? (
                                                 <input
                                                   type="radio"
@@ -163,7 +162,9 @@ const DetailMain = ({ menuData }) => {
                                                 />
                                               )}
 
-                                              <p>{pm.pmName}</p>
+                                              <p className="pl-2">
+                                                {pm.pmName}
+                                              </p>
                                             </div>
                                             {pm.pmPrice > 0 ? (
                                               <span className="text-xs">
@@ -191,7 +192,9 @@ const DetailMain = ({ menuData }) => {
                             <div className="flex justify-between items-center p-4 font-bold bg-[#f0f0f0]">
                               <p>총 주문금액</p>
                               <div className="text-end">
-                                <p className="text-2xl text-brand">9,900원</p>
+                                <p className="text-2xl text-brand">
+                                  {totalPrice}원
+                                </p>
                                 <p className="text-xs font-medium">
                                   (최소주문금액 5,000원)
                                 </p>
@@ -210,7 +213,7 @@ const DetailMain = ({ menuData }) => {
                             </button>
                             <button className="bg-brand w-1/2">주문하기</button>
                           </form>
-                        </DetailMainModal>
+                        </Modal>
                       )}
                     </li>
                   )
@@ -232,33 +235,6 @@ const MenuWrap = styled.li`
   &.active > ul {
     height: auto;
   }
-  .title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #e5e7eb;
-    padding: 12px 15px;
-    border-bottom: 1px solid #e5e7eb;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-  }
-  .list {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    height: 0;
-    overflow: hidden;
-    .menu-list-item {
-      display: flex;
-      padding: 16px 10px;
-      align-items: center;
-      border-bottom: 1px solid #e5e7eb;
-      &:last-child {
-        border-bottom: none;
-      }
-    }
-  }
 `;
 const InputWrap = styled.div`
   display: flex;
@@ -272,39 +248,6 @@ const InputWrap = styled.div`
     height: 20px;
     cursor: pointer;
     accent-color: #fa0050;
-  }
-
-  .input-title {
-    font-size: 15px;
-    font-weight: bold;
-    padding: 8px 0px;
-    > span {
-      font-size: 12px;
-      margin-left: 6px;
-      font-weight: normal;
-    }
-  }
-
-  .input-list {
-    display: flex;
-    flex-direction: column;
-    align-items: space-between;
-    > label {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 14px;
-      margin-bottom: 10px;
-      cursor: pointer;
-
-      > div {
-        display: flex;
-        align-items: center;
-        > p {
-          padding-left: 8px;
-        }
-      }
-    }
   }
 `;
 
