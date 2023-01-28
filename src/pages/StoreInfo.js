@@ -25,9 +25,9 @@ const StoreInfo = () => {
         siseq: storeId,
       };
 
-      const resultMenu = await axios.get(
-        "http://192.168.0.9:9244/menu/list?siSeq=12"
-      );
+      const resultMenu = await axios.get("http://192.168.0.9:9244/menu/list", {
+        params,
+      });
       const resultInfo = await axios.get(
         "http://192.168.0.9:9244/store/detail",
         {
@@ -49,7 +49,7 @@ const StoreInfo = () => {
     }
   };
 
-  console.log(menuData);
+  // console.log(menuData);
   // console.log(infoData);
   // console.log(reviewData);
   useEffect(() => {

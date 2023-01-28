@@ -51,6 +51,7 @@ const ModalWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
   outline: none;
   z-index: 1000;
+  cursor: auto;
 `;
 
 const ModalInner = styled.div`
