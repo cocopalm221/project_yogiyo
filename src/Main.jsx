@@ -15,7 +15,7 @@ import * as s from "./styles/Styles";
 import CateList from "./components/CateList";
 import axios from "axios";
 
-SwiperCore.use([Navigation, Pagination, Autoplay, Mousewheel]);
+SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const Main = () => {
   const [banners, setBanners] = useState([]);
@@ -43,7 +43,6 @@ const Main = () => {
           nextEl: ".swiper-next",
           prevEl: ".swiper-prev",
         }}
-        mousewheel={true}
         effect={"coverflow"}
         grabCursor={true}
         coverflowEffect={{

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import * as s from "../styles/Styles";
 import { Link, useNavigate } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";

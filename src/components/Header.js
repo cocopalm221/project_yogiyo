@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { FiSearch } from "react-icons/fi";
 import { FiCompass } from "react-icons/fi";
 import { FaUser } from "react-icons/fa";
 import * as s from "../styles/Styles";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const user = useSelector((state) => state.userInfo);
+  console.log(user);
+  const [loginCheck, setLoginCheck] = useState(true);
+
+  useEffect(() => {
+    if (!user.miStatus) {
+      setLoginCheck(false);
+    }
+  }, [user.miStatus]);
+
   const navigate = useNavigate();
   const goMain = () => {
     navigate("/");
@@ -13,8 +24,8 @@ const Header = () => {
   const goLogin = () => {
     navigate("/login");
   };
-  const goMypage = () => {
-    navigate("/mypage");
+  const gomyInfo = () => {
+    navigate("/mypage/myinfo");
   };
 
   return (
@@ -41,12 +52,15 @@ const Header = () => {
           </button>
         </div>
         <div className="buttons">
-          <button className="user" onClick={goMypage}>
-            <FaUser />
-          </button>
-          <button className="login" onClick={goLogin}>
-            로그인
-          </button>
+          {loginCheck ? (
+            <button className="login" onClick={goLogin}>
+              로그인
+            </button>
+          ) : (
+            <button className="login" onClick={gomyInfo}>
+              {user.miNickname}님
+            </button>
+          )}
           <button className="menu">주문표</button>
         </div>
       </s.headerInner>

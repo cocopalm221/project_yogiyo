@@ -135,7 +135,7 @@ export const bannersList = styled.ul`
 `;
 
 //CateNav
-export const catenav = styled.div`
+export const catenav = styled.ul`
   display: flex;
   justify-content: center;
   list-style: none;
@@ -148,7 +148,8 @@ export const catenav = styled.div`
   button {
     width: 120px;
     border: 1px solid #fa0050;
-    white-space: nowrap;
+    width: 140px;
+    height: 50px;
     overflow: hidden;
     border-radius: 15px;
     padding: 0.3rem 1rem;
@@ -164,6 +165,7 @@ export const stores = styled.div`
   justify-content: center;
   justify-items: center;
 `;
+
 export const storeinner = styled.div`
   width: 600px;
   height: 180px;
@@ -251,7 +253,6 @@ export const login = styled.form`
 
 // Payment
 export const payment = styled.form`
-  margin: 0;
   display: flex;
   justify-content: center;
   gap: 30px;
@@ -277,7 +278,6 @@ export const payment = styled.form`
         font-weight: 600;
         border-bottom: 1px solid #fa0050;
         padding: 10px 5px;
-        margin: 0;
       }
       .address_search {
         display: flex;
@@ -296,7 +296,7 @@ export const payment = styled.form`
 
       .number {
         display: flex;
-        margin: 0;
+
         margin-bottom: 1rem;
         padding: 0 16px;
         white-space: nowrap;
@@ -313,13 +313,12 @@ export const payment = styled.form`
     .deliverreq {
       display: flex;
       flex-direction: column;
-      margin: 0;
+
       .reqtitle {
         font-size: 1rem;
         font-weight: 600;
         border-bottom: 1px solid #fa0050;
         padding: 10px 5px;
-        margin: 0;
       }
       .text {
         display: flex;
@@ -344,10 +343,12 @@ export const payment = styled.form`
     display: flex;
     flex-direction: column;
     gap: 4rem 0;
+    gap: 4rem 0;
     .paylist {
       width: 100%;
       display: flex;
       flex-direction: column;
+      gap: 2rem 0;
       gap: 2rem 0;
       .paylisttitle {
         font-size: 1.8rem;
@@ -392,12 +393,11 @@ export const payment = styled.form`
         font-weight: 600;
         border-bottom: 1px solid #fa0050;
         padding: 10px 5px;
-        margin: 0;
       }
       .coupon {
         width: 100%;
         display: flex;
-        margin: 0;
+
         label {
           width: calc(100%-75%-100px);
           font-size: 1rem;
@@ -408,11 +408,15 @@ export const payment = styled.form`
         }
         input {
           width: 75%;
+        input {
+          width: 75%;
           background: whitesmoke;
           border-radius: 15px;
           padding: 5px 10px;
           margin-left: 10px;
         }
+        .apply {
+          width: 80px;
         .apply {
           width: 80px;
           color: #000;
@@ -432,7 +436,6 @@ export const payment = styled.form`
     border: 1px solid #d1d1d1;
     border-radius: 15px;
     .menulist {
-      margin: 0;
       display: flex;
       flex-direction: column;
       gap: 1rem 0;
@@ -463,5 +466,86 @@ export const payment = styled.form`
       margin-bottom: 1rem;
       border-radius: 5px;
     }
+  }
+`;
+
+// MyInfo
+
+export const myinfo = styled.form`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  input{
+    outline: none;
+    transition: all 0.5s;
+    &:hover{
+      background: #cecaca;
+    }
+  }
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:1.5rem 0;
+  }
+
+  .totalinfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem 0;
+    .password,
+    .passwordcheck,
+    .address,
+    .number,
+    .email {
+      display: flex;
+      justify-content: space-between;
+      gap: 0 2rem;
+      label {
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+      input {
+        border: 1px solid gray;
+        width: 300px;
+        border-radius: 10px;
+      }
+    }
+    .nickname {
+      display: flex;
+      justify-content: space-between;
+      gap: 0 2rem;
+      label {
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+      input {
+        border: 1px solid gray;
+        width: 300px;
+        border-radius: 10px;
+        transform: translateX(135px);
+      }
+      .nickchange {
+        transform: translateX(120px);
+        background: #fa0050;
+        color: #fff;
+        border-radius: 10px;
+        padding: 0.5rem;
+      }
+    }
+  }
+  .confirm {
+    width: 200px;
+    padding: 10px 15px;
+    background-color: #fa0050;
+    border: 1px solid #fff;
+    color: #fff;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    font-weight: 600;
+    transform: translateX(100%);
+    margin-top: 2rem;
   }
 `;
