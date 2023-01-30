@@ -16,9 +16,6 @@ const Cart = () => {
   };
 
   const navigate = useNavigate();
-  const gopayment = () => {
-    navigate("/payment");
-  };
 
   return (
     <>
@@ -63,7 +60,7 @@ const Cart = () => {
       </section>
       <button
         className="block w-full mt-2 bg-brand text-white py-2.5 text-lg rounded"
-        onClick={gopayment}
+        onClick={() => navigate("/payment")}
       >
         주문하기
       </button>
