@@ -43,6 +43,9 @@ const Header = () => {
           </button>
         </div>
         <div className="buttons">
+          <button className="user" onClick={gomyInfo}>
+            <FaUser />
+          </button>
           {loginCheck ? (
             <button className="login" onClick={() => navigate('/login')}>
               로그인
