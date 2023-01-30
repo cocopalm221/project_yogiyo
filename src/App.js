@@ -13,6 +13,7 @@ import WishList from "./pages/WishList";
 import MyPage from "./pages/MyPage";
 import ReviewList from "./pages/ReviewList";
 import OrderList from "./pages/OrderList";
+import MyInfo from "./pages/MyInfo";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
             <Route path="orderlist" element={<OrderList />} />
             <Route path="reviewlist" element={<ReviewList />} />
             <Route path="wishList" element={<WishList />} />
+            <Route path="myinfo" element={<MyInfo />} />
           </Route>
         </Routes>
       </>

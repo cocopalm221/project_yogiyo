@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
 import DaumPostcode from "react-daum-postcode";
 
 const Post = (props) => {
   const postCodeStyle = {
     display: "block",
     position: "absolute",
-    top: "20%",
-    left: "20%",
-    width: "600px",
-    height: "400px",
+    top: "10%",
+    left: "30%",
+    width: "100%",
+    // height: "250px",
     padding: "10px",
     zIndex: 10,
   };
