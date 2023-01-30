@@ -35,7 +35,7 @@ const Login = () => {
             alert("로그인 성공");
             console.log(response.data.loginUser);
             dispatch(login(response.data.loginUser));
-            navigate("/mypage/myinfo");
+            navigate("/");
           } else {
             alert("로그인 실패");
             console.log(response.data.status);
