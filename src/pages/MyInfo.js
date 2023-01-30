@@ -56,7 +56,6 @@ const MyInfo = () => {
     }
   };
 
-
   const onDelete = async (e) => {
     e.preventDefault();
     let body = {
@@ -94,7 +93,7 @@ const MyInfo = () => {
         계정 정보
       </h1>
       {/* main */}
-      <div className="gap-4 mt-8">
+      <div>
         {/* 박스 map */}
         <s.myinfo>
           <div className="totalinfo">

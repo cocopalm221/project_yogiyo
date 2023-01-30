@@ -72,7 +72,6 @@ const DetailMain = ({ menuData }) => {
                       }}
                       key={menuItem.mniSeq}
                     >
-                      {console.log(menuItem)}
                       <img
                         src={menuItem.mniImg}
                         alt={menuItem.mniName}
@@ -125,6 +124,7 @@ const DetailMain = ({ menuData }) => {
                               })
                               .map((pluscate) => (
                                 <InputWrap key={uuid()}>
+                                  {console.log(pluscate)}
                                   <h3 className="font-bold py-3">
                                     {pluscate.pcName}
                                     {pluscate.pcEssentialChoice === 0 ? (
@@ -142,6 +142,7 @@ const DetailMain = ({ menuData }) => {
                                           className="flex flex-col items-between"
                                           key={uuid()}
                                         >
+                                          {console.log(pmItem)}
                                           <label className="flex justify-between items-center text-sm mb-3.5 cursor-pointer">
                                             <div className="flex items-center">
                                               {pmItem.pcMultiChoice === 0 ? (

@@ -55,20 +55,19 @@ const SignUp = () => {
       miId: userId,
     };
     axios
-      .put("http://192.168.0.9:9244/member/join", body)
+      .post("http://192.168.0.9:9244/member/dupchkId", body)
       .then((res) => {
-        if (res.data.success) {
-          if (res.data.check) {
-            setIdCheck(true);
-            alert("등록이 가능합니다");
-          } else {
-            setIdCheck(false);
-            alert("이미 등록된 닉네임입니다.");
-          }
+        if (res.data.status) {
+          setIdCheck(true);
+          alert("등록이 가능합니다");
+        } else {
+          setIdCheck(false);
+          alert("이미 등록된 아이디입니다.");
         }
       })
       .catch((err) => {
         console.log(err);
+        alert("이미 등록된 아이디입니다.");
       });
   };
 

@@ -42,7 +42,7 @@ const Payment = () => {
               </label>
               <input
                 className="user_enroll_text"
-                placeholder="주소를 검색하시오"
+                placeholder="클릭 시 주소 검색"
                 type="text"
                 id="address"
                 name="address"

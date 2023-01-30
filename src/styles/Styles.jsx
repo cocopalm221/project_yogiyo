@@ -478,10 +478,32 @@ export const myinfo = styled.form`
   justify-content: center;
   align-items: center;
   gap: 3rem 0;
+  width: 100%;
+  height: 100%;
+  label {
+    font-size: 1rem;
+    line-height: 36px;
+    font-weight: 600;
+    width: 120px;
+  }
+  input {
+    padding: 5px 10px;
+    border: 1px solid gray;
+    width: 600px;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.5s;
+    &:hover {
+      background: #eeeeee;
+    }
+  }
+
   .totalinfo {
     display: flex;
     flex-direction: column;
-    gap: 3rem 0;
+    gap: 1.5rem 0;
+    margin-top: 2rem;
+    margin-right: auto;
     .password,
     .passwordcheck,
     .number,
@@ -490,16 +512,6 @@ export const myinfo = styled.form`
       display: flex;
       width: 600px;
       justify-content: space-between;
-      label {
-        font-size: 1.25rem;
-        font-weight: 500;
-      }
-      input {
-        width: 350px;
-        outline: none;
-        border: 1px solid grey;
-        border-radius: 15px;
-      }
     }
   }
 
