@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 import { CgCloseR } from "react-icons/cg";
 import { FaTrash } from "react-icons/fa";
+import { useNavigate } from "react-router";
 import DetailMainModal from "./DetailMainModal";
 
 const DetailCart = () => {
@@ -13,6 +14,12 @@ const DetailCart = () => {
   const closeModal = () => {
     setCartModalVisible(false);
   };
+
+  const navigate = useNavigate();
+  const gopayment = () => {
+    navigate("/payment");
+  };
+
   return (
     <>
       <section className="border rounded-t-xl overflow-hidden">
@@ -54,7 +61,10 @@ const DetailCart = () => {
           <p className="text-brand font-bold">합계: 9,900원</p>
         </div>
       </section>
-      <button className="block w-full mt-2 bg-brand text-white py-2.5 text-lg rounded">
+      <button
+        className="block w-full mt-2 bg-brand text-white py-2.5 text-lg rounded"
+        onClick={gopayment}
+      >
         주문하기
       </button>
 

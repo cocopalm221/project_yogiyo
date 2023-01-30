@@ -408,21 +408,23 @@ export const payment = styled.form`
         }
         input {
           width: 75%;
-        input {
-          width: 75%;
-          background: whitesmoke;
-          border-radius: 15px;
-          padding: 5px 10px;
-          margin-left: 10px;
-        }
-        .apply {
-          width: 80px;
-        .apply {
-          width: 80px;
-          color: #000;
-          border: 1px solid #fa0050;
-          border-radius: 20px;
-          margin-left: 1rem;
+          input {
+            width: 75%;
+            background: whitesmoke;
+            border-radius: 15px;
+            padding: 5px 10px;
+            margin-left: 10px;
+          }
+          .apply {
+            width: 80px;
+            .apply {
+              width: 80px;
+              color: #000;
+              border: 1px solid #fa0050;
+              border-radius: 20px;
+              margin-left: 1rem;
+            }
+          }
         }
       }
     }
@@ -475,20 +477,12 @@ export const myinfo = styled.form`
   display: flex;
   width: 100%;
   height: 100%;
-  input{
+  input {
     outline: none;
     transition: all 0.5s;
-    &:hover{
-      background: #cecaca;
+    &:hover {
+      background: #eeeeee;
     }
-  }
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding:1.5rem 0;
   }
 
   .totalinfo {
@@ -504,12 +498,12 @@ export const myinfo = styled.form`
       justify-content: space-between;
       gap: 0 2rem;
       label {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         font-weight: 500;
       }
       input {
         border: 1px solid gray;
-        width: 300px;
+        /* width: 300px; */
         border-radius: 10px;
       }
     }
@@ -518,12 +512,12 @@ export const myinfo = styled.form`
       justify-content: space-between;
       gap: 0 2rem;
       label {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         font-weight: 500;
       }
       input {
         border: 1px solid gray;
-        width: 300px;
+        /* width: 300px; */
         border-radius: 10px;
         transform: translateX(135px);
       }

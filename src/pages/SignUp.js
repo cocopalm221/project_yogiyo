@@ -135,6 +135,7 @@ const SignUp = () => {
             <label>주소</label>
             <input
               type="text"
+              placeholder="클릭 시 주소 검색"
               value={enroll_company.address}
               onChange={handleInput}
               onClick={handleComplete}
