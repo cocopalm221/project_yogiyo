@@ -12,6 +12,7 @@ const DetailMain = ({ menuData }) => {
   const menuRef = useRef([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalVisibleId, setModalVisibleId] = useState("");
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const openModal = (id) => {
     setModalVisible(true);
@@ -24,22 +25,14 @@ const DetailMain = ({ menuData }) => {
     setModalVisibleId("");
   };
 
-  const tempMenuData = menuData.map((menu) => {
-    return {
-      mcName: menu.mcName,
-      mcExplanation: menu.mcExplanation,
-    };
-  });
-
-  const menuSubData = tempMenuData.filter((item, i) => {
+  const menuList = menuData.filter((item, i) => {
     return (
-      tempMenuData.findIndex((item2) => {
+      menuData.findIndex((item2) => {
         return item.mcName === item2.mcName;
       }) === i
     );
   });
-  console.log(menuData);
-  const [totalPrice, setTotalPrice] = useState(0);
+
   return (
     <>
       <section className="border border-t-0">
@@ -47,7 +40,7 @@ const DetailMain = ({ menuData }) => {
       </section>
       <ul>
         {/* map current[index]*/}
-        {menuSubData.map((menu, index) => (
+        {menuList.map((list, index) => (
           <MenuWrap
             ref={(elem) => (menuRef.current[index] = elem)}
             onClick={() => {
@@ -57,37 +50,39 @@ const DetailMain = ({ menuData }) => {
             key={index}
           >
             <h3 className="flex justify-between items-center bg-[#e5e7eb] px-4 py-3 cursor-pointer">
-              {menu.mcName}
+              {list.mcName}
               <MdKeyboardArrowDown size={20} />
             </h3>
             <ul className="flex flex-col cursor-pointer h-0 overflow-hidden">
-              {menu.mcExplanation && (
+              {list.mcExplanation && (
                 <p className="border-b px-4 py-2 text-xs text-[#957e6e]">
-                  {menu.mcExplanation}
+                  {list.mcExplanation}
                 </p>
               )}
               {/* li map */}
               {menuData.map(
-                (list) =>
-                  menu.mcName === list.mcName && (
+                (menuItem) =>
+                  list.mcName === menuItem.mcName && (
                     <li
                       className="flex py-4 px-2.5 items-center border-b border-[#e5e7eb] last:border-0"
                       onClick={(e) => {
                         e.stopPropagation();
-                        openModal(list.mniSeq);
+                        openModal(menuItem.mniSeq);
+                        setTotalPrice(menuItem.mniPrice);
                       }}
-                      key={list.mniSeq}
+                      key={menuItem.mniSeq}
                     >
+                      {console.log(menuItem)}
                       <img
-                        src="/images/menutemp.png"
-                        alt="메뉴"
+                        src={menuItem.mniImg}
+                        alt={menuItem.mniName}
                         className="w-36 mr-4"
                       />
                       <div className="flex flex-col gap-2">
-                        <p className="font-bold">{list.mniName}</p>
-                        <p>{convertToComma(list.mniPrice)}원</p>
+                        <p className="font-bold">{menuItem.mniName}</p>
+                        <p>{convertToComma(menuItem.mniPrice)}원</p>
                       </div>
-                      {modalVisible && modalVisibleId === list.mniSeq && (
+                      {modalVisible && modalVisibleId === menuItem.mniSeq && (
                         <Modal
                           visible={modalVisible}
                           onClose={closeModal}
@@ -111,17 +106,19 @@ const DetailMain = ({ menuData }) => {
                               className="w-full h-[220px]"
                             />
                             <div className="text-center p-3 border-b">
-                              <p className="text-2xl p-1">{list.mniName}</p>
+                              <p className="text-2xl p-1">{menuItem.mniName}</p>
                             </div>
                             <div className="flex justify-between p-4 border-b">
                               <strong>가격</strong>
-                              <strong>{convertToComma(list.mniPrice)}원</strong>
+                              <strong>
+                                {convertToComma(menuItem.mniPrice)}원
+                              </strong>
                             </div>
 
-                            {list.plusmenu
+                            {menuItem.plusmenu
                               .filter((element, i) => {
                                 return (
-                                  list.plusmenu.findIndex((element2) => {
+                                  menuItem.plusmenu.findIndex((element2) => {
                                     return element.pcName === element2.pcName;
                                   }) === i
                                 );
@@ -138,37 +135,38 @@ const DetailMain = ({ menuData }) => {
                                       <span>(추가선택가능)</span>
                                     )}
                                   </h3>
-                                  {list.plusmenu.map(
-                                    (pm) =>
-                                      pluscate.pcName === pm.pcName && (
+                                  {menuItem.plusmenu.map(
+                                    (pmItem) =>
+                                      pluscate.pcName === pmItem.pcName && (
                                         <div
                                           className="flex flex-col items-between"
                                           key={uuid()}
                                         >
-                                          {console.log(pm)}
                                           <label className="flex justify-between items-center text-sm mb-3.5 cursor-pointer">
                                             <div className="flex items-center">
-                                              {pm.pcMultiChoice === 0 ? (
+                                              {pmItem.pcMultiChoice === 0 ? (
                                                 <input
                                                   type="radio"
-                                                  name={pm.pcName}
+                                                  name={pmItem.pcName}
                                                   value=""
                                                 />
                                               ) : (
                                                 <input
                                                   type="checkbox"
-                                                  name={pm.pcName}
+                                                  name={pmItem.pcName}
                                                   value=""
                                                 />
                                               )}
 
                                               <p className="pl-2">
-                                                {pm.pmName}
+                                                {pmItem.pmName}
                                               </p>
                                             </div>
-                                            {pm.pmPrice > 0 ? (
+                                            {pmItem.pmPrice > 0 ? (
                                               <span className="text-xs">
-                                                +{convertToComma(pm.pmPrice)}원
+                                                +
+                                                {convertToComma(pmItem.pmPrice)}
+                                                원
                                               </span>
                                             ) : (
                                               <span className="text-xs">

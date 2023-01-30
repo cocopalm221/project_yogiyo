@@ -47,6 +47,7 @@ const DetailInfo = ({ infoData }) => {
     <DetailInfoWrapper>
       {infoData.map((data) => (
         <div key={data.siSeq}>
+          {console.log(data)}
           {data.sdiOwnerNotice && (
             <div className="info-box">
               <div className="info-title">
@@ -55,7 +56,7 @@ const DetailInfo = ({ infoData }) => {
               </div>
               <div className="info-content">
                 <div className="flex flex-col">
-                  <img src={data.onilmgPath} alt="사장님알림이미지" />
+                  <img src={data.onilmgPath} alt="사장님알림" />
                   <span>{data.sdiOwnerNotice}</span>
                 </div>
               </div>
