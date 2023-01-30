@@ -6,7 +6,7 @@ const Post = (props) => {
     position: "absolute",
     top: "10%",
     left: "30%",
-    width: "100%",
+    width: "500px",
     // height: "250px",
     padding: "10px",
     zIndex: 10,
