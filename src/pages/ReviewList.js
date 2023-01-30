@@ -3,7 +3,7 @@ import { AiOutlineCloseSquare } from "react-icons/ai";
 import { GrClose } from "react-icons/gr";
 import { ImStarFull } from "react-icons/im";
 import { TbMessageCircle2 } from "react-icons/tb";
-import DetailMainModal from "../components/DetailMainModal";
+import Modal from "../components/Modal";
 import StarRating from "../components/StarRating";
 
 const ReviewList = () => {
@@ -49,7 +49,7 @@ const ReviewList = () => {
         </div>
       </div>
       {reviewModalVisible && (
-        <DetailMainModal
+        <Modal
           width={700}
           height={800}
           top={50}
@@ -117,7 +117,7 @@ const ReviewList = () => {
               </li>
             </ul>
           </div>
-        </DetailMainModal>
+        </Modal>
       )}
     </div>
   );
