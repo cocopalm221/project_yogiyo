@@ -12,7 +12,9 @@ const DetailReview = ({ reviewData, findStore }) => {
 
   function getAverage(arr) {
     if (arr.length === 0) return 0;
-    return arr.reduce((sum, value) => sum + value, 0) / arr.length;
+    const average = arr.reduce((sum, value) => sum + value, 0) / arr.length;
+
+    return average.toFixed(1);
   }
 
   console.log(findStore);

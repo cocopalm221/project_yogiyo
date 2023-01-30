@@ -82,10 +82,7 @@ const StoreInfo = () => {
             />
             <div>
               <div className="flex items-center gap-2 pt-1">
-                <StarRating
-                  starRatio={findStore && findStore.average}
-                  width={90}
-                />
+                <StarRating starRatio={findStore.average ?? null} width={90} />
                 <p className="pt-1">{findStore.average}</p>
               </div>
               <div className="text-sm leading-relaxed text-[#999]">
@@ -93,7 +90,7 @@ const StoreInfo = () => {
                 <p>
                   최소주문금액{" "}
                   <span className="text-black">
-                    {convertToComma(findStore && findStore.siMinOrderPrice)}원
+                    {convertToComma(findStore.siMinOrderPrice ?? 0)}원
                   </span>
                 </p>
                 <p>
