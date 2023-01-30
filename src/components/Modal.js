@@ -1,16 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 
-const DetailMainModal = ({
-  visible,
-  onClose,
-  children,
-  width,
-  height,
-  top,
-  modalVisibleId,
-  setModalVisibleId,
-}) => {
+const Modal = ({ visible, onClose, children, width, height, top }) => {
   useEffect(() => {
     document.body.style.cssText = `
     position: fixed; 
@@ -53,6 +44,7 @@ const ModalWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
   outline: none;
   z-index: 1000;
+  cursor: auto;
 `;
 
 const ModalInner = styled.div`
@@ -74,4 +66,4 @@ const ModalInner = styled.div`
   }
 `;
 
-export default DetailMainModal;
+export default Modal;
