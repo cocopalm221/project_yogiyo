@@ -18,15 +18,6 @@ const Header = () => {
   }, [user.miStatus]);
 
   const navigate = useNavigate();
-  const goMain = () => {
-    navigate("/");
-  };
-  const goLogin = () => {
-    navigate("/login");
-  };
-  const gomyInfo = () => {
-    navigate("/mypage/myinfo");
-  };
 
   return (
     <div className="header">
@@ -35,7 +26,7 @@ const Header = () => {
           src="/images/logo.png"
           className="title"
           alt="logo"
-          onClick={goMain}
+          onClick={() => navigate('/')}
         />
         <div className="search-list">
           <div className="compass">
@@ -53,11 +44,11 @@ const Header = () => {
         </div>
         <div className="buttons">
           {loginCheck ? (
-            <button className="login" onClick={goLogin}>
+            <button className="login" onClick={() => navigate('/login')}>
               로그인
             </button>
           ) : (
-            <button className="login" onClick={gomyInfo}>
+            <button className="login" onClick={() => navigate('/gomyInfo')}>
               {user.miNickname}님
             </button>
           )}
