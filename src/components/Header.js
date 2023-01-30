@@ -4,16 +4,25 @@ import { FiSearch } from "react-icons/fi";
 import { FiCompass } from "react-icons/fi";
 import { FaUser } from "react-icons/fa";
 import * as s from "../styles/Styles";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../store/userslice";
 
 const Header = () => {
   const user = useSelector((state) => state.userInfo);
-  console.log(user);
-  const [loginCheck, setLoginCheck] = useState(true);
+  const dispatch = useDispatch();
+  const [loginCheck, setLoginCheck] = useState(1);
+
+  // const logout = () => {
+  //   dispatch(logout());
+  //   navigate("/login");
+  // };
+  // 로그아웃 1 로그인 0
 
   useEffect(() => {
-    if (!user.miStatus) {
-      setLoginCheck(false);
+    if (user.miStatus === 0) {
+      setLoginCheck(0);
+    } else if (user.miStatus === 1) {
+      setLoginCheck(1);
     }
   }, [user.miStatus]);
 
@@ -26,7 +35,7 @@ const Header = () => {
           src="/images/logo.png"
           className="title"
           alt="logo"
-          onClick={() => navigate('/')}
+          onClick={() => navigate("/")}
         />
         <div className="search-list">
           <div className="compass">
@@ -43,18 +52,23 @@ const Header = () => {
           </button>
         </div>
         <div className="buttons">
-          <button className="user" onClick={gomyInfo}>
-            <FaUser />
-          </button>
+          {/* 로그아웃상태 1 로그인상태 0 */}
+          {loginCheck ? null : (
+            <button className="user" onClick={() => navigate("/mypage")}>
+              <FaUser /> {user.miNickname}님
+            </button>
+          )}
+
           {loginCheck ? (
-            <button className="login" onClick={() => navigate('/login')}>
+            <button className="login" onClick={() => navigate("/login")}>
               로그인
             </button>
           ) : (
-            <button className="login" onClick={() => navigate('/gomyInfo')}>
-              {user.miNickname}님
+            <button className="login" onClick={() => dispatch(logout())}>
+              로그아웃
             </button>
           )}
+
           <button className="menu">주문표</button>
         </div>
       </s.headerInner>

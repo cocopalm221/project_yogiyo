@@ -8,7 +8,7 @@ const initialState = {
   miPhone: "",
   miPwd: "",
   miSeq: "",
-  miStatus: "1",
+  miStatus: 1,
 };
 
 const userSlice = createSlice({
@@ -26,14 +26,14 @@ const userSlice = createSlice({
       state.miStatus = action.payload.miStatus;
     },
     logout: (state) => {
-      state.miAddress = null;
-      state.miEmail = null;
-      state.miId = null;
-      state.miNickname = null;
-      state.miPhone = null;
-      state.miPwd = null;
-      state.miSeq = null;
-      state.miStatus = null;
+      state.miAddress = "";
+      state.miEmail = "";
+      state.miId = "";
+      state.miNickname = "";
+      state.miPhone = "";
+      state.miPwd = "";
+      state.miSeq = "";
+      state.miStatus = 1;
     },
   },
 });
