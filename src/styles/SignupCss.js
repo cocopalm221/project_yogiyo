@@ -22,11 +22,6 @@ const SignDiv = styled.div`
     display: flex;
     flex-direction: column;
     box-shadow: 0px 19px 38px rgba(0, 0, 0, 0.03);
-    div {
-      display: flex;
-      justify-content: flex-start;
-      position: relative;
-    }
     label {
       display: inline-block;
       width: 150px;

@@ -95,7 +95,7 @@ const SignUp = () => {
         </NavLink>
         <h2>회원가입</h2>
         <form>
-          <div>
+          <div className="relative flex justify-start">
             <label>아이디</label>
             <input
               type="text"
@@ -106,7 +106,7 @@ const SignUp = () => {
               중복확인
             </button>
           </div>
-          <div>
+          <div className="relative flex justify-start">
             <label>비밀번호</label>
             <input
               type="password"
@@ -114,7 +114,7 @@ const SignUp = () => {
               onChange={(e) => setPw(e.target.value)}
             />
           </div>
-          <div>
+          <div className="relative flex justify-start">
             <label>비밀번호 확인</label>
             <input
               type="password"
@@ -122,7 +122,7 @@ const SignUp = () => {
               onChange={(e) => setPwCheck(e.target.value)}
             />
           </div>
-          <div>
+          <div className="relative flex justify-start">
             <label>닉네임</label>
             <input
               type="text"
@@ -130,7 +130,7 @@ const SignUp = () => {
               onChange={(e) => setNickName(e.target.value)}
             />
           </div>
-          <div className="relative">
+          <div className="relative flex justify-start">
             <label>주소</label>
             <input
               type="text"
@@ -143,7 +143,7 @@ const SignUp = () => {
               <Post company={enroll_company} setcompany={setEnroll_company} />
             )}
           </div>
-          <div>
+          <div className="relative flex justify-start">
             <label>전화번호</label>
             <input
               type="tel"
@@ -151,7 +151,7 @@ const SignUp = () => {
               onChange={(e) => setTel(e.target.value)}
             />
           </div>
-          <div>
+          <div className="relative flex justify-start">
             <label>이메일</label>
             <input
               type="email"
