@@ -8,8 +8,10 @@ import DetailTabMenu from "../components/StoreInfo/DetailTabMenu";
 import DetailMain from "../components/StoreInfo/DetailMain";
 import DetailReview from "../components/StoreInfo/DetailReview";
 import DetailInfo from "../components/StoreInfo/DetailInfo";
+import convertToComma from "../util/comma";
 
 const StoreInfo = () => {
+  const [storeData, setStoreData] = useState([]);
   const [menuData, setMenuData] = useState([]);
   const [reviewData, setReviewData] = useState([]);
   const [infoData, setInfoData] = useState([]);
@@ -22,6 +24,10 @@ const StoreInfo = () => {
       const params = {
         siseq: storeId,
       };
+
+      const resultStore = await axios.get(
+        "http://192.168.0.9:9244/api/alllist"
+      );
 
       const resultMenu = await axios.get("http://192.168.0.9:9244/menu/list", {
         params,
@@ -39,6 +45,7 @@ const StoreInfo = () => {
         }
       );
 
+      setStoreData(resultStore.data.list);
       setMenuData(resultMenu.data.list);
       setInfoData(resultInfo.data.result.list);
       setReviewData(resultReview.data.result.list);
@@ -47,10 +54,17 @@ const StoreInfo = () => {
     }
   };
 
+  const findStore =
+    storeData.length !== 0 &&
+    storeData.find((data) => data.siSeq === parseInt(storeId));
+
+  // console.log(findStore);
+  // console.log(storeData);
   // console.log(menuData);
   // console.log(infoData);
   // console.log(reviewData);
 
+  // console.log(findStore);
   useEffect(() => {
     fetchData();
   }, []);
@@ -59,18 +73,28 @@ const StoreInfo = () => {
       <section className="md:w-8/12 w-full">
         {/* top */}
         <div className="border rounded-t-xl">
-          <p className="border-b p-4">네오피자-직영점</p>
+          <p className="border-b p-4">{findStore.siName}</p>
           <div className="flex gap-5 py-2.5">
-            <img src="/images/temp.png" alt="logo" className="w-28 ml-2.5" />
+            <img
+              src={findStore.siUri}
+              alt={findStore.siName}
+              className="w-28 ml-2.5"
+            />
             <div>
               <div className="flex items-center gap-2 pt-1">
-                <StarRating starRatio={4.6} width={90} />
-                <p className="pt-1">4.6</p>
+                <StarRating
+                  starRatio={findStore && findStore.average}
+                  width={90}
+                />
+                <p className="pt-1">{findStore.average}</p>
               </div>
               <div className="text-sm leading-relaxed text-[#999]">
                 {/* <p className="text-[#FA0050]">16,900원 이상 주문 시 할인</p> */}
                 <p>
-                  최소주문금액 <span className="text-black">15,000원</span>
+                  최소주문금액{" "}
+                  <span className="text-black">
+                    {convertToComma(findStore && findStore.siMinOrderPrice)}원
+                  </span>
                 </p>
                 <p>
                   결제
@@ -83,7 +107,8 @@ const StoreInfo = () => {
                   ))}
                 </p>
                 <p>
-                  배달시간 <span className="text-black">46분~56분</span>
+                  배달시간{" "}
+                  <span className="text-black">{findStore.diTime}</span>
                 </p>
               </div>
             </div>
@@ -117,7 +142,7 @@ const StoreInfo = () => {
             <DetailReview reviewData={reviewData} />
           </div>
           <div className={tabCount === 2 ? "block" : "hidden"}>
-            <DetailInfo infoData={infoData} />
+            <DetailInfo infoData={infoData} findStore={findStore} />
           </div>
         </div>
       </section>

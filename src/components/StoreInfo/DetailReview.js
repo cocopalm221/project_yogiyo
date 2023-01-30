@@ -1,29 +1,41 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { ImStarFull } from "react-icons/im";
 import { TbMessageCircle2 } from "react-icons/tb";
 import timeForToday from "../../util/date";
 import StarRating from "../StarRating";
 
 const DetailReview = ({ reviewData }) => {
+  const reScore = reviewData.map((data) => data.reScore);
+  const tasteScore = reviewData.map((data) => data.reTasteScore);
+  const quantityScore = reviewData.map((data) => data.reQuantityScore);
+  const deliveryScore = reviewData.map((data) => data.reDeliveryScore);
+
+  function getAverage(arr) {
+    if (arr.length === 0) return 0;
+    return arr.reduce((sum, value) => sum + value, 0) / arr.length;
+  }
+
   return (
     <>
       <div className="flex justify-center items-center border border-t-0 py-7">
         <div className="flex flex-col items-center pr-8">
-          <p className="text-5xl tracking-wide pb-1">4.6</p>
-          <StarRating starRatio={4.6} width={110} />
+          <p className="text-5xl tracking-wide pb-1">{getAverage(reScore)}</p>
+          <StarRating starRatio={getAverage(reScore)} width={110} />
         </div>
         <div className="text-xs px-8 border-l">
           <div className="flex items-center pb-1">
             <p className="w-7">맛</p>
-            <StarRating starRatio={4.8} />
+            <StarRating starRatio={getAverage(tasteScore)} />
           </div>
           <div className="flex items-center pb-1">
             <p className="w-7">양</p>
-            <StarRating starRatio={4.3} />
+            <StarRating starRatio={getAverage(quantityScore)} />
           </div>
           <div className="flex items-center">
             <p className="w-7">배달</p>
-            <StarRating starRatio={4.7} />
+            <StarRating starRatio={getAverage(deliveryScore)} />
           </div>
         </div>
       </div>
