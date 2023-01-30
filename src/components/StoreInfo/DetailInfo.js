@@ -5,6 +5,7 @@ import { BsSignpost } from "react-icons/bs";
 import { GrDocumentUser } from "react-icons/gr";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
 import styled from "styled-components";
+import convertToComma from "../../util/comma";
 
 const DetailInfoWrapper = styled.div`
   border: 1px solid #e5e7eb;
@@ -42,12 +43,11 @@ const DetailInfoWrapper = styled.div`
     }
   }
 `;
-const DetailInfo = ({ infoData }) => {
+const DetailInfo = ({ infoData, findStore }) => {
   return (
     <DetailInfoWrapper>
       {infoData.map((data) => (
         <div key={data.siSeq}>
-          {console.log(data)}
           {data.sdiOwnerNotice && (
             <div className="info-box">
               <div className="info-title">
@@ -80,10 +80,12 @@ const DetailInfo = ({ infoData }) => {
                 <p>주소</p>
                 <span> {data.sdiAdress}</span>
               </div>
-              <div>
-                <p>부가정보</p>
-                <span>세스코멤버스 사업장</span>
-              </div>
+              {findStore.siCleanInfo === 0 && (
+                <div>
+                  <p>부가정보</p>
+                  <span>세스코멤버스 사업장</span>
+                </div>
+              )}
             </div>
           </div>
           <div className="info-box">
@@ -94,7 +96,9 @@ const DetailInfo = ({ infoData }) => {
             <div className="info-content">
               <div>
                 <p>최소주문금액</p>
-                <span>15,000원</span>
+                <span>
+                  {convertToComma(findStore && findStore.siMinOrderPrice)}원
+                </span>
               </div>
               <div>
                 <p>결제수단</p>

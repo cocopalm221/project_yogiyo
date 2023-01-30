@@ -4,34 +4,45 @@ import { TbMessageCircle2 } from "react-icons/tb";
 import timeForToday from "../../util/date";
 import StarRating from "../StarRating";
 
-const DetailReview = ({ reviewData }) => {
+const DetailReview = ({ reviewData, findStore }) => {
+  const reScore = reviewData.map((data) => data.reScore);
+  const tasteScore = reviewData.map((data) => data.reTasteScore);
+  const quantityScore = reviewData.map((data) => data.reQuantityScore);
+  const deliveryScore = reviewData.map((data) => data.reDeliveryScore);
+
+  function getAverage(arr) {
+    if (arr.length === 0) return 0;
+    return arr.reduce((sum, value) => sum + value, 0) / arr.length;
+  }
+
+  console.log(findStore);
   return (
     <>
       <div className="flex justify-center items-center border border-t-0 py-7">
         <div className="flex flex-col items-center pr-8">
-          <p className="text-5xl tracking-wide pb-1">4.6</p>
-          <StarRating starRatio={4.6} width={110} />
+          <p className="text-5xl tracking-wide pb-1">{getAverage(reScore)}</p>
+          <StarRating starRatio={getAverage(reScore)} width={110} />
         </div>
         <div className="text-xs px-8 border-l">
           <div className="flex items-center pb-1">
             <p className="w-7">맛</p>
-            <StarRating starRatio={4.8} />
+            <StarRating starRatio={getAverage(tasteScore)} />
           </div>
           <div className="flex items-center pb-1">
             <p className="w-7">양</p>
-            <StarRating starRatio={4.3} />
+            <StarRating starRatio={getAverage(quantityScore)} />
           </div>
           <div className="flex items-center">
             <p className="w-7">배달</p>
-            <StarRating starRatio={4.7} />
+            <StarRating starRatio={getAverage(deliveryScore)} />
           </div>
         </div>
       </div>
       <div className="border border-t-0 text-xs">
         <p className="p-4">
-          리뷰 <strong>2917</strong>개
+          리뷰 <strong>{findStore.reviewCnt ?? 0}</strong>개
           <span className="text-[#999] mx-1">I</span>
-          사장님댓글 <strong>439</strong>개
+          사장님댓글 <strong>{findStore.ownerReviewCnt ?? 0}</strong>개
         </p>
       </div>
       <div>
@@ -49,11 +60,11 @@ const DetailReview = ({ reviewData }) => {
                 <StarRating starRatio={data.reScore} />
                 <span className="flex items-center text-xs text-[#999] gap-1">
                   <span className="text-[#e0e0e0]">ㅣ</span>
-                  맛 <ImStarFull color="#FFA400" size="17px" />{" "}
+                  맛 <ImStarFull color="#FFA400" size="17px" />
                   {data.reTasteScore} 양
-                  <ImStarFull color="#FFA400" size="17px" />{" "}
+                  <ImStarFull color="#FFA400" size="17px" />
                   {data.reQuantityScore} 배달
-                  <ImStarFull color="#FFA400" size="17px" />{" "}
+                  <ImStarFull color="#FFA400" size="17px" />
                   {data.reDeliveryScore}
                 </span>
               </li>
