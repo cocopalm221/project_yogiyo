@@ -7,10 +7,6 @@ import axios from "axios";
 
 const CateNav = ({ categorys }) => {
   const navigator = useNavigate();
-  const gostore = () => {
-    navigator("/storeinfo/12");
-  };
-
   const [gages, setGages] = useState([]);
 
   useEffect(() => {
