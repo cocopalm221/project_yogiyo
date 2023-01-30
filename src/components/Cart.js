@@ -2,12 +2,8 @@ import React, { useState } from "react";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 import { CgCloseR } from "react-icons/cg";
 import { FaTrash } from "react-icons/fa";
-<<<<<<< HEAD:src/components/DetailCart.js
 import { useNavigate } from "react-router";
-import DetailMainModal from "./DetailMainModal";
-=======
 import Modal from "./Modal";
->>>>>>> 9c8ceee8dfacec6b84e002cebf865a45cfb13f2c:src/components/Cart.js
 
 const Cart = () => {
   const [cartModalVisible, setCartModalVisible] = useState(false);

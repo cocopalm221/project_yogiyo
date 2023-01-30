@@ -7,7 +7,7 @@ import { AiFillStar } from "react-icons/ai";
 const CateNav = ({ banners }) => {
   const navigator = useNavigate();
   const gostore = () => {
-    navigator("/storeinfo/:storeId");
+    navigator("/storeinfo/12");
   };
   return (
     <>

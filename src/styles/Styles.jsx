@@ -477,57 +477,47 @@ export const myinfo = styled.form`
   display: flex;
   width: 100%;
   height: 100%;
+  margin-left: 2rem;
+  max-width: 1024px;
+  label {
+    font-size: 1rem;
+    font-weight: 600;
+    width: 100px;
+  }
   input {
+    padding: 5px 10px;
+    border: 1px solid gray;
+    width: 600px;
+    border-radius: 10px;
     outline: none;
     transition: all 0.5s;
     &:hover {
       background: #eeeeee;
     }
   }
+  h1 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+    border-bottom-width: 2px;
+    border-color: #000;
+  }
 
   .totalinfo {
     display: flex;
     flex-direction: column;
     gap: 1.5rem 0;
+    margin-top: 2rem;
     .password,
     .passwordcheck,
     .address,
     .number,
-    .email {
-      display: flex;
-      justify-content: space-between;
-      gap: 0 2rem;
-      label {
-        font-size: 1.25rem;
-        font-weight: 500;
-      }
-      input {
-        border: 1px solid gray;
-        /* width: 300px; */
-        border-radius: 10px;
-      }
-    }
+    .email,
     .nickname {
       display: flex;
       justify-content: space-between;
       gap: 0 2rem;
-      label {
-        font-size: 1.25rem;
-        font-weight: 500;
-      }
-      input {
-        border: 1px solid gray;
-        /* width: 300px; */
-        border-radius: 10px;
-        transform: translateX(135px);
-      }
-      .nickchange {
-        transform: translateX(120px);
-        background: #fa0050;
-        color: #fff;
-        border-radius: 10px;
-        padding: 0.5rem;
-      }
     }
   }
   .confirm {

@@ -68,11 +68,11 @@ const MyInfo = () => {
 
   return (
     <s.myinfo onSubmit={handleSubmit}>
-      <div className="col-span-9 max-w-5xl ml-8">
-        <h1 className="p-4 font-bold text-2xl border-b-2 border-black">
+      <div className="myinfo">
+        <h1>
           계정 정보 수정
         </h1>
-        <div className="totalinfo mt-8">
+        <div className="totalinfo">
           <div className="password">
             <label htmlFor="defaultpassword">비밀번호</label>
             <input
@@ -116,8 +116,8 @@ const MyInfo = () => {
             <input
               type="text"
               id="nickname"
-              placeholder="변경할 닉네임을 입력"
               name="checkNickname"
+              placeholder="변경할 닉네임을 입력"
               required
               maxLength={20}
               minLength={3}
