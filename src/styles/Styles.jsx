@@ -491,7 +491,7 @@ export const myinfo = styled.form`
       width: 600px;
       justify-content: space-between;
       label {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         font-weight: 500;
       }
       input {

@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 import { CgCloseR } from "react-icons/cg";
 import { FaTrash } from "react-icons/fa";
+<<<<<<< HEAD:src/components/DetailCart.js
+import { useNavigate } from "react-router";
+import DetailMainModal from "./DetailMainModal";
+=======
 import Modal from "./Modal";
+>>>>>>> 9c8ceee8dfacec6b84e002cebf865a45cfb13f2c:src/components/Cart.js
 
 const Cart = () => {
   const [cartModalVisible, setCartModalVisible] = useState(false);
@@ -13,6 +18,12 @@ const Cart = () => {
   const closeModal = () => {
     setCartModalVisible(false);
   };
+
+  const navigate = useNavigate();
+  const gopayment = () => {
+    navigate("/payment");
+  };
+
   return (
     <>
       <section className="border rounded-t-xl overflow-hidden">
@@ -54,7 +65,10 @@ const Cart = () => {
           <p className="text-brand font-bold">합계: 9,900원</p>
         </div>
       </section>
-      <button className="block w-full mt-2 bg-brand text-white py-2.5 text-lg rounded">
+      <button
+        className="block w-full mt-2 bg-brand text-white py-2.5 text-lg rounded"
+        onClick={gopayment}
+      >
         주문하기
       </button>
 

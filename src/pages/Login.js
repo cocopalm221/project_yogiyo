@@ -48,15 +48,6 @@ const Login = () => {
       console.log(error);
     }
   };
-  axios
-    .post("http://192.168.0.9:9244/member/login", {
-      miId: userID,
-      miPwd: pw,
-    })
-    .then((res) => {
-      console.log(res.data);
-    })
-    .catch((err) => console.log(err));
 
   return (
     <div>
