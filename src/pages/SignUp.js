@@ -55,7 +55,7 @@ const SignUp = () => {
       miId: userId,
     };
     axios
-      .put("http://192.168.0.9:9244/member/join", body)
+      .post("http://192.168.0.9:9244/member/dupchkId", body)
       .then((res) => {
         if (res.data.success) {
           if (res.data.check) {

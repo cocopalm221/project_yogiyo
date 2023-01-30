@@ -4,9 +4,9 @@ const Post = (props) => {
   const postCodeStyle = {
     display: "block",
     position: "absolute",
-    top: "5%",
+    top: "10%",
     left: "30%",
-    width: "50%",
+    width: "500px",
     // height: "250px",
     padding: "10px",
     zIndex: 10,

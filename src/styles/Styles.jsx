@@ -381,49 +381,48 @@ export const payment = styled.form`
         }
       }
     }
-
-    .choosepay {
-      display: flex;
-      flex-direction: column;
+  }
+  .choosepay {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2rem;
+    margin: 0;
+    .choosepaytitle {
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-bottom: 1px solid #fa0050;
+      padding: 10px 5px;
+    }
+    .coupon {
       width: 100%;
-      gap: 2rem;
-      margin: 0;
-      .choosepaytitle {
-        font-size: 1.2rem;
-        font-weight: 600;
-        border-bottom: 1px solid #fa0050;
-        padding: 10px 5px;
-      }
-      .coupon {
-        width: 100%;
-        display: flex;
+      display: flex;
 
-        label {
-          width: calc(100%-75%-100px);
-          font-size: 1rem;
-          font-weight: 600;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
+      label {
+        width: calc(100%-75%-100px);
+        font-size: 1rem;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      input {
+        width: 75%;
         input {
           width: 75%;
-          input {
-            width: 75%;
-            background: whitesmoke;
-            border-radius: 15px;
-            padding: 5px 10px;
-            margin-left: 10px;
-          }
+          background: whitesmoke;
+          border-radius: 15px;
+          padding: 5px 10px;
+          margin-left: 10px;
+        }
+        .apply {
+          width: 80px;
           .apply {
             width: 80px;
-            .apply {
-              width: 80px;
-              color: #000;
-              border: 1px solid #fa0050;
-              border-radius: 20px;
-              margin-left: 1rem;
-            }
+            color: #000;
+            border: 1px solid #fa0050;
+            border-radius: 20px;
+            margin-left: 1rem;
           }
         }
       }
@@ -475,14 +474,17 @@ export const payment = styled.form`
 
 export const myinfo = styled.form`
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem 0;
   width: 100%;
   height: 100%;
-  margin-left: 2rem;
-  max-width: 1024px;
   label {
     font-size: 1rem;
+    line-height: 36px;
     font-weight: 600;
-    width: 100px;
+    width: 120px;
   }
   input {
     padding: 5px 10px;
@@ -495,41 +497,33 @@ export const myinfo = styled.form`
       background: #eeeeee;
     }
   }
-  h1 {
-    font-size: 1.5rem;
-    line-height: 2rem;
-    font-weight: 700;
-    padding: 1rem;
-    border-bottom-width: 2px;
-    border-color: #000;
-  }
 
   .totalinfo {
     display: flex;
     flex-direction: column;
     gap: 1.5rem 0;
     margin-top: 2rem;
+    margin-right: auto;
     .password,
     .passwordcheck,
-    .address,
     .number,
-    .email,
-    .nickname {
+    .nickname,
+    .address {
       display: flex;
+      width: 600px;
       justify-content: space-between;
-      gap: 0 2rem;
     }
   }
-  .confirm {
-    width: 200px;
-    padding: 10px 15px;
-    background-color: #fa0050;
-    border: 1px solid #fff;
-    color: #fff;
-    margin-bottom: 10px;
-    border-radius: 25px;
-    font-weight: 600;
-    transform: translateX(100%);
-    margin-top: 2rem;
+
+  .buttons {
+    display: flex;
+    gap: 0 3rem;
+    button {
+      color: #fff;
+      background: #fa0050;
+      border-radius: 20px;
+      width: 165px;
+      height: 46px;
+    }
   }
 `;
