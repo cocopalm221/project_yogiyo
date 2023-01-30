@@ -12,12 +12,6 @@ const Header = () => {
   const dispatch = useDispatch();
   const [loginCheck, setLoginCheck] = useState(1);
 
-  // const logout = () => {
-  //   dispatch(logout());
-  //   navigate("/login");
-  // };
-  // 로그아웃 1 로그인 0
-
   useEffect(() => {
     if (user.miStatus === 0) {
       setLoginCheck(0);

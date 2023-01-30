@@ -381,49 +381,48 @@ export const payment = styled.form`
         }
       }
     }
-
-    .choosepay {
-      display: flex;
-      flex-direction: column;
+  }
+  .choosepay {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2rem;
+    margin: 0;
+    .choosepaytitle {
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-bottom: 1px solid #fa0050;
+      padding: 10px 5px;
+    }
+    .coupon {
       width: 100%;
-      gap: 2rem;
-      margin: 0;
-      .choosepaytitle {
-        font-size: 1.2rem;
-        font-weight: 600;
-        border-bottom: 1px solid #fa0050;
-        padding: 10px 5px;
-      }
-      .coupon {
-        width: 100%;
-        display: flex;
+      display: flex;
 
-        label {
-          width: calc(100%-75%-100px);
-          font-size: 1rem;
-          font-weight: 600;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
+      label {
+        width: calc(100%-75%-100px);
+        font-size: 1rem;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      input {
+        width: 75%;
         input {
           width: 75%;
-          input {
-            width: 75%;
-            background: whitesmoke;
-            border-radius: 15px;
-            padding: 5px 10px;
-            margin-left: 10px;
-          }
+          background: whitesmoke;
+          border-radius: 15px;
+          padding: 5px 10px;
+          margin-left: 10px;
+        }
+        .apply {
+          width: 80px;
           .apply {
             width: 80px;
-            .apply {
-              width: 80px;
-              color: #000;
-              border: 1px solid #fa0050;
-              border-radius: 20px;
-              margin-left: 1rem;
-            }
+            color: #000;
+            border: 1px solid #fa0050;
+            border-radius: 20px;
+            margin-left: 1rem;
           }
         }
       }
@@ -475,71 +474,44 @@ export const payment = styled.form`
 
 export const myinfo = styled.form`
   display: flex;
-  width: 100%;
-  height: 100%;
-  input {
-    outline: none;
-    transition: all 0.5s;
-    &:hover {
-      background: #eeeeee;
-    }
-  }
-
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem 0;
   .totalinfo {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem 0;
+    gap: 3rem 0;
     .password,
     .passwordcheck,
-    .address,
     .number,
-    .email {
+    .nickname,
+    .address {
       display: flex;
+      width: 600px;
       justify-content: space-between;
-      gap: 0 2rem;
       label {
         font-size: 1.25rem;
         font-weight: 500;
       }
       input {
-        border: 1px solid gray;
-        /* width: 300px; */
-        border-radius: 10px;
-      }
-    }
-    .nickname {
-      display: flex;
-      justify-content: space-between;
-      gap: 0 2rem;
-      label {
-        font-size: 1.25rem;
-        font-weight: 500;
-      }
-      input {
-        border: 1px solid gray;
-        /* width: 300px; */
-        border-radius: 10px;
-        transform: translateX(135px);
-      }
-      .nickchange {
-        transform: translateX(120px);
-        background: #fa0050;
-        color: #fff;
-        border-radius: 10px;
-        padding: 0.5rem;
+        width: 350px;
+        outline: none;
+        border: 1px solid grey;
+        border-radius: 15px;
       }
     }
   }
-  .confirm {
-    width: 200px;
-    padding: 10px 15px;
-    background-color: #fa0050;
-    border: 1px solid #fff;
-    color: #fff;
-    margin-bottom: 10px;
-    border-radius: 25px;
-    font-weight: 600;
-    transform: translateX(100%);
-    margin-top: 2rem;
+
+  .buttons {
+    display: flex;
+    gap: 0 3rem;
+    button {
+      color: #fff;
+      background: #fa0050;
+      border-radius: 20px;
+      width: 165px;
+      height: 46px;
+    }
   }
 `;
