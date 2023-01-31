@@ -23,6 +23,8 @@ const ListItem = ({ menuItem }) => {
     setGoodCount(1);
     setCheckList([]);
     setRadioList({});
+    setOptionPriceRadio({});
+    setOprionPriceCheck({});
   };
 
   // 전체 가격

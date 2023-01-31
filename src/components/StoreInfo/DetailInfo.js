@@ -43,7 +43,7 @@ const DetailInfoWrapper = styled.div`
     }
   }
 `;
-const DetailInfo = ({ infoData, findStore }) => {
+const DetailInfo = ({ infoData, storeData }) => {
   return (
     <DetailInfoWrapper>
       {infoData.map((data) => (
@@ -80,7 +80,7 @@ const DetailInfo = ({ infoData, findStore }) => {
                 <p>주소</p>
                 <span> {data.sdiAdress}</span>
               </div>
-              {findStore.siCleanInfo === 0 && (
+              {storeData.siCleanInfo === 0 && (
                 <div>
                   <p>부가정보</p>
                   <span>세스코멤버스 사업장</span>
@@ -97,7 +97,7 @@ const DetailInfo = ({ infoData, findStore }) => {
               <div>
                 <p>최소주문금액</p>
                 <span>
-                  {convertToComma(findStore && findStore.siMinOrderPrice)}원
+                  {convertToComma(storeData && storeData.siMinOrderPrice)}원
                 </span>
               </div>
               <div>
