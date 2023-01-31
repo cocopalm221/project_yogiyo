@@ -37,7 +37,7 @@ const Login = () => {
           if (response.data.status) {
             alert("로그인 성공");
             dispatch(login(response.data.loginUser));
-            dispatch(SET_TOKEN(response.json.access_token));
+            dispatch(SET_TOKEN(response.data.json.access_token));
             navigate("/");
           } else {
             alert("로그인 실패");
