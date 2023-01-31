@@ -25,7 +25,12 @@ const Modal = ({ visible, onClose, children, width, height, top }) => {
   return (
     <>
       <ModalWrapper visible={visible} onClick={onMaskClick}>
-        <ModalInner width={width} height={height} top={top}>
+        <ModalInner
+          width={width}
+          height={height}
+          top={top}
+          onClick={(e) => e.stopPropagation()}
+        >
           {children}
         </ModalInner>
       </ModalWrapper>
