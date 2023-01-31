@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as s from "../styles/Styles";
 import { Link, useNavigate } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
+import { RiArrowDownSFill } from "react-icons/ri";
 import StarRating from "./StarRating";
 import axios from "axios";
 
@@ -63,22 +64,21 @@ const CateNav = ({ categorys }) => {
           <input
             type="text"
             value={search}
-            placeholder="제목을 입력하세요"
+            placeholder="가게명을 검색하세요"
             onChange={onChangeSearch}
             className="form"
           />
           <button type="submit" className="formbt">
-            Search
+            <FiSearch />
           </button>
         </form>
-
         <button
           className="cateAll-bt"
           onClick={() => {
             reFresh();
+            reFresh();
           }}
         >
-          <FiSearch className="inline mb-1 mr-1" />
           전체보기
         </button>
         {categorys.map((category) => (
@@ -89,12 +89,22 @@ const CateNav = ({ categorys }) => {
           </li>
         ))}
       </s.catenav>
-      <button
-        type="button"
-        className="py-2 px-4 border-black border rounded-xl"
-      >
-        정렬 기준 선택
-      </button>
+      <s.sortbt>
+        <div className="sort-down">
+          <input id="dropdown" type="checkbox" />
+          <label className="dropdownLabel" for="dropdown">
+            <div>정렬 기준 선택</div>
+            <RiArrowDownSFill className="caretIcon" />
+          </label>
+          <div className="downlist">
+            <ul>
+              <li>리뷰 많은 순</li>
+              <li>댓글 많은 순</li>
+              <li>별점 높은 순</li>
+            </ul>
+          </div>
+        </div>
+      </s.sortbt>
       <s.stores>
         {gages.map((gage) => (
           <Link to={`/storeinfo/${gage.siSeq}`}>

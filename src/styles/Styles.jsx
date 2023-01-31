@@ -135,6 +135,13 @@ export const bannersList = styled.ul`
 `;
 
 //CateNav
+export const sortbt = styled.div`
+  .sort-down {
+    position: relative;
+    min-width: 150px;
+    box-shadow: 0 14px 15px 0 #000000;
+  }
+`;
 export const catenav = styled.ul`
   display: flex;
   justify-content: center;
@@ -142,17 +149,34 @@ export const catenav = styled.ul`
   padding: 2rem;
   gap: 15px;
   flex-wrap: wrap;
+  .form {
+    width: 80px;
+    padding: 5px 10px;
+    outline-color: #fa0050;
+    border-radius: 15px;
+    transition: all 5s;
+    display: none;
+  }
+  .formbt {
+    width: 40px;
+    background: #fa0050;
+    color: #fff;
+    font-size: 1.25rem;
+    svg {
+      stroke-width: 3;
+    }
+  }
   .cateAll-bt {
     font-weight: 900;
   }
   button {
     width: 120px;
     border: 1px solid #fa0050;
-    width: 140px;
-    height: 50px;
+    width: 130px;
+    height: 40px;
     overflow: hidden;
     border-radius: 15px;
-    padding: 0.3rem 1rem;
+    padding: 5px 10px;
     font-weight: 500;
   }
 `;
