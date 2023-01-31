@@ -49,8 +49,8 @@ const Header = () => {
           {/* 로그아웃상태 1 로그인상태 0 */}
           {loginCheck ? null : (
             <button className="user" onClick={() => navigate("/mypage")}>
-              <FaUser className="inline" /> {user.miNickname}님
-            </button>
+            <FaUser className="inline" /> {user.miNickname}님
+          </button>
           )}
 
           {loginCheck ? (
