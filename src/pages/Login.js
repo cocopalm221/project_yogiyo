@@ -101,7 +101,12 @@ const Login = () => {
               {passwordType.visible ? <RiEye2Line /> : <RiEyeCloseLine />}
             </div>
           </div>
-          <span className="flex justify-end">아이디 찾기 | 비밀번호 찾기</span>
+          <div className="find">
+            <button className="findBt after:content-['|'] after:mx-2.5">
+              아이디 찾기
+            </button>
+            <button className="findBt">비밀번호 찾기</button>
+          </div>
           <button onClick={(e) => SignInFunc(e)}>로그인</button>
           <button
             onClick={(e) => {
