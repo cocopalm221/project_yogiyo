@@ -22,11 +22,18 @@ const LoginDiv = styled.div`
     display: flex;
     flex-direction: column;
     box-shadow: 0px 19px 38px rgba(0, 0, 0, 0.03);
+    .loginId,
+    .loginPw {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+    }
     label {
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-top: 8px;
     }
     input {
+      width: 80%;
       border-radius: 10px;
       border: 1px solid #c6c6c6;
       padding: 5px 20px;
@@ -35,6 +42,14 @@ const LoginDiv = styled.div`
       &:focus {
         outline-color: #fa0050;
       }
+    }
+    .pwIcon {
+      position: absolute;
+      top: 50%;
+      right: 5%;
+      transform: translateY(-80%);
+      font-size: 1.5rem;
+      font-weight: 600;
     }
     span {
       margin-bottom: 50px;

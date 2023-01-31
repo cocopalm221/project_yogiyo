@@ -4,6 +4,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../store/userslice";
 import axios from "axios";
+import { RiEyeCloseLine } from "react-icons/ri";
+import { RiEye2Line } from "react-icons/ri";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,8 +29,8 @@ const Login = () => {
     };
 
     let header = {
-      Authorization: ""
-    }
+      Authorization: "",
+    };
 
     try {
       axios
@@ -53,6 +55,18 @@ const Login = () => {
     }
   };
 
+  const [passwordType, setPasswordType] = useState({
+    type: "password",
+    visible: false,
+  });
+  const handlePasswordType = (e) => {
+    setPasswordType(() => {
+      if (!passwordType.visible) {
+        return { type: "text", visible: true };
+      }
+      return { type: "password", visible: false };
+    });
+  };
   return (
     <div>
       <LoginDiv>
@@ -61,25 +75,32 @@ const Login = () => {
         </NavLink>
         <h2>로그인</h2>
         <form>
-          <label>아이디</label>
-          <input
-            type="text"
-            required
-            placeholder="아이디를 입력하세요."
-            value={userID}
-            onChange={(e) => setUserId(e.target.value)}
-          />
-          <label>비밀번호</label>
-          <input
-            type="password"
-            required
-            minLength={4}
-            maxLength={10}
-            placeholder="비밀번호를 입력하세요. / 최소 4자 ~ 최대 10자"
-            value={pw}
-            autoComplete="on"
-            onChange={(e) => setPw(e.target.value)}
-          />
+          <div className="loginId">
+            <label>아이디</label>
+            <input
+              type="text"
+              required
+              placeholder="아이디를 입력하세요."
+              value={userID}
+              onChange={(e) => setUserId(e.target.value)}
+            />
+          </div>
+          <div className="loginPw">
+            <label>비밀번호</label>
+            <input
+              type={passwordType.type}
+              required
+              minLength={4}
+              maxLength={10}
+              placeholder="비밀번호를 입력하세요. / 최소 4자 ~ 최대 10자"
+              value={pw}
+              autoComplete="on"
+              onChange={(e) => setPw(e.target.value)}
+            />
+            <div onClick={handlePasswordType} className="pwIcon">
+              {passwordType.visible ? <RiEye2Line /> : <RiEyeCloseLine />}
+            </div>
+          </div>
           <span className="flex justify-end">아이디 찾기 | 비밀번호 찾기</span>
           <button onClick={(e) => SignInFunc(e)}>로그인</button>
           <button
