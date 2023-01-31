@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import * as s from "../styles/Styles";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { RiArrowDownSFill } from "react-icons/ri";
 import StarRating from "./StarRating";
 import axios from "axios";
 
 const CateNav = ({ categorys }) => {
-  const navigator = useNavigate();
   const [gages, setGages] = useState([]);
+  const [refresh, setRefresh] = useState([]);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -30,7 +30,6 @@ const CateNav = ({ categorys }) => {
     } else {
       const filterData = gages.filter((gage) => gage.siName === search);
       setGages(filterData);
-      console.log(filterData);
     }
     setSearch("");
   };
@@ -41,9 +40,11 @@ const CateNav = ({ categorys }) => {
   };
 
   const cateSearch = (i) => {
-    const filterData = gages.filter((gage) => gage.scName === i);
+    axios
+      .get("http://192.168.0.9:9244/api/alllist")
+      .then((res) => setRefresh(res.data.list));
+    const filterData = refresh.filter((gage) => gage.scName === i);
     setGages(filterData);
-    console.log(filterData);
   };
 
   const reFresh = async () => {
@@ -70,6 +71,7 @@ const CateNav = ({ categorys }) => {
         <button
           className="cateAll-bt"
           onClick={() => {
+            reFresh();
             reFresh();
           }}
         >
