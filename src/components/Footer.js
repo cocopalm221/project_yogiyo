@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <div className="flex justify-center items-center w-full my-16">

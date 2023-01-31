@@ -2,25 +2,13 @@ import React, { useState, useEffect } from "react";
 import * as s from "../styles/Styles";
 import { Link, useNavigate } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
-import StarRating from "./StarRating";
-import axios from "axios";
+import { AiFillStar } from "react-icons/ai";
 
-const CateNav = ({ categorys }) => {
+const CateNav = ({ banners }) => {
   const navigator = useNavigate();
-  const [gages, setGages] = useState([]);
-
-  useEffect(() => {
-    const fetchGage = async () => {
-      try {
-        const result = await axios.get("http://192.168.0.9:9244/api/alllist");
-        setGages(result.data.list);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchGage();
-  }, []);
-
+  const gostore = () => {
+    navigator("/storeinfo/12");
+  };
   return (
     <>
       <s.catenav>
@@ -33,51 +21,52 @@ const CateNav = ({ categorys }) => {
           <FiSearch className="inline mb-1 mr-1" />
           전체보기
         </button>
-        {categorys.slice(0, 6).map((category) => (
-          <li key={category.scSeq}>
+        {banners.slice(0, 8).map((banner) => (
+          <li key={banner.id}>
             <Link to="/">
-              <button>{category.scName}</button>
+              <button>{banner.title}</button>
             </Link>
           </li>
         ))}
       </s.catenav>
-      <button
-        type="button"
-        className="py-2 px-4 border-black border rounded-xl"
-      >
-        정렬 기준 선택
-      </button>
+      <div className="flex justify-end mr-48">
+        <button
+          type="button"
+          className="py-2 px-4 border-black border rounded-xl flex justify-end mt-3 mb-2 "
+        >
+          정렬 기준 선택
+        </button>
+      </div>
       <s.stores>
-        {gages.map((gage) => (
-          <Link to = {`/storeinfo/${gage.siSeq}`}>
-          <s.storeinner key={gage.siSeq}>
-            <div className="store-inner">
-              <img src={gage.siUri} alt="" />
+        {banners.slice(0, 10).map((banner) => (
+          <s.storeinner key={banner.id}>
+            <div className="store-inner" onClick={gostore}>
+              <img src={banner.url} alt="" />
               <div className="storeinfo">
-                <span className="title">{gage.siName}</span>
+                <span className="title">파스토보이{banner.id}</span>
                 <div>
                   <span className="text-lg text-yellow-400 drop-shadow-sm shadow-black">
-                    <StarRating starRatio={gage.scSeq} />
+                    <AiFillStar className="inline text-yellow-400 text-xl mr-2" />
+                    5.0
                   </span>
                   <span className="before:content-['|'] before:mx-2.5">
-                    {gage.reviewcnt}
+                    리뷰 600
                   </span>
                   <span className="before:content-['|'] before:mx-2.5">
-                    사장님댓글 {gage.ownerReviewCnt}
+                    사장님댓글 6600
                   </span>
                   <br />
                   <span className="text-rose-600">요기서결제</span>
                   <span className="before:content-['|'] before:mx-2.5 text-gray-500">
-                    {gage.siMinOrderPrice}원 이상 배달
+                    5000원 이상 배달
                   </span>
                   <span className="before:content-['|'] before:mx-2.5 text-gray-500">
-                    {gage.diTime}
+                    25~35분
                   </span>
                 </div>
               </div>
             </div>
           </s.storeinner>
-          </Link>
         ))}
       </s.stores>
     </>

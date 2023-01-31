@@ -3,19 +3,19 @@ import CateNav from "../components/CateNav";
 import axios from 'axios';
 
 const MainNav = () => {
-  const [categorys, setCategory] = useState([]);
+  const [banners, setBanners] = useState([]);
 
   useEffect(()=>{
-    const fetchCate = async () => {
-      const response = await axios.get('http://192.168.0.9:9244/mypage/storecate?page=0');
-      setCategory(response.data.storeCate.storeCate);
+    const fetchBanner = async () => {
+      const response = await axios.get('https://jsonplaceholder.typicode.com/photos');
+      setBanners(response.data);
     }
-    fetchCate();
+    fetchBanner();
   },[])
   
   return (
     <>
-    <CateNav categorys={categorys}/>
+    <CateNav banners={banners}/>
     </>
   );
 };
