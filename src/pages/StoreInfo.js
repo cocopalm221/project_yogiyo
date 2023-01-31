@@ -58,13 +58,6 @@ const StoreInfo = () => {
     storeData.length !== 0 &&
     storeData.find((data) => data.siSeq === parseInt(storeId));
 
-  // console.log(findStore);
-  // console.log(storeData);
-  // console.log(menuData);
-  // console.log(infoData);
-  // console.log(reviewData);
-
-  // console.log(findStore);
   useEffect(() => {
     fetchData();
   }, []);
