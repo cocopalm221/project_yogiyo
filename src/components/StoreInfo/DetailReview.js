@@ -17,7 +17,6 @@ const DetailReview = ({ reviewData, findStore }) => {
     return average.toFixed(1);
   }
 
-  console.log(findStore);
   return (
     <>
       <div className="flex justify-center items-center border border-t-0 py-7">
