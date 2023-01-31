@@ -194,63 +194,6 @@ export const storeinner = styled.div`
   }
 `;
 
-//Login
-export const login = styled.form`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  .inputs {
-    display: flex;
-    flex-direction: column;
-    .id {
-      display: flex;
-      input {
-        background: #eee;
-        padding: 16px;
-        margin: 8px 0;
-        width: 100%;
-        border: 0;
-        outline: none;
-        border-radius: 20px;
-        box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
-      }
-    }
-    .password {
-      display: flex;
-      input {
-        background: #eee;
-        padding: 16px;
-        margin: 8px 0;
-        width: 100%;
-        border: 0;
-        outline: none;
-        border-radius: 20px;
-        box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
-      }
-    }
-  }
-
-  .login {
-    button {
-      border-radius: 20px;
-      border: none;
-      outline: none;
-      font-size: 12px;
-      font-weight: bold;
-      padding: 15px 45px;
-      margin: 14px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
-    }
-  }
-`;
-
 // Payment
 export const payment = styled.form`
   display: flex;
