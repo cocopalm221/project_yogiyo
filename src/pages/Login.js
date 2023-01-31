@@ -26,9 +26,13 @@ const Login = () => {
       miPwd: pw,
     };
 
+    let header = {
+      Authorization: ""
+    }
+
     try {
       axios
-        .post("http://192.168.0.9:9244/member/login", body)
+        .post("http://192.168.0.9:9244/member/login", body, header)
         .then((response) => {
           console.log(response);
           if (response.data.status) {

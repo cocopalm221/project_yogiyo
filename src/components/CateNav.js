@@ -8,6 +8,7 @@ import axios from "axios";
 const CateNav = ({ categorys }) => {
   const navigator = useNavigate();
   const [gages, setGages] = useState([]);
+  const [refresh, setRefresh] = useState([]);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -15,8 +16,6 @@ const CateNav = ({ categorys }) => {
       try {
         const result = await axios.get("http://192.168.0.9:9244/api/alllist");
         setGages(result.data.list);
-
-        
       } catch (error) {
         console.log(error);
       }
@@ -42,9 +41,13 @@ const CateNav = ({ categorys }) => {
   };
 
   const cateSearch = (i) => {
-    const filterData = gages.filter((gage) => gage.scName === i );
+    axios
+      .get("http://192.168.0.9:9244/api/alllist")
+      .then((res) => setRefresh(res.data.list));
+    const filterData = refresh.filter((gage) => gage.scName === i);
     setGages(filterData);
     console.log(filterData);
+    console.log(gages);
   };
 
   const reFresh = async () => {
@@ -72,7 +75,7 @@ const CateNav = ({ categorys }) => {
         <button
           className="cateAll-bt"
           onClick={() => {
-           reFresh();
+            reFresh();
           }}
         >
           <FiSearch className="inline mb-1 mr-1" />
