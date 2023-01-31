@@ -15,6 +15,8 @@ const CateNav = ({ categorys }) => {
       try {
         const result = await axios.get("http://192.168.0.9:9244/api/alllist");
         setGages(result.data.list);
+
+        
       } catch (error) {
         console.log(error);
       }
@@ -27,7 +29,7 @@ const CateNav = ({ categorys }) => {
     if (search === null || search === "") {
       alert("검색어를 입력하세요");
     } else {
-      const filterData = gages.filter((gage) => gage.siName == search);
+      const filterData = gages.filter((gage) => gage.siName === search);
       setGages(filterData);
       console.log(filterData);
     }
@@ -39,11 +41,16 @@ const CateNav = ({ categorys }) => {
     setSearch(e.target.value);
   };
 
-  const cateSearch = (go) => {
-    console.log(go);
-    const filterData = gages.filter((gage) => gage.scName === go );
+  const cateSearch = (i) => {
+    const filterData = gages.filter((gage) => gage.scName === i );
     setGages(filterData);
     console.log(filterData);
+  };
+
+  const reFresh = async () => {
+    await axios
+      .get("http://192.168.0.9:9244/api/alllist")
+      .then((res) => setGages(res.data.list));
   };
 
   return (
@@ -61,16 +68,17 @@ const CateNav = ({ categorys }) => {
             Search
           </button>
         </form>
+
         <button
           className="cateAll-bt"
           onClick={() => {
-            navigator("/");
+           reFresh();
           }}
         >
           <FiSearch className="inline mb-1 mr-1" />
           전체보기
         </button>
-        {categorys.slice(0, 6).map((category) => (
+        {categorys.map((category) => (
           <li key={category.scSeq}>
             <button onClick={() => cateSearch(category.scName)}>
               {category.scName}
