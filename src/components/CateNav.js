@@ -8,6 +8,7 @@ import axios from "axios";
 const CateNav = ({ categorys }) => {
   const navigator = useNavigate();
   const [gages, setGages] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchGage = async () => {
@@ -21,9 +22,45 @@ const CateNav = ({ categorys }) => {
     fetchGage();
   }, []);
 
+  const onSearch = (e) => {
+    e.preventDefault();
+    if (search === null || search === "") {
+      alert("검색어를 입력하세요");
+    } else {
+      const filterData = gages.filter((gage) => gage.siName == search);
+      setGages(filterData);
+      console.log(filterData);
+    }
+    setSearch("");
+  };
+
+  const onChangeSearch = (e) => {
+    e.preventDefault();
+    setSearch(e.target.value);
+  };
+
+  const cateSearch = (go) => {
+    console.log(go);
+    const filterData = gages.filter((gage) => gage.scName === go );
+    setGages(filterData);
+    console.log(filterData);
+  };
+
   return (
     <>
       <s.catenav>
+        <form onSubmit={(e) => onSearch(e)}>
+          <input
+            type="text"
+            value={search}
+            placeholder="제목을 입력하세요"
+            onChange={onChangeSearch}
+            className="form"
+          />
+          <button type="submit" className="formbt">
+            Search
+          </button>
+        </form>
         <button
           className="cateAll-bt"
           onClick={() => {
@@ -35,9 +72,9 @@ const CateNav = ({ categorys }) => {
         </button>
         {categorys.slice(0, 6).map((category) => (
           <li key={category.scSeq}>
-            <Link to="/">
-              <button>{category.scName}</button>
-            </Link>
+            <button onClick={() => cateSearch(category.scName)}>
+              {category.scName}
+            </button>
           </li>
         ))}
       </s.catenav>
@@ -49,34 +86,34 @@ const CateNav = ({ categorys }) => {
       </button>
       <s.stores>
         {gages.map((gage) => (
-          <Link to = {`/storeinfo/${gage.siSeq}`}>
-          <s.storeinner key={gage.siSeq}>
-            <div className="store-inner">
-              <img src={gage.siUri} alt="" />
-              <div className="storeinfo">
-                <span className="title">{gage.siName}</span>
-                <div>
-                  <span className="text-lg text-yellow-400 drop-shadow-sm shadow-black">
-                    <StarRating starRatio={gage.scSeq} />
-                  </span>
-                  <span className="before:content-['|'] before:mx-2.5">
-                    {gage.reviewcnt}
-                  </span>
-                  <span className="before:content-['|'] before:mx-2.5">
-                    사장님댓글 {gage.ownerReviewCnt}
-                  </span>
-                  <br />
-                  <span className="text-rose-600">요기서결제</span>
-                  <span className="before:content-['|'] before:mx-2.5 text-gray-500">
-                    {gage.siMinOrderPrice}원 이상 배달
-                  </span>
-                  <span className="before:content-['|'] before:mx-2.5 text-gray-500">
-                    {gage.diTime}
-                  </span>
+          <Link to={`/storeinfo/${gage.siSeq}`}>
+            <s.storeinner key={gage.siSeq}>
+              <div className="store-inner">
+                <img src={gage.siUri} alt="" />
+                <div className="storeinfo">
+                  <span className="title">{gage.siName}</span>
+                  <div>
+                    <span className="text-lg text-yellow-400 drop-shadow-sm shadow-black">
+                      <StarRating starRatio={gage.scSeq} />
+                    </span>
+                    <span className="before:content-['|'] before:mx-2.5">
+                      {gage.reviewcnt}
+                    </span>
+                    <span className="before:content-['|'] before:mx-2.5">
+                      사장님댓글 {gage.ownerReviewCnt}
+                    </span>
+                    <br />
+                    <span className="text-rose-600">요기서결제</span>
+                    <span className="before:content-['|'] before:mx-2.5 text-gray-500">
+                      {gage.siMinOrderPrice}원 이상 배달
+                    </span>
+                    <span className="before:content-['|'] before:mx-2.5 text-gray-500">
+                      {gage.diTime}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </s.storeinner>
+            </s.storeinner>
           </Link>
         ))}
       </s.stores>
