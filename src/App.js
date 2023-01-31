@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "./components/Header";
+import Header from "./components/layout/Header";
 import Main from "./Main";
 import MainNav from "./pages/MainNav";
 import Login from "./pages/Login";
 import Payment from "./pages/Payment";
 import SignUp from "./pages/SignUp";
-import Footer from "./components/Footer";
+import Footer from "./components/layout/Footer";
 import StoreInfo from "./pages/StoreInfo";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
