@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Post from "../components/Post";
+import Post from "../util/Post";
 import * as s from "../styles/Styles";
 
 import { BsFillCreditCardFill } from "react-icons/bs";

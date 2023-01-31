@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import SignDiv from "../styles/SignupCss";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
-import Post from "../components/Post";
+import Post from "../util/Post";
 
 const SignUp = () => {
-  const navigate = useNavigate();
-
   const [userId, setUserId] = useState("");
   const [nickName, setNickName] = useState("");
   const [email, setEmail] = useState("");

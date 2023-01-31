@@ -3,9 +3,9 @@ import { useNavigate } from "react-router";
 import { FiSearch } from "react-icons/fi";
 import { FiCompass } from "react-icons/fi";
 import { FaUser } from "react-icons/fa";
-import * as s from "../styles/Styles";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/userslice";
+import * as s from '../styles/Styles';
 
 const Header = () => {
   const user = useSelector((state) => state.userInfo);
