@@ -51,8 +51,19 @@ const LoginDiv = styled.div`
       font-size: 1.5rem;
       font-weight: 600;
     }
-    span {
+    .find {
+      display: flex;
+      justify-content: flex-end;
       margin-bottom: 50px;
+      .findBt {
+        width: 110px;
+        color: #000;
+        background: none;
+        padding: 0;
+        border: 0;
+        margin: 0;
+        font-weight: 500;
+      }
     }
     button {
       width: 200px;
