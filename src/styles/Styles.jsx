@@ -138,8 +138,48 @@ export const bannersList = styled.ul`
 export const sortbt = styled.div`
   .sort-down {
     position: relative;
-    min-width: 150px;
-    box-shadow: 0 14px 15px 0 #000000;
+    width: 200px;
+    margin: 30px 338px 30px auto;
+    box-shadow: 0 4px 5px 0 #00000026;
+    #dropdown {
+      left: 0;
+      visibility: hidden;
+      position: absolute;
+    }
+    .dropdownLabel {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px;
+    }
+    .downlist {
+      display: none;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      background: white;
+      box-shadow: 0 4px 5px 0 #00000026;
+    }
+    #dropdown:checked + label + div {
+      display: block;
+      border-top: 1px solid #00000026;
+    }
+    .caretIcon {
+      font-size: 1.5rem;
+      color: #fa0050;
+      transition: transform 250ms ease-out;
+    }
+    #dropdown:checked + label > .caretIcon {
+      transform: rotate(-180deg);
+    }
+    .downlist ul {
+      list-style-type: none;
+      padding: 12px;
+      margin: 0;
+    }
+    .downlist ul li {
+      margin: 0.8rem 0;
+      cursor: pointer;
+    }
   }
 `;
 export const catenav = styled.ul`
