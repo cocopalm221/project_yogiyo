@@ -21,7 +21,7 @@ const cartSlice = createSlice({
       }
     },
     onDelete(state, action) {
-      const index = state.findIndex((item) => item.id === action.payload);
+      const index = state.findIndex((item) => item.key === action.payload);
       state.splice(index, 1);
     },
     allDelete(state) {

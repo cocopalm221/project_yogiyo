@@ -9,6 +9,7 @@ import DetailMain from "../components/StoreInfo/DetailMain";
 import DetailReview from "../components/StoreInfo/DetailReview";
 import DetailInfo from "../components/StoreInfo/DetailInfo";
 import convertToComma from "../util/comma";
+import { useSelector } from "react-redux";
 
 const StoreInfo = () => {
   const [storeAllData, setStoreAllData] = useState([]);
@@ -67,6 +68,7 @@ const StoreInfo = () => {
     fetchData();
   }, []);
 
+  const cart = useSelector((state) => state.cart);
   return (
     <section className="flex gap-5 max-w-7xl mx-auto mb-2 mt-8">
       <section className="md:w-8/12 w-full">
@@ -130,7 +132,12 @@ const StoreInfo = () => {
         </div>
         {/* main */}
         <div>
-          <DetailTabMenu tabCount={tabCount} setTabCount={setTabCount} />
+          <DetailTabMenu
+            tabCount={tabCount}
+            setTabCount={setTabCount}
+            menuData={menuData}
+            reviewData={reviewData}
+          />
           <div className={tabCount === 0 ? "block" : "hidden"}>
             <DetailMain
               menuData={menuData}

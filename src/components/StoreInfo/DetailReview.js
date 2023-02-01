@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { ImStarFull } from "react-icons/im";
 import { TbMessageCircle2 } from "react-icons/tb";
+import { useSelector } from "react-redux";
 import timeForToday from "../../util/date";
 import getAverage from "../../util/getAverage";
 import Modal from "../Modal";
@@ -21,6 +22,8 @@ const DetailReview = ({ reviewData, storeData }) => {
   const tasteScore = reviewData.map((data) => data.reTasteScore);
   const quantityScore = reviewData.map((data) => data.reQuantityScore);
   const deliveryScore = reviewData.map((data) => data.reDeliveryScore);
+
+  const user = useSelector((state) => state.userInfo);
 
   return (
     <>
@@ -50,9 +53,11 @@ const DetailReview = ({ reviewData, storeData }) => {
           <span className="text-[#999] mx-1">I</span>
           사장님댓글 <strong>{storeData.ownerReviewCnt ?? 0}</strong>개
         </p>
-        <button className="border p-2" onClick={openModal}>
-          리뷰작성하기
-        </button>
+        {user.miSeq && (
+          <button className="border p-2" onClick={openModal}>
+            리뷰작성하기
+          </button>
+        )}
       </div>
       <div>
         {/* ul map */}

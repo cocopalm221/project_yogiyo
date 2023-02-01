@@ -246,10 +246,10 @@ const ListItem = ({ menuItem, menuData, storeData }) => {
                     pmName: pmList,
                     // 총주문금액
                     totalPrice: totalPrice,
-                    // 개당가격
-                    perPrice: totalPrice / goodCount,
                     // 수량
                     goodCount: goodCount,
+                    // 개당가격
+                    perPrice: totalPrice / goodCount,
                     // 가게 이름
                     siName: storeData.siName,
                   })

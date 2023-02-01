@@ -1,6 +1,8 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 import { ImStarFull } from "react-icons/im";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import StarRating from "../StarRating";
 
@@ -8,10 +10,14 @@ const ReviewForm = ({ closeModal, storeData }) => {
   const [tClicked, setTClicked] = useState([false, false, false, false, false]);
   const [dClicked, setDClicked] = useState([false, false, false, false, false]);
   const [qClicked, setQClicked] = useState([false, false, false, false, false]);
+  const [text, setText] = useState("");
   const tasteScore = [0, 1, 2, 3, 4];
   const deliveryScore = [0, 1, 2, 3, 4];
   const quantityScore = [0, 1, 2, 3, 4];
 
+  const user = useSelector((state) => state.userInfo);
+
+  console.log(user.miSeq);
   const handleStarClick = (arr, index, type) => {
     let clickStates = [...arr];
     for (let i = 0; i < 5; i++) {
@@ -25,11 +31,27 @@ const ReviewForm = ({ closeModal, storeData }) => {
   let tScore = tClicked.filter(Boolean).length;
   let qScore = qClicked.filter(Boolean).length;
   let dScore = dClicked.filter(Boolean).length;
-  let average = ((tScore + qScore + dScore) / 3).toFixed(1);
-  console.log(average);
+  let average = Math.round((tScore + qScore + dScore) / 3);
 
-  // console.log(tScore, qScore, dScore);
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let body = {
+      score: average,
+      content: text,
+      oiSeq: user.miSeq,
+      tasteScore: tScore,
+      quantityScore: qScore,
+      deliveryScore: dScore,
+    };
+    try {
+      axios.put(
+        `http://192.168.0.114:9244/review/write?miSeq=${user.miSeq}`,
+        body
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="text-center">
       <header className="relative flex items-center justify-between h-12 bg-[#fa0050] text-white px-4 font-bold text-lg">
@@ -88,12 +110,17 @@ const ReviewForm = ({ closeModal, storeData }) => {
           </RatingBox>
         </div>
       </section>{" "}
-      <form>
-        <input
-          type="text"
-          placeholder="음식에 대한 솔직한 리뷰를 남겨주세요"
-          className="w-11/12 p-4 h-[200px] mt-10 text-xl outline-none border rounded"
-        />
+      <form onSubmit={handleSubmit}>
+        <textarea
+          className="w-11/12 p-4 h-[200px] mt-10 text-xl outline-none border rounded resize-none"
+          value={text}
+          onChange={(e) => {
+            setText(e.target.value);
+          }}
+        ></textarea>
+        <button className="bg-brand w-11/12 mt-4 py-3 rounded-lg text-white">
+          작성
+        </button>
       </form>
     </div>
   );
