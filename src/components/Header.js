@@ -4,13 +4,15 @@ import { FiSearch } from "react-icons/fi";
 import { FiCompass } from "react-icons/fi";
 import { FaUser } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
+import { DELETE_TOKEN } from "../store/Auth";
 import { logout } from "../store/userslice";
-import * as s from '../styles/Styles';
+import * as s from "../styles/Styles";
 
 const Header = () => {
   const user = useSelector((state) => state.userInfo);
   const dispatch = useDispatch();
   const [loginCheck, setLoginCheck] = useState(1);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user.miStatus === 0) {
@@ -20,7 +22,19 @@ const Header = () => {
     }
   }, [user.miStatus]);
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    logout();
+  }, []);
+
+  const Logout = () => {
+    const { accessToken } = useSelector((state) => state.accessToken);
+
+      dispatch(logout())
+      dispatch(DELETE_TOKEN());
+      return navigate("/");   
+  };
+
+  // 해당 컴포넌트가 요청된 후 한 번만 실행되면 되기 때문에 useEffect 훅을 사용
 
   return (
     <div className="header">
@@ -58,7 +72,7 @@ const Header = () => {
               로그인
             </button>
           ) : (
-            <button className="login" onClick={() => dispatch(logout())}>
+            <button className="login" onClick={() => logout()}>
               로그아웃
             </button>
           )}
