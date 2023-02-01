@@ -25,14 +25,15 @@ const userSlice = createSlice({
       state.miSeq = action.payload.miSeq;
       state.miStatus = action.payload.miStatus;
     },
+    
     logout: (state) => {
-      state.miAddress = "";
-      state.miEmail = "";
-      state.miId = "";
-      state.miNickname = "";
-      state.miPhone = "";
-      state.miPwd = "";
-      state.miSeq = "";
+      state.miAddress = null;
+      state.miEmail = null;
+      state.miId = null;
+      state.miNickname = null;
+      state.miPhone = null;
+      state.miPwd = null;
+      state.miSeq = null;
       state.miStatus = 1;
     },
   },

@@ -22,15 +22,10 @@ const Header = () => {
     }
   }, [user.miStatus]);
 
-  useEffect(() => {
-    logout();
-  }, []);
-
-  const Logout = () => {
-    const { accessToken } = useSelector((state) => state.accessToken);
-
+  const signout = () => {
+    // const { accessToken } = useSelector((state) => state.accessToken);
       dispatch(logout())
-      dispatch(DELETE_TOKEN());
+      // dispatch(DELETE_TOKEN());
       return navigate("/");   
   };
 
@@ -72,7 +67,7 @@ const Header = () => {
               로그인
             </button>
           ) : (
-            <button className="login" onClick={() => logout()}>
+            <button className="login" onClick={() => signout()}>
               로그아웃
             </button>
           )}

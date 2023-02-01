@@ -26,3 +26,32 @@ export const tokenSlice = createSlice({
 export const { SET_TOKEN, DELETE_TOKEN } = tokenSlice.actions;
 
 export default tokenSlice.reducer;
+
+
+
+// export const authSlice = createSlice({
+//     name: 'auth',
+//     initialState: {
+//       user: null,
+//       token:null
+//     },
+//     reducers: {
+//       setCredential: (state, action) => {
+//         const {user, accessToken} = action.payload
+//         state.user = user;
+//         state.token = accessToken;
+//       },
+//       logout: (state, action) => {
+//         state.user = null;
+//         state.token = null;
+//       },
+//     },
+//   });
+  
+  
+//   export const { setCredential, logout } = userSlice.actions;
+  
+//   export const selectCurrentUser = (state) => state.auth.user;
+//   export const selectCurrentToken = (state) => state.auth.token;
+  
+//   export default userSlice.reducer;
