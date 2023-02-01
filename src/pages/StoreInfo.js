@@ -46,10 +46,9 @@ const StoreInfo = () => {
         }
       );
 
-      const resultRepMenu = await axios.get(
-        "http://192.168.0.9:9244/menu/?siseq=12",
-        { params }
-      );
+      const resultRepMenu = await axios.get("http://192.168.0.9:9244/menu/", {
+        params,
+      });
       setStoreAllData(resultStore.data.list);
       setMenuData(resultMenu.data.list);
       setInfoData(resultInfo.data.result.list);
@@ -60,8 +59,6 @@ const StoreInfo = () => {
     }
   };
 
-  // console.log(repMenuData);
-  // console.log(menuData);
   const storeData =
     storeAllData.length !== 0 &&
     storeAllData.find((data) => data.siSeq === parseInt(storeId));
@@ -69,6 +66,7 @@ const StoreInfo = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
   return (
     <section className="flex gap-5 max-w-7xl mx-auto mb-2 mt-8">
       <section className="md:w-8/12 w-full">
@@ -134,7 +132,11 @@ const StoreInfo = () => {
         <div>
           <DetailTabMenu tabCount={tabCount} setTabCount={setTabCount} />
           <div className={tabCount === 0 ? "block" : "hidden"}>
-            <DetailMain menuData={menuData} />
+            <DetailMain
+              menuData={menuData}
+              storeData={storeData}
+              repMenuData={repMenuData}
+            />
           </div>
           <div className={tabCount === 1 ? "block" : "hidden"}>
             <DetailReview reviewData={reviewData} storeData={storeData} />
