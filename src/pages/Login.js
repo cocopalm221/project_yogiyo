@@ -3,6 +3,7 @@ import LoginDiv from "../styles/LoginCss";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../store/userslice";
+import { SET_TOKEN } from '../store/Auth';
 import axios from "axios";
 import { RiEyeCloseLine } from "react-icons/ri";
 import { RiEye2Line } from "react-icons/ri";
@@ -28,19 +29,15 @@ const Login = () => {
       miPwd: pw,
     };
 
-    let header = {
-      Authorization: "",
-    };
-
     try {
       axios
-        .post("http://192.168.0.9:9244/member/login", body, header)
+        .post("http://192.168.0.9:9244/member/login", body)
         .then((response) => {
           console.log(response);
           if (response.data.status) {
             alert("로그인 성공");
-            console.log(response.data.loginUser);
             dispatch(login(response.data.loginUser));
+            dispatch(SET_TOKEN(response.json.access_token));
             navigate("/");
           } else {
             alert("로그인 실패");
