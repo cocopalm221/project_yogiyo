@@ -11,7 +11,8 @@ import DetailInfo from "../components/StoreInfo/DetailInfo";
 import convertToComma from "../util/comma";
 
 const StoreInfo = () => {
-  const [storeData, setStoreData] = useState([]);
+  const [storeAllData, setStoreAllData] = useState([]);
+  const [repMenuData, setRepMenuData] = useState([]);
   const [menuData, setMenuData] = useState([]);
   const [reviewData, setReviewData] = useState([]);
   const [infoData, setInfoData] = useState([]);
@@ -45,18 +46,25 @@ const StoreInfo = () => {
         }
       );
 
-      setStoreData(resultStore.data.list);
+      const resultRepMenu = await axios.get(
+        "http://192.168.0.9:9244/menu/?siseq=12",
+        { params }
+      );
+      setStoreAllData(resultStore.data.list);
       setMenuData(resultMenu.data.list);
       setInfoData(resultInfo.data.result.list);
       setReviewData(resultReview.data.result.list);
+      setRepMenuData(resultRepMenu.data.list);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const findStore =
-    storeData.length !== 0 &&
-    storeData.find((data) => data.siSeq === parseInt(storeId));
+  // console.log(repMenuData);
+  // console.log(menuData);
+  const storeData =
+    storeAllData.length !== 0 &&
+    storeAllData.find((data) => data.siSeq === parseInt(storeId));
 
   useEffect(() => {
     fetchData();
@@ -66,24 +74,24 @@ const StoreInfo = () => {
       <section className="md:w-8/12 w-full">
         {/* top */}
         <div className="border rounded-t-xl">
-          <p className="border-b p-4">{findStore.siName}</p>
+          <p className="border-b p-4">{storeData.siName}</p>
           <div className="flex gap-5 py-2.5">
             <img
-              src={findStore.siUri}
-              alt={findStore.siName}
+              src={storeData.siUri}
+              alt={storeData.siName}
               className="w-28 ml-2.5"
             />
             <div>
               <div className="flex items-center gap-2 pt-1">
-                <StarRating starRatio={findStore.average ?? null} width={90} />
-                <p className="pt-1">{findStore.average}</p>
+                <StarRating starRatio={storeData.average ?? null} width={90} />
+                <p className="pt-1">{storeData?.average?.toFixed(1)}</p>
               </div>
               <div className="text-sm leading-relaxed text-[#999]">
                 {/* <p className="text-[#FA0050]">16,900원 이상 주문 시 할인</p> */}
                 <p>
                   최소주문금액{" "}
                   <span className="text-black">
-                    {convertToComma(findStore.siMinOrderPrice ?? 0)}원
+                    {convertToComma(storeData.siMinOrderPrice)}원
                   </span>
                 </p>
                 <p>
@@ -98,7 +106,7 @@ const StoreInfo = () => {
                 </p>
                 <p>
                   배달시간{" "}
-                  <span className="text-black">{findStore.diTime}</span>
+                  <span className="text-black">{storeData.diTime}</span>
                 </p>
               </div>
             </div>
@@ -129,16 +137,16 @@ const StoreInfo = () => {
             <DetailMain menuData={menuData} />
           </div>
           <div className={tabCount === 1 ? "block" : "hidden"}>
-            <DetailReview reviewData={reviewData} findStore={findStore} />
+            <DetailReview reviewData={reviewData} storeData={storeData} />
           </div>
           <div className={tabCount === 2 ? "block" : "hidden"}>
-            <DetailInfo infoData={infoData} findStore={findStore} />
+            <DetailInfo infoData={infoData} storeData={storeData} />
           </div>
         </div>
       </section>
       {/* cart */}
-      <section className="max-w-sm h-fit sticky top-2.5">
-        <Cart />
+      <section className="max-w-[370px] h-fit sticky top-2.5 min-w-[370px]">
+        <Cart storeData={storeData} />
       </section>
     </section>
   );

@@ -6,10 +6,13 @@ import { v4 as uuid } from "uuid";
 import Modal from "../Modal";
 import convertToComma from "../../util/comma";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addCart, addProduct } from "../../store/cartSlice";
 
-const ListItem = ({ menuItem }) => {
+const ListItem = ({ menuItem, menuData }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalVisibleId, setModalVisibleId] = useState("");
+  const dispatch = useDispatch();
 
   const openModal = (id) => {
     setModalVisible(true);
@@ -17,12 +20,13 @@ const ListItem = ({ menuItem }) => {
   };
 
   const closeModal = (e) => {
-    e.stopPropagation();
     setModalVisible(false);
     setModalVisibleId("");
     setGoodCount(1);
     setCheckList([]);
     setRadioList({});
+    setOptionPriceRadio({});
+    setOprionPriceCheck({});
   };
 
   // 전체 가격
@@ -60,6 +64,13 @@ const ListItem = ({ menuItem }) => {
     .map((price) => parseInt(price))
     .reduce((sum, value) => (sum += value), 0);
 
+  // console.log(radioList);
+  // console.log(checkList);
+  const pmList = [
+    ...Object.values(radioList),
+    ...Object.values(checkList),
+  ].toString();
+  // console.log(pmList);
   useEffect(() => {
     setTotalPrice((menuItem.mniPrice + priceRadio + priceCheck) * goodCount);
   }, [priceRadio, priceCheck, goodCount]);
@@ -174,6 +185,7 @@ const ListItem = ({ menuItem }) => {
                               <p className="pl-2">{pmItem.pmName}</p>
                             </label>
                           )}
+
                           {pmItem.pmPrice > 0 ? (
                             <span className="text-xs">
                               +{convertToComma(pmItem.pmPrice)}원
@@ -221,7 +233,24 @@ const ListItem = ({ menuItem }) => {
               e.preventDefault();
             }}
           >
-            <button className="bg-[#555] w-1/2 p-4">주문표에 추가</button>
+            {console.log(menuItem)}
+            <button
+              className="bg-[#555] w-1/2 p-4"
+              onClick={() => {
+                dispatch(
+                  addCart({
+                    mniSeq: menuItem.mniSeq,
+                    mniName: menuItem.mniName,
+                    pmName: pmList,
+                    totalPrice: totalPrice,
+                    goodCount: goodCount,
+                  })
+                );
+                closeModal();
+              }}
+            >
+              주문표에 추가
+            </button>
             <button className="bg-brand w-1/2">주문하기</button>
           </form>
         </Modal>

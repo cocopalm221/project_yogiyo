@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 import { CgCloseR } from "react-icons/cg";
 import { FaTrash } from "react-icons/fa";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import convertToComma from "../util/comma";
 import Modal from "./Modal";
 
-const Cart = () => {
+const Cart = ({ storeData }) => {
   const [cartModalVisible, setCartModalVisible] = useState(false);
+
+  const cart = useSelector((state) => state.cart);
 
   const openModal = () => {
     setCartModalVisible(true);
@@ -25,38 +29,55 @@ const Cart = () => {
       <section className="border rounded-t-xl overflow-hidden">
         <header className="bg-[#333] text-white p-3 flex items-center justify-between">
           주문표
-          <FaTrash
-            className="cursor-pointer hover:text-brand hover:scale-110"
-            onClick={openModal}
-          />
+          {cart.length > 0 && (
+            <FaTrash
+              className="cursor-pointer hover:text-brand hover:scale-110"
+              onClick={openModal}
+            />
+          )}
         </header>
-        {/* 장바구니 갯수 0 이면 ?  */}
-        {/* <div className="text-center py-14">
+        {cart.length === 0 && (
+          <div className="text-center py-14">
             <p>주문표에 담긴 메뉴가 없습니다.</p>
-          </div> */}
+          </div>
+        )}
+
         {/* 장바구니 0이 아니면  : */}
-        <div className="p-4 border-b">
-          <div className="pb-4">
-            <p>반마리&떡볶이: 뼈치킨, 후라이드, 홍익떡볶이</p>
-          </div>
-          <div className="flex font-bold justify-between items-center">
-            <div className="flex items-center text-2xl">
-              <AiOutlineMinusSquare className="cursor-pointer hover:text-brand" />
-              <p className="px-2 font-bold text-base">1</p>
-              <AiOutlinePlusSquare className="cursor-pointer hover:text-brand" />
+        {cart.length > 0 &&
+          cart.map((item) => (
+            <div className="p-4 border-b" key={item.mniSeq}>
+              <div className="pb-4">
+                <p>
+                  {item.mniName}
+                  {item.pmName && <span> : {item.pmName}</span>}
+                </p>
+              </div>
+              <div className="flex font-bold justify-between items-center">
+                <div className="flex items-center text-2xl">
+                  <AiOutlineMinusSquare className="cursor-pointer hover:text-brand" />
+                  <p className="px-2 font-bold text-base">1</p>
+                  <AiOutlinePlusSquare className="cursor-pointer hover:text-brand" />
+                </div>
+                <div className="flex items-center">
+                  <p className="mr-2">{convertToComma(item.totalPrice)}원</p>
+                  <CgCloseR
+                    size="24"
+                    className="cursor-pointer hover:text-brand"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="flex items-center">
-              <p className="mr-2">9,900원</p>
-              <CgCloseR size="24" className="cursor-pointer hover:text-brand" />
-            </div>
-          </div>
-        </div>
-        {/* 최소 주문 금액 이하면 */}
-        <div className="p-4 text-end text-sm">
+          ))}
+
+        {/* 총 가격이 최소 주문 금액 이하면 */}
+        {console.log(storeData)}
+        <div className="p-4 text-end text-sm border-t">
           <p>배달요금 2,000원 별도</p>
           <p className="text-[#999]"> (30,000원 이상 주문시 배달무료)</p>
         </div>
+
         {/* 장바구니 0이 아니면 */}
+
         <div className="border-t text-end p-2 bg-[#fff8eb] ">
           <p className="text-brand font-bold">합계: 9,900원</p>
         </div>
