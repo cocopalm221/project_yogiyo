@@ -5,17 +5,23 @@ import { FiSearch } from "react-icons/fi";
 import { RiArrowDownSFill } from "react-icons/ri";
 import StarRating from "./StarRating";
 import axios from "axios";
+import LoadingSpinner from "./LoadingSpinner";
 
 const CateNav = ({ categorys }) => {
   const [gages, setGages] = useState([]);
   const [refresh, setRefresh] = useState([]);
   const [search, setSearch] = useState("");
 
+  //loading
+  const [loading, setLoading] = useState(null);
+
   useEffect(() => {
+    setLoading(true);
     const fetchGage = async () => {
       try {
         const result = await axios.get("http://192.168.0.9:9244/api/alllist");
         setGages(result.data.list);
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -111,12 +117,12 @@ const CateNav = ({ categorys }) => {
                 <div className="storeinfo">
                   <span className="title">{gage.siName}</span>
                   <div>
-                    <span className="text-lg text-yellow-400 drop-shadow-sm shadow-black">
-                      <StarRating starRatio={gage.scSeq} />
+                    <span className="text-lg text-yellow-400 drop-shadow-sm shadow-black flex items-center gap-2">
+                      <StarRating starRatio={gage.average} />
+                      <p className="text-sm">{gage.average}</p>
                     </span>
-                    <span className="before:content-['|'] before:mx-2.5">
-                      {gage.reviewcnt}
-                    </span>
+                    {console.log(gage)}
+                    <span>리뷰 {gage.reviewcnt}</span>
                     <span className="before:content-['|'] before:mx-2.5">
                       사장님댓글 {gage.ownerReviewCnt}
                     </span>
@@ -135,6 +141,7 @@ const CateNav = ({ categorys }) => {
           </Link>
         ))}
       </s.stores>
+      {loading && <LoadingSpinner />}
     </>
   );
 };
