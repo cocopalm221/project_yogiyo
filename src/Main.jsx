@@ -36,6 +36,7 @@ const Main = () => {
         modules={[EffectCoverflow, Pagination, Navigation, Mousewheel]}
         slidesPerView={1}
         spaceBetween={30}
+        // mousewheel={true}
         pagination={{
           clickable: true,
         }}
