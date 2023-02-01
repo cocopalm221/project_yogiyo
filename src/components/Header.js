@@ -9,7 +9,7 @@ import { logout } from "../store/userslice";
 import * as s from "../styles/Styles";
 
 const Header = () => {
-  const user = useSelector((state) => state.userInfo);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [loginCheck, setLoginCheck] = useState(1);
   const navigate = useNavigate();

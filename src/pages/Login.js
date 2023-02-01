@@ -28,6 +28,7 @@ const Login = () => {
       miId: userID,
       miPwd: pw,
     };
+    let test;
 
     try {
       await axios
@@ -36,8 +37,8 @@ const Login = () => {
           if (response.data.status) {
             alert("로그인 성공");
             dispatch(login(response.data.loginUser));
+            console.log(response.data.loginUser);
             navigate("/");
-            dispatch(SET_TOKEN(response.data.json.access_token));
           } else {
             alert("로그인 실패");
             console.log(response.data.status);

@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  miAddress: "",
-  miEmail: "",
+  miSeq:"",
   miId: "",
-  miNickname: "",
-  miPhone: "",
   miPwd: "",
-  miSeq: "",
+  miEmail: "",
+  miPhone: "",
+  miNickname: "",
+  miAddress: "",
   miStatus: 1,
 };
 
@@ -16,13 +16,13 @@ const userSlice = createSlice({
   initialState: initialState,
   reducers: {
     login: (state, action) => {
-      state.miAddress = action.payload.miAddress;
-      state.miEmail = action.payload.miEmail;
-      state.miId = action.payload.miId;
-      state.miNickname = action.payload.miNickname;
-      state.miPhone = action.payload.miPhone;
-      state.miPwd = action.payload.miPwd;
       state.miSeq = action.payload.miSeq;
+      state.miId = action.payload.miId;
+      state.miPwd = action.payload.miPwd; 
+      state.miEmail = action.payload.miEmail;
+      state.miPhone = action.payload.miPhone;
+      state.miNickname = action.payload.miNickname;
+      state.miAddress = action.payload.miAddress;
       state.miStatus = action.payload.miStatus;
     },
     
@@ -40,4 +40,4 @@ const userSlice = createSlice({
 });
 
 export const { login, logout } = userSlice.actions;
-export default userSlice.reducer;
+export default userSlice;

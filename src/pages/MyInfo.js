@@ -5,7 +5,7 @@ import axios from "axios";
 import * as s from "../styles/Styles";
 
 const MyInfo = () => {
-  const user = useSelector((state) => state.userInfo);
+  const user = useSelector((state) => state.user);
   const [pw, setPw] = useState(user.miPwd);
   const [newpw, setNewpw] = useState("");
   const [checkNickname, setCheckNickname] = useState(user.miNickname);
