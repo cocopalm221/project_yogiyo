@@ -1,21 +1,26 @@
 import React from "react";
+import { useState } from "react";
 import { ImStarFull } from "react-icons/im";
 import { TbMessageCircle2 } from "react-icons/tb";
 import timeForToday from "../../util/date";
+import getAverage from "../../util/getAverage";
+import Modal from "../Modal";
 import StarRating from "../StarRating";
+import ReviewForm from "./ReviewForm";
 
-const DetailReview = ({ reviewData, findStore }) => {
+const DetailReview = ({ reviewData, storeData }) => {
+  const [reviewModalVisible, setReviewModalVisible] = useState(false);
+
+  const openModal = () => {
+    setReviewModalVisible(true);
+  };
+  const closeModal = () => {
+    setReviewModalVisible(false);
+  };
   const reScore = reviewData.map((data) => data.reScore);
   const tasteScore = reviewData.map((data) => data.reTasteScore);
   const quantityScore = reviewData.map((data) => data.reQuantityScore);
   const deliveryScore = reviewData.map((data) => data.reDeliveryScore);
-
-  function getAverage(arr) {
-    if (arr.length === 0) return 0;
-    const average = arr.reduce((sum, value) => sum + value, 0) / arr.length;
-
-    return average.toFixed(1);
-  }
 
   return (
     <>
@@ -39,12 +44,15 @@ const DetailReview = ({ reviewData, findStore }) => {
           </div>
         </div>
       </div>
-      <div className="border border-t-0 text-xs">
-        <p className="p-4">
-          리뷰 <strong>{findStore.reviewCnt ?? 0}</strong>개
+      <div className="flex items-center justify-between border border-t-0 text-xs px-4 py-2">
+        <p>
+          리뷰 <strong>{storeData.reviewCnt ?? 0}</strong>개
           <span className="text-[#999] mx-1">I</span>
-          사장님댓글 <strong>{findStore.ownerReviewCnt ?? 0}</strong>개
+          사장님댓글 <strong>{storeData.ownerReviewCnt ?? 0}</strong>개
         </p>
+        <button className="border p-2" onClick={openModal}>
+          리뷰작성하기
+        </button>
       </div>
       <div>
         {/* ul map */}
@@ -90,6 +98,17 @@ const DetailReview = ({ reviewData, findStore }) => {
             </ul>
           ))}
       </div>
+      {reviewModalVisible && (
+        <Modal
+          width={800}
+          height={900}
+          visible={reviewModalVisible}
+          top={50}
+          onClose={closeModal}
+        >
+          <ReviewForm closeModal={closeModal} storeData={storeData} />
+        </Modal>
+      )}
     </>
   );
 };

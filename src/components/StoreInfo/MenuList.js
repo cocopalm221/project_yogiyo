@@ -28,7 +28,11 @@ const MenuList = ({ list, index, menuData }) => {
         {menuData.map(
           (menuItem) =>
             list.mcName === menuItem.mcName && (
-              <ListItem menuItem={menuItem} key={menuItem.mniSeq} />
+              <ListItem
+                menuItem={menuItem}
+                key={menuItem.mniSeq}
+                menuData={menuData}
+              />
             )
         )}
       </ul>
