@@ -6,14 +6,17 @@ import Post from "../util/Post";
 
 const SignUp = () => {
   const [userId, setUserId] = useState("");
-  const [nickName, setNickName] = useState("");
-  const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
+  const [email, setEmail] = useState("");
+  const [nickName, setNickName] = useState("");
   const [pwCheck, setPwCheck] = useState("");
-  const [address, setAddress] = useState("");
+  // const [address, setAddress] = useState("");
   const [tel, setTel] = useState("");
+  const [enroll_company, setEnroll_company] = useState({
+    address: "",
+  });
 
-  const registFunc = (e) => {
+  const registFunc = async (e) => {
     e.preventDefault();
     if (!userId) {
       return alert("아이디를 입력하세요");
@@ -30,7 +33,7 @@ const SignUp = () => {
     if (!nickName) {
       return alert("닉네임을 입력하세요");
     }
-    if (!address) {
+    if (!enroll_company.address) {
       return alert("주소를 입력하세요");
     }
     if (!tel) {
@@ -42,7 +45,34 @@ const SignUp = () => {
     if (!idCheck) {
       return alert("아이디 중복확인을 하세요");
     }
+
+    e.preventDefault();
+    let body = {
+      miId: userId,
+      miPwd: setPw,
+      miEmail: email,
+      miPhone: tel,
+      miNickname: nickName,
+      miAddress: enroll_company.address,
+      miStatus: 0,
+    };
+
+    console.log(body);
+    try {
+      await axios
+        .put("http://192.168.0.9:9244/member/join", body)
+        .then((response) => {
+          if (response.data.status) {
+            alert(response.data.message);
+          } else {
+            alert("정보수정 실패");
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   const [idCheck, setIdCheck] = useState(false);
   const idCheckFn = (e) => {
     e.preventDefault();
@@ -69,9 +99,6 @@ const SignUp = () => {
       });
   };
 
-  const [enroll_company, setEnroll_company] = useState({
-    address: "",
-  });
   const [popup, setPopup] = useState(false);
   const handleInput = (e) => {
     setEnroll_company({
@@ -82,7 +109,7 @@ const SignUp = () => {
   const handleComplete = (e, data) => {
     e.preventDefault();
     setPopup(!popup);
-    setAddress(e.target.value);
+    setEnroll_company(e.target.value);
   };
 
   return (
