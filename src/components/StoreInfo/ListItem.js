@@ -239,10 +239,15 @@ const ListItem = ({ menuItem, menuData }) => {
               onClick={() => {
                 dispatch(
                   addCart({
+                    // 메뉴 키값
                     mniSeq: menuItem.mniSeq,
+                    // 메뉴이름(로제떡볶이1~2인분)
                     mniName: menuItem.mniName,
+                    // 플러스메뉴이름(순한맛,밀떢 같은거)
                     pmName: pmList,
+                    // 총주문금액
                     totalPrice: totalPrice,
+                    // 수량
                     goodCount: goodCount,
                   })
                 );
