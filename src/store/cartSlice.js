@@ -7,6 +7,7 @@ const cartSlice = createSlice({
     addCart(state, action) {
       state.push(action.payload);
     },
+
   },
 });
 

@@ -4,6 +4,7 @@ import * as s from "../styles/Styles";
 
 import { BsFillCreditCardFill } from "react-icons/bs";
 import { BsCashCoin } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 const Payment = () => {
   const [enroll_company, setEnroll_company] = useState({
@@ -11,6 +12,8 @@ const Payment = () => {
   });
   const [popup, setPopup] = useState(false);
   const [paySwitch, setpaySwitch] = useState(true);
+  const cart = useSelector((state) => state.cart);
+  console.log(cart);
 
   const handleInput = (e) => {
     setEnroll_company({
@@ -100,13 +103,16 @@ const Payment = () => {
       )}
 
       <div className="rightpay">
-        <div className="menulist">
-          <h1>주문내역</h1>
-          <div className="storename">신영남반점-2호점</div>
-          <div className="menu1 ml-2">새우간짜장 : 1개</div>
-          <div className="deliveryfee ml-2">배달료 : 5000</div>
-          <div className="totalpay ml-2">총 결제 금액 : 20000</div>
-        </div>
+        <h1>주문내역</h1>
+        {cart.map((item) => (
+          <div className="menulist" key={item.mniSeq}>
+            <div className="storename"></div>
+            <div className="menu1 ml-2">{item.goodCount}개</div>
+            <div className="deliveryfee ml-2">배달료 : 5000</div>
+            <div className="totalpay ml-2">{item.totalPrice} </div>
+          </div>
+        ))}
+
         <button className="clickpay" onClick={() => clickHandler()}>
           결제하기
         </button>
