@@ -24,6 +24,11 @@ const Cart = ({ storeData }) => {
     navigate("/payment");
   };
 
+  const perPrice = cart.map((item) => item.totalPrice);
+  // console.log(perPrice);
+  const totalMoney = perPrice.reduce((sum, value) => (sum += value), 0);
+  // console.log(totalMoney);
+
   return (
     <>
       <section className="border rounded-t-xl overflow-hidden">
@@ -36,54 +41,68 @@ const Cart = ({ storeData }) => {
             />
           )}
         </header>
-        {cart.length === 0 && (
-          <div className="text-center py-14">
-            <p>주문표에 담긴 메뉴가 없습니다.</p>
-          </div>
-        )}
-
-        {/* 장바구니 0이 아니면  : */}
-        {cart.length > 0 &&
-          cart.map((item) => (
-            <div className="p-4 border-b" key={item.mniSeq}>
-              <div className="pb-4">
-                <p>
-                  {item.mniName}
-                  {item.pmName && <span> : {item.pmName}</span>}
-                </p>
-              </div>
-              <div className="flex font-bold justify-between items-center">
-                <div className="flex items-center text-2xl">
-                  <AiOutlineMinusSquare className="cursor-pointer hover:text-brand" />
-                  <p className="px-2 font-bold text-base">1</p>
-                  <AiOutlinePlusSquare className="cursor-pointer hover:text-brand" />
-                </div>
-                <div className="flex items-center">
-                  <p className="mr-2">{convertToComma(item.totalPrice)}원</p>
-                  <CgCloseR
-                    size="24"
-                    className="cursor-pointer hover:text-brand"
-                  />
-                </div>
-              </div>
+        <section className="max-h-[300px] overflow-y-auto">
+          {cart.length === 0 && (
+            <div className="text-center py-14">
+              <p>주문표에 담긴 메뉴가 없습니다.</p>
             </div>
-          ))}
+          )}
 
+          {/* 장바구니 0이 아니면  : */}
+          {cart.length > 0 &&
+            cart.map((item, i) => (
+              <div className="p-4 border-b" key={i}>
+                <div className="pb-4">
+                  <p>
+                    {item.mniName}
+                    {item.pmName && <span> : {item.pmName}</span>}
+                  </p>
+                </div>
+                <div className="flex font-bold justify-between items-center">
+                  <div className="flex items-center text-2xl">
+                    <AiOutlineMinusSquare className="cursor-pointer hover:text-brand" />
+                    <p className="px-2 font-bold text-base">{item.goodCount}</p>
+                    <AiOutlinePlusSquare className="cursor-pointer hover:text-brand" />
+                  </div>
+                  <div className="flex items-center">
+                    <p className="mr-2">
+                      {convertToComma(
+                        (item.totalPrice / item.goodCount) * item.goodCount
+                      )}
+                      원
+                    </p>
+                    <CgCloseR
+                      size="24"
+                      className="cursor-pointer hover:text-brand"
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+        </section>
         {/* 총 가격이 최소 주문 금액 이하면 */}
-        {console.log(storeData)}
-        <div className="p-4 text-end text-sm border-t">
-          <p>배달요금 2,000원 별도</p>
-          <p className="text-[#999]"> (30,000원 이상 주문시 배달무료)</p>
-        </div>
+        {totalMoney < storeData.siMinOrderPrice && (
+          <p className="p-3 text-end text-sm border-t bg-[#f3f3f3]">
+            최소주문금액: {convertToComma(storeData.siMinOrderPrice)}원 이상
+          </p>
+        )}
 
         {/* 장바구니 0이 아니면 */}
 
-        <div className="border-t text-end p-2 bg-[#fff8eb] ">
-          <p className="text-brand font-bold">합계: 9,900원</p>
-        </div>
+        {totalMoney > 0 && (
+          <div className=" text-end p-2 bg-[#fff8eb]  border-t">
+            <p className="text-brand font-bold">
+              합계: {convertToComma(totalMoney)}원
+            </p>
+          </div>
+        )}
       </section>
       <button
-        className="block w-full mt-2 bg-brand text-white py-2.5 text-lg rounded"
+        className={`block w-full mt-2  py-2.5 text-lg rounded ${
+          totalMoney === 0
+            ? "pointer-events-none bg-[lightgray] text-white"
+            : "bg-brand text-white"
+        }`}
         onClick={gopayment}
       >
         주문하기
