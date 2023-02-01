@@ -3,9 +3,8 @@ import { useSelector } from "react-redux";
 import DetailSwiper from "./DetailSwiper";
 import MenuList from "./MenuList";
 
-const DetailMain = ({ menuData, storeData }) => {
+const DetailMain = ({ menuData, storeData, repMenuData }) => {
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
   const menuList = menuData.filter((item, i) => {
     return (
       menuData.findIndex((item2) => {
@@ -17,7 +16,7 @@ const DetailMain = ({ menuData, storeData }) => {
   return (
     <>
       <section className="border border-t-0">
-        <DetailSwiper />
+        <DetailSwiper repMenuData={repMenuData} />
       </section>
       <ul>
         {/* map current[index]*/}
