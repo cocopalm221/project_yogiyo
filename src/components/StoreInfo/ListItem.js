@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCart, addProduct } from "../../store/cartSlice";
 
-const ListItem = ({ menuItem, menuData }) => {
+const ListItem = ({ menuItem, menuData, storeData }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalVisibleId, setModalVisibleId] = useState("");
   const dispatch = useDispatch();
@@ -57,20 +57,20 @@ const ListItem = ({ menuItem, menuData }) => {
       setOprionPriceCheck({ ...optionPriceCheck, [pm]: 0 });
     }
   };
+  // 라디오버튼 가격
   let priceRadio = Object.values(optionPriceRadio)
     .map((price) => parseInt(price))
     .reduce((sum, value) => (sum += value), 0);
+  // 체크 버튼 가격
   let priceCheck = Object.values(optionPriceCheck)
     .map((price) => parseInt(price))
     .reduce((sum, value) => (sum += value), 0);
-
-  // console.log(radioList);
-  // console.log(checkList);
+  // 플러스메뉴 리스트
   const pmList = [
     ...Object.values(radioList),
     ...Object.values(checkList),
   ].toString();
-  // console.log(pmList);
+
   useEffect(() => {
     setTotalPrice((menuItem.mniPrice + priceRadio + priceCheck) * goodCount);
   }, [priceRadio, priceCheck, goodCount]);
@@ -233,22 +233,25 @@ const ListItem = ({ menuItem, menuData }) => {
               e.preventDefault();
             }}
           >
-            {console.log(menuItem)}
             <button
               className="bg-[#555] w-1/2 p-4"
               onClick={() => {
                 dispatch(
                   addCart({
                     // 메뉴 키값
-                    mniSeq: menuItem.mniSeq,
+                    key: uuid(),
                     // 메뉴이름(로제떡볶이1~2인분)
                     mniName: menuItem.mniName,
                     // 플러스메뉴이름(순한맛,밀떢 같은거)
                     pmName: pmList,
                     // 총주문금액
                     totalPrice: totalPrice,
+                    // 개당가격
+                    perPrice: totalPrice / goodCount,
                     // 수량
                     goodCount: goodCount,
+                    // 가게 이름
+                    siName: storeData.siName,
                   })
                 );
                 closeModal();

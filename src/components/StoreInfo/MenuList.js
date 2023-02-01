@@ -3,7 +3,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import styled from "styled-components";
 import ListItem from "./ListItem";
 
-const MenuList = ({ list, index, menuData }) => {
+const MenuList = ({ list, index, menuData, storeData }) => {
   const menuRef = useRef([]);
 
   return (
@@ -32,6 +32,7 @@ const MenuList = ({ list, index, menuData }) => {
                 menuItem={menuItem}
                 key={menuItem.mniSeq}
                 menuData={menuData}
+                storeData={storeData}
               />
             )
         )}

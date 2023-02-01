@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import DetailSwiper from "./DetailSwiper";
 import MenuList from "./MenuList";
 
-const DetailMain = ({ menuData }) => {
+const DetailMain = ({ menuData, storeData }) => {
   const cart = useSelector((state) => state.cart);
   console.log(cart);
   const menuList = menuData.filter((item, i) => {
@@ -22,7 +22,13 @@ const DetailMain = ({ menuData }) => {
       <ul>
         {/* map current[index]*/}
         {menuList.map((list, index) => (
-          <MenuList key={index} list={list} index={index} menuData={menuData} />
+          <MenuList
+            key={index}
+            list={list}
+            index={index}
+            menuData={menuData}
+            storeData={storeData}
+          />
         ))}
       </ul>
     </>

@@ -60,8 +60,6 @@ const StoreInfo = () => {
     }
   };
 
-  // console.log(repMenuData);
-  // console.log(menuData);
   const storeData =
     storeAllData.length !== 0 &&
     storeAllData.find((data) => data.siSeq === parseInt(storeId));
@@ -134,7 +132,7 @@ const StoreInfo = () => {
         <div>
           <DetailTabMenu tabCount={tabCount} setTabCount={setTabCount} />
           <div className={tabCount === 0 ? "block" : "hidden"}>
-            <DetailMain menuData={menuData} />
+            <DetailMain menuData={menuData} storeData={storeData} />
           </div>
           <div className={tabCount === 1 ? "block" : "hidden"}>
             <DetailReview reviewData={reviewData} storeData={storeData} />
