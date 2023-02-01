@@ -5,15 +5,12 @@ import styled from "styled-components";
 import StarRating from "../StarRating";
 
 const ReviewForm = ({ closeModal, storeData }) => {
-  const [clicked, setClicked] = useState([false, false, false, false, false]);
   const [tClicked, setTClicked] = useState([false, false, false, false, false]);
   const [dClicked, setDClicked] = useState([false, false, false, false, false]);
   const [qClicked, setQClicked] = useState([false, false, false, false, false]);
   const tasteScore = [0, 1, 2, 3, 4];
   const deliveryScore = [0, 1, 2, 3, 4];
   const quantityScore = [0, 1, 2, 3, 4];
-
-  const array = [0, 1, 2, 3, 4];
 
   const handleStarClick = (arr, index, type) => {
     let clickStates = [...arr];
@@ -90,7 +87,7 @@ const ReviewForm = ({ closeModal, storeData }) => {
             ))}
           </RatingBox>
         </div>
-      </section>
+      </section>{" "}
       <form>
         <input
           type="text"

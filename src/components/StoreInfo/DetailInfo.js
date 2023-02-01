@@ -96,9 +96,7 @@ const DetailInfo = ({ infoData, storeData }) => {
             <div className="info-content">
               <div>
                 <p>최소주문금액</p>
-                <span>
-                  {convertToComma(storeData && storeData.siMinOrderPrice)}원
-                </span>
+                <span>{convertToComma(storeData.siMinOrderPrice)}원</span>
               </div>
               <div>
                 <p>결제수단</p>

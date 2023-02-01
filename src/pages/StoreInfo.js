@@ -12,7 +12,7 @@ import convertToComma from "../util/comma";
 
 const StoreInfo = () => {
   const [storeAllData, setStoreAllData] = useState([]);
-  const [repMenu, setRepMenu] = useState([]);
+  const [repMenuData, setRepMenuData] = useState([]);
   const [menuData, setMenuData] = useState([]);
   const [reviewData, setReviewData] = useState([]);
   const [infoData, setInfoData] = useState([]);
@@ -54,13 +54,14 @@ const StoreInfo = () => {
       setMenuData(resultMenu.data.list);
       setInfoData(resultInfo.data.result.list);
       setReviewData(resultReview.data.result.list);
-      setRepMenu(resultRepMenu.data.list);
+      setRepMenuData(resultRepMenu.data.list);
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log(repMenu);
+  // console.log(repMenuData);
+  // console.log(menuData);
   const storeData =
     storeAllData.length !== 0 &&
     storeAllData.find((data) => data.siSeq === parseInt(storeId));
@@ -83,14 +84,14 @@ const StoreInfo = () => {
             <div>
               <div className="flex items-center gap-2 pt-1">
                 <StarRating starRatio={storeData.average ?? null} width={90} />
-                <p className="pt-1">{storeData.average}</p>
+                <p className="pt-1">{storeData?.average?.toFixed(1)}</p>
               </div>
               <div className="text-sm leading-relaxed text-[#999]">
                 {/* <p className="text-[#FA0050]">16,900원 이상 주문 시 할인</p> */}
                 <p>
                   최소주문금액{" "}
                   <span className="text-black">
-                    {convertToComma(storeData.siMinOrderPrice ?? 0)}원
+                    {convertToComma(storeData.siMinOrderPrice)}원
                   </span>
                 </p>
                 <p>
@@ -144,8 +145,8 @@ const StoreInfo = () => {
         </div>
       </section>
       {/* cart */}
-      <section className="max-w-sm h-fit sticky top-2.5">
-        <Cart />
+      <section className="max-w-[370px] h-fit sticky top-2.5 min-w-[370px]">
+        <Cart storeData={storeData} />
       </section>
     </section>
   );
