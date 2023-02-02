@@ -3,7 +3,6 @@ import LoginDiv from "../styles/LoginCss";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../store/userslice";
-import { SET_TOKEN } from "../store/Auth";
 import axios from "axios";
 import { RiEyeCloseLine } from "react-icons/ri";
 import { RiEye2Line } from "react-icons/ri";
@@ -28,7 +27,6 @@ const Login = () => {
       miId: userID,
       miPwd: pw,
     };
-    let test;
 
     try {
       await axios

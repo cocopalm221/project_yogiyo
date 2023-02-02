@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "./userslice";
+import cartSlice from './cartSlice';
 import tokenReducer from './Auth';
 
 
@@ -9,6 +10,7 @@ import storageSession from 'redux-persist/lib/storage/session';
 
 const reducers = combineReducers({
   user: userSlice.reducer,
+  cart: cartSlice
 });
 
 const persistConfig = {
