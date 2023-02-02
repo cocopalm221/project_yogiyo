@@ -27,6 +27,7 @@ const CateNav = ({ categorys }) => {
       }
     };
     fetchGage();
+    
   }, []);
 
   const onSearch = (e) => {

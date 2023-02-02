@@ -4,7 +4,6 @@ import { FiSearch } from "react-icons/fi";
 import { FiCompass } from "react-icons/fi";
 import { FaUser } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { DELETE_TOKEN } from "../store/Auth";
 import { logout } from "../store/userslice";
 import * as s from "../styles/Styles";
 
@@ -22,15 +21,10 @@ const Header = () => {
     }
   }, [user.miStatus]);
 
-  useEffect(() => {
-    logout();
-  }, []);
-
-  const Logout = () => {
-    const { accessToken } = useSelector((state) => state.accessToken);
-
+  const signout = () => {
+    // const { accessToken } = useSelector((state) => state.accessToken);
       dispatch(logout())
-      dispatch(DELETE_TOKEN());
+      // dispatch(DELETE_TOKEN());
       return navigate("/");   
   };
 
@@ -72,7 +66,7 @@ const Header = () => {
               로그인
             </button>
           ) : (
-            <button className="login" onClick={() => logout()}>
+            <button className="login" onClick={() => signout()}>
               로그아웃
             </button>
           )}
