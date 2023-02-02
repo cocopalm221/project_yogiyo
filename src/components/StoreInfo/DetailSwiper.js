@@ -11,7 +11,6 @@ import convertToComma from "../../util/comma";
 
 const DetailSwiper = ({ repMenuData }) => {
   repMenuData.length > 8 && repMenuData.splice(8, repMenuData.length);
-  console.log(repMenuData);
   return (
     <SwiperContainer
       navigation={true}

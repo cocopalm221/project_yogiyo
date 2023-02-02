@@ -1,20 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
-const DetailTabMenu = ({ tabCount, setTabCount }) => {
+const DetailTabMenu = ({ tabCount, setTabCount, menuData, reviewData }) => {
   return (
     <TabContainer>
       <div
         onClick={() => setTabCount(0)}
         className={`${tabCount === 0 && "active"}`}
       >
-        메뉴<span>126</span>
+        메뉴<span>{menuData.length}</span>
       </div>
       <div
         onClick={() => setTabCount(1)}
         className={`${tabCount === 1 && "active"}`}
       >
-        클린리뷰<span>1856</span>
+        클린리뷰<span>{reviewData.length}</span>
       </div>
       <div
         onClick={() => setTabCount(2)}
