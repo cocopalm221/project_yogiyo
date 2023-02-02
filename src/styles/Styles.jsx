@@ -343,10 +343,6 @@ export const payment = styled.form`
   }
 
   .newLeftpay {
-    padding: 1rem;
-    border: 1px solid #d1d1d1;
-    border-radius: 15px;
-    width: 50%;
     display: flex;
     flex-direction: column;
     gap: 4rem 0;
@@ -358,8 +354,9 @@ export const payment = styled.form`
       gap: 2rem 0;
       gap: 2rem 0;
       .paylisttitle {
-        font-size: 1.8rem;
+        font-size: 1rem;
         font-weight: 600;
+        border-bottom: 1px solid #fa0050;
         padding: 10px 5px;
       }
       .cashorcard {
@@ -396,7 +393,7 @@ export const payment = styled.form`
     gap: 2rem;
     margin: 0;
     .choosepaytitle {
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: 600;
       border-bottom: 1px solid #fa0050;
       padding: 10px 5px;
@@ -404,34 +401,29 @@ export const payment = styled.form`
     .coupon {
       width: 100%;
       display: flex;
-
+      padding: 0 16px;
       label {
         width: calc(100%-75%-100px);
         font-size: 1rem;
-        font-weight: 600;
+        font-weight: 500;
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 0.25rem;
       }
       input {
         width: 75%;
-        input {
-          width: 75%;
-          background: whitesmoke;
-          border-radius: 15px;
-          padding: 5px 10px;
-          margin-left: 10px;
-        }
-        .apply {
-          width: 80px;
-          .apply {
-            width: 80px;
-            color: #000;
-            border: 1px solid #fa0050;
-            border-radius: 20px;
-            margin-left: 1rem;
-          }
-        }
+        background: whitesmoke;
+        border-radius: 15px;
+        padding: 5px 10px;
+        margin-left: 10px;
+      }
+      .apply {
+        width: 80px;
+        color: #000;
+        border: 1px solid #fa0050;
+        border-radius: 20px;
+        margin-left: 1rem;
       }
     }
   }

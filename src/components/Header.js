@@ -23,9 +23,9 @@ const Header = () => {
 
   const signout = () => {
     // const { accessToken } = useSelector((state) => state.accessToken);
-      dispatch(logout())
-      // dispatch(DELETE_TOKEN());
-      return navigate("/");   
+    dispatch(logout());
+    // dispatch(DELETE_TOKEN());
+    return navigate("/");
   };
 
   // 해당 컴포넌트가 요청된 후 한 번만 실행되면 되기 때문에 useEffect 훅을 사용
@@ -71,7 +71,9 @@ const Header = () => {
             </button>
           )}
 
-          <button className="menu">주문표</button>
+          <button className="menu" onClick={() => navigate("/storeInfo/12")}>
+            주문표
+          </button>
         </div>
       </s.headerInner>
     </div>
