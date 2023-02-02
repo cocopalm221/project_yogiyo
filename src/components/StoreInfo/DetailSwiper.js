@@ -7,8 +7,10 @@ import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 
 import styled from "styled-components";
+import convertToComma from "../../util/comma";
 
-const DetailSwiper = () => {
+const DetailSwiper = ({ repMenuData }) => {
+  repMenuData.length > 8 && repMenuData.splice(8, repMenuData.length);
   return (
     <SwiperContainer
       navigation={true}
@@ -29,72 +31,19 @@ const DetailSwiper = () => {
       className="mySwiper"
     >
       {/* map */}
-      <SwiperSlide>
-        <div className="w-40 border">
-          <img src="/images/menutemp.png" className="w-full" alt="메뉴이미지" />
-          <div className="p-2">
-            <p className="whitespace-nowrap truncate font-bold">
-              피자(중)+피자(중)
-            </p>
-            <p className="text-sm">27,900원</p>
+      {repMenuData.map((item) => (
+        <SwiperSlide key={item.mniSeq}>
+          <div className="w-40 border">
+            <img src={item.mniImg} className="w-full" alt={item.mniName} />
+            <div className="p-2">
+              <p className="whitespace-nowrap truncate font-bold">
+                {item.mniName}
+              </p>
+              <p className="text-sm">{convertToComma(item.mniPrice)}원</p>
+            </div>
           </div>
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div className="w-40 border">
-          <img src="/images/menutemp.png" className="w-full" alt="메뉴이미지" />
-          <div className="p-2">
-            <p className="whitespace-nowrap truncate font-bold">
-              피자(중)+피자(중)
-            </p>
-            <p className="text-sm">27,900원</p>
-          </div>
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div className="w-40 border">
-          <img src="/images/menutemp.png" className="w-full" alt="메뉴이미지" />
-          <div className="p-2">
-            <p className="whitespace-nowrap truncate font-bold">
-              피자(중)+피자(중)
-            </p>
-            <p className="text-sm">27,900원</p>
-          </div>
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div className="w-40 border">
-          <img src="/images/menutemp.png" className="w-full" alt="메뉴이미지" />
-          <div className="p-2">
-            <p className="whitespace-nowrap truncate font-bold">
-              피자(중)+피자(중)
-            </p>
-            <p className="text-sm">27,900원</p>
-          </div>
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div className="w-40 border">
-          <img src="/images/menutemp.png" className="w-full" alt="메뉴이미지" />
-          <div className="p-2">
-            <p className="whitespace-nowrap truncate font-bold">
-              피자(중)+피자(중)
-            </p>
-            <p className="text-sm">27,900원</p>
-          </div>
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div className="w-40 border">
-          <img src="/images/menutemp.png" className="w-full" alt="메뉴이미지" />
-          <div className="p-2">
-            <p className="whitespace-nowrap truncate font-bold">
-              피자(중)+피자(중)
-            </p>
-            <p className="text-sm">27,900원</p>
-          </div>
-        </div>
-      </SwiperSlide>
+        </SwiperSlide>
+      ))}
     </SwiperContainer>
   );
 };

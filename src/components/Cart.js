@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 import { CgCloseR } from "react-icons/cg";
 import { FaTrash } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import { allDelete, decrement, increment, onDelete } from "../store/cartSlice";
 import convertToComma from "../util/comma";
 import Modal from "./Modal";
 
@@ -12,6 +13,7 @@ const Cart = ({ storeData }) => {
 
   const cart = useSelector((state) => state.cart);
 
+  const dispatch = useDispatch();
   const openModal = () => {
     setCartModalVisible(true);
   };
@@ -25,9 +27,7 @@ const Cart = ({ storeData }) => {
   };
 
   const perPrice = cart.map((item) => item.totalPrice);
-  // console.log(perPrice);
   const totalMoney = perPrice.reduce((sum, value) => (sum += value), 0);
-  // console.log(totalMoney);
 
   return (
     <>
@@ -50,8 +50,8 @@ const Cart = ({ storeData }) => {
 
           {/* 장바구니 0이 아니면  : */}
           {cart.length > 0 &&
-            cart.map((item, i) => (
-              <div className="p-4 border-b" key={i}>
+            cart.map((item) => (
+              <div className="p-4 border-b" key={item.key}>
                 <div className="pb-4">
                   <p>
                     {item.mniName}
@@ -60,20 +60,30 @@ const Cart = ({ storeData }) => {
                 </div>
                 <div className="flex font-bold justify-between items-center">
                   <div className="flex items-center text-2xl">
-                    <AiOutlineMinusSquare className="cursor-pointer hover:text-brand" />
+                    <AiOutlineMinusSquare
+                      className="cursor-pointer hover:text-brand"
+                      onClick={() => {
+                        dispatch(decrement(item.key));
+                      }}
+                    />
                     <p className="px-2 font-bold text-base">{item.goodCount}</p>
-                    <AiOutlinePlusSquare className="cursor-pointer hover:text-brand" />
+                    <AiOutlinePlusSquare
+                      className="cursor-pointer hover:text-brand"
+                      onClick={() => {
+                        dispatch(increment(item.key));
+                      }}
+                    />
                   </div>
                   <div className="flex items-center">
                     <p className="mr-2">
-                      {convertToComma(
-                        (item.totalPrice / item.goodCount) * item.goodCount
-                      )}
-                      원
+                      {convertToComma(item.perPrice * item.goodCount)}원
                     </p>
                     <CgCloseR
                       size="24"
                       className="cursor-pointer hover:text-brand"
+                      onClick={() => {
+                        dispatch(onDelete(item.key));
+                      }}
                     />
                   </div>
                 </div>
@@ -88,7 +98,6 @@ const Cart = ({ storeData }) => {
         )}
 
         {/* 장바구니 0이 아니면 */}
-
         {totalMoney > 0 && (
           <div className=" text-end p-2 bg-[#fff8eb]  border-t">
             <p className="text-brand font-bold">
@@ -127,7 +136,13 @@ const Cart = ({ storeData }) => {
               >
                 취소
               </button>
-              <button className="text-white bg-brand border border-brand py-1.5 px-3">
+              <button
+                className="text-white bg-brand border border-brand py-1.5 px-3"
+                onClick={() => {
+                  dispatch(allDelete());
+                  closeModal();
+                }}
+              >
                 확인
               </button>
             </div>
