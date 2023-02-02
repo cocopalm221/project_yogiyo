@@ -447,11 +447,6 @@ export const payment = styled.form`
       flex-direction: column;
       gap: 1rem 0;
       padding: 1rem;
-      h1 {
-        font-size: 1.8rem;
-        color: #000;
-        font-weight: 600;
-      }
       .storename {
         text-align: center;
         font-size: 1.5rem;

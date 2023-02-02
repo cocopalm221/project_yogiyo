@@ -5,6 +5,7 @@ import * as s from "../styles/Styles";
 import { BsFillCreditCardFill } from "react-icons/bs";
 import { BsCashCoin } from "react-icons/bs";
 import { useSelector } from "react-redux";
+import convertToComma from "../util/comma";
 
 const Payment = () => {
   const [enroll_company, setEnroll_company] = useState({
@@ -103,12 +104,15 @@ const Payment = () => {
       <div className="rightpay">
         <h1>주문내역</h1>
         {cart.map((item) => (
-          <div className="menulist" key={item.mniSeq}>
-            <div className="storename">{item.siName}</div>
-            <div className="menu1 ml-2">메뉴 수량 : {item.goodCount}개</div>
-            <div className="deliveryfee ml-2">배달료 : 5000</div>
-            <div className="totalpay ml-2">
-              총 결제 금액 : {item.totalPrice}{" "}
+          <div>
+            <div className="menulist" key={item.mniSeq}>
+              <div className="storename">{item.siName}</div>
+              <div className="menu ml-2">메뉴 : {item.mniName}</div>
+              <div className="option ml-2">옵션 : {item.pmName}</div>
+              <div className="menunum ml-2">수량 : {item.goodCount}개</div>
+              <div className="totalpay ml-2">
+                총 결제 금액 : {convertToComma(item.totalPrice)}{" "}
+              </div>
             </div>
           </div>
         ))}
