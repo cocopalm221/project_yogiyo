@@ -10,6 +10,7 @@ import DetailReview from "../components/StoreInfo/DetailReview";
 import DetailInfo from "../components/StoreInfo/DetailInfo";
 import convertToComma from "../util/comma";
 import { useSelector } from "react-redux";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const StoreInfo = () => {
   const [storeAllData, setStoreAllData] = useState([]);
@@ -19,9 +20,13 @@ const StoreInfo = () => {
   const [infoData, setInfoData] = useState([]);
   const [tabCount, setTabCount] = useState(0);
 
+  //loading
+  const [loading, setLoading] = useState(null);
+
   const { storeId } = useParams();
 
   const fetchData = async () => {
+    setLoading(true);
     try {
       const params = {
         siseq: storeId,
@@ -55,6 +60,7 @@ const StoreInfo = () => {
       setInfoData(resultInfo.data.result.list);
       setReviewData(resultReview.data.result.list);
       setRepMenuData(resultRepMenu.data.list);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -157,6 +163,7 @@ const StoreInfo = () => {
       <section className="max-w-[370px] h-fit sticky top-2.5 min-w-[370px]">
         <Cart storeData={storeData} />
       </section>
+      {loading && <LoadingSpinner />}
     </section>
   );
 };
