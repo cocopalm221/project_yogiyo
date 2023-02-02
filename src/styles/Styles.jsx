@@ -300,10 +300,8 @@ export const payment = styled.form`
           border-radius: 15px;
         }
       }
-
       .number {
         display: flex;
-
         margin-bottom: 1rem;
         padding: 0 16px;
         white-space: nowrap;
@@ -430,17 +428,23 @@ export const payment = styled.form`
 
   .rightpay {
     width: 22%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border: 1px solid #d1d1d1;
     border-radius: 15px;
+    h1 {
+      font-size: 1.8rem;
+      color: #000;
+      font-weight: 600;
+      padding: 1rem;
+    }
     .menulist {
       display: flex;
       flex-direction: column;
       gap: 1rem 0;
       padding: 1rem;
-
       h1 {
         font-size: 1.8rem;
         color: #000;

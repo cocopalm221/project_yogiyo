@@ -104,10 +104,12 @@ const Payment = () => {
         <h1>주문내역</h1>
         {cart.map((item) => (
           <div className="menulist" key={item.mniSeq}>
-            <div className="storename"></div>
-            <div className="menu1 ml-2">{item.goodCount}개</div>
+            <div className="storename">{item.siName}</div>
+            <div className="menu1 ml-2">메뉴 수량 : {item.goodCount}개</div>
             <div className="deliveryfee ml-2">배달료 : 5000</div>
-            <div className="totalpay ml-2">{item.totalPrice} </div>
+            <div className="totalpay ml-2">
+              총 결제 금액 : {item.totalPrice}{" "}
+            </div>
           </div>
         ))}
 

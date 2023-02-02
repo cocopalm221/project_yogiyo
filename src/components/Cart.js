@@ -71,6 +71,7 @@ const Cart = ({ storeData }) => {
                       className="cursor-pointer hover:text-brand"
                       onClick={() => {
                         dispatch(increment(item.key));
+                        console.log(cart);
                       }}
                     />
                   </div>
