@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useImperativeHandle, useState } from "react";
 import { useSelector } from "react-redux";
 import Post from "../util/Post";
 import axios from "axios";
 import * as s from "../styles/Styles";
 
 const MyInfo = () => {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.userInfo);
   const [pw, setPw] = useState(user.miPwd);
   const [newpw, setNewpw] = useState("");
   const [checkNickname, setCheckNickname] = useState(user.miNickname);
@@ -21,16 +21,11 @@ const MyInfo = () => {
     });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
 
   const handleComplete = (e) => {
     e.preventDefault();
     setPopup(!popup);
   };
-
-  
 
   const onConfirm = async (e) => {
     e.preventDefault();
@@ -59,7 +54,7 @@ const MyInfo = () => {
   };
 
   const onDelete = async () => {
-    let pw = prompt('비밀번호를 입력하세요');
+    let pw = prompt("비밀번호를 입력하세요");
     let body = {
       miPwd: pw,
     };
@@ -78,7 +73,6 @@ const MyInfo = () => {
       console.log(error);
     }
   };
-
 
   return (
     <div className="col-span-9 max-w-5xl ml-8">

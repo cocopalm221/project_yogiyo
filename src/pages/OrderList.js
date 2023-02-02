@@ -3,7 +3,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 
 const OrderList = () => {
-  const mynum = useSelector((state) => state.user.miSeq);
+  const mynum = useSelector((state) => state.userInfo.miSeq);
   const [myorder, setMyorder] = useState([]);
 
   useEffect(() => {

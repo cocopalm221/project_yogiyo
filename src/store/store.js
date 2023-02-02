@@ -1,32 +1,29 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "./userslice";
-import cartSlice from './cartSlice';
-import tokenReducer from './Auth';
-
-
+import cartSlice from "./cartSlice";
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
-import storageSession from 'redux-persist/lib/storage/session';
+import storageSession from "redux-persist/lib/storage/session";
 
 const reducers = combineReducers({
-  user: userSlice.reducer,
-  cart: cartSlice
+  userInfo: userSlice.reducer,
+  cart: cartSlice.reducer,
 });
 
 const persistConfig = {
   key: "root",
   storage: storageSession,
-  whitelist: ["user"], 
+  whitelist: ["userInfo", "cart"],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
 
 const store = configureStore({
-  reducer:persistedReducer,
+  reducer: persistedReducer,
   //임시로 middleware 체크 기능 제거
-  middleware:(getDefaultMiddleware) => {
+  middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({
-      serializableCheck:false,
+      serializableCheck: false,
     });
   },
   devTools: process.env.NODE_ENV !== "production",
