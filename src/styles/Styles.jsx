@@ -260,11 +260,13 @@ export const payment = styled.form`
   justify-content: center;
   gap: 30px;
   padding: 32px 0px 8px;
+  max-width: 1280px;
+  margin: 0 auto;
   .leftpay {
     padding: 1rem;
     border: 1px solid #d1d1d1;
     border-radius: 15px;
-    width: 50%;
+    width: 66.6666%;
     display: flex;
     flex-direction: column;
     h1 {
