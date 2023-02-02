@@ -86,9 +86,9 @@ const ListItem = ({ menuItem, menuData, storeData }) => {
         }}
       >
         <img
-          src={menuItem.mniImg}
+          src={`http://192.168.0.9:9244/menu/images/${menuItem.mniImg}`}
           alt={menuItem.mniName}
-          className="w-36 mr-4"
+          className="w-36 mr-4 border"
         />
         <div className="flex flex-col gap-2">
           <p className="font-bold">{menuItem.mniName}</p>
@@ -114,9 +114,9 @@ const ListItem = ({ menuItem, menuData, storeData }) => {
           {/* modal content */}
           <section className="overflow-y-auto h-[81%]">
             <img
-              src="/images/menutemp.png"
-              alt="foodimg"
-              className="w-full h-[220px]"
+              src={`http://192.168.0.9:9244/menu/images/${menuItem.mniImg}`}
+              alt={menuItem.mniName}
+              className="w-10/12 mx-auto"
             />
             <div className="text-center p-3 border-b">
               <p className="text-2xl p-1">{menuItem.mniName}</p>
