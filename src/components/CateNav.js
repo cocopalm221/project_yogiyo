@@ -27,7 +27,6 @@ const CateNav = ({ categorys }) => {
       }
     };
     fetchGage();
-    
   }, []);
 
   const onSearch = (e) => {
@@ -67,9 +66,9 @@ const CateNav = ({ categorys }) => {
           <input
             type="text"
             value={search}
-            placeholder="가게명을 검색하세요"
+            placeholder="가게명 검색"
             onChange={onChangeSearch}
-            className="form"
+            className="form mr-2"
           />
           <button type="submit" className="formbt">
             <FiSearch />

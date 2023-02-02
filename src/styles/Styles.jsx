@@ -183,19 +183,22 @@ export const sortbt = styled.div`
   }
 `;
 export const catenav = styled.ul`
+  width: 1240px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
+  align-items: center;
   list-style: none;
   padding: 2rem;
   gap: 15px;
   flex-wrap: wrap;
   .form {
-    width: 80px;
+    width: 110px;
+    height: 40px;
     padding: 5px 10px;
-    outline-color: #fa0050;
+    outline: none;
     border-radius: 15px;
-    transition: all 5s;
-    display: none;
+    background: whitesmoke;
   }
   .formbt {
     width: 40px;
@@ -210,11 +213,10 @@ export const catenav = styled.ul`
     font-weight: 900;
   }
   button {
-    width: 120px;
-    border: 1px solid #fa0050;
     width: 130px;
     height: 40px;
     overflow: hidden;
+    border: 1px solid #fa0050;
     border-radius: 15px;
     padding: 5px 10px;
     font-weight: 500;
