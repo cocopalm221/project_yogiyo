@@ -139,6 +139,7 @@ const SignUp = () => {
               value={pw}
               onChange={(e) => setPw(e.target.value)}
               autoComplete="true"
+              placeholder="비밀번호는 8자리 이상"
             />
           </div>
           <div className="relative flex justify-start">
@@ -148,6 +149,7 @@ const SignUp = () => {
               value={pwCheck}
               onChange={(e) => setPwCheck(e.target.value)}
               autoComplete="true"
+              placeholder="비밀번호는 8자리 이상"
             />
           </div>
           <div className="relative flex justify-start">

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 
 const OrderList = () => {
-  const mynum = useSelector((state) => state.userInfo.miSeq);
+  const mynum = useSelector((state) => state.user.miSeq);
   const [myorder, setMyorder] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,6 @@ const OrderList = () => {
     fetchOrderlist();
   }, [mynum]);
 
-  console.log(myorder);
   console.log(mynum);
 
   return (
@@ -31,15 +30,23 @@ const OrderList = () => {
             <img src="/images/temp.png" alt="" className="w-full" />
           </div>
           <div className="p-4">
-            <p className="pb-1.5 text-xl">{myorder.storeName}</p>
+            <p className="pb-1.5 text-xl">{myorder[0].storeName}</p>
             <div className="flex items-center text-sm">
               <span>배달주문</span>
-              <span className="px-1"> · </span>
-              <span>{myorder.orderDate}</span>
+              <span className="px-1">{myorder[0].orderMenu[1].mniName}</span>
+              <span className="px-1">{myorder[0].orderMenu[1].menuAmount}</span>
+              <span className="px-1">{myorder[0].orderMenu[1].menuPrice}</span>
+              <span className="px-1">{myorder[0].orderMenu[1].optionList[0].pmName}</span>
+              <span className="px-1">{myorder[0].orderMenu[1].optionList[0].pmcAmount}</span>
+              <span className="px-1">{myorder[0].orderMenu[1].optionList[0].pmPrice}</span>
+              <span className="px-2">{myorder[0].orderDate}</span>
+              <span className="px-2">{myorder[0].finishDate}</span>
+              <span className="price">{myorder[0].price}</span>
+              
+              
             </div>
           </div>
           <div className="absolute right-6 top-[50%] translate-y-[-50%]">
-            <button className="text-[#767676] text-sm">삭제</button>
           </div>
         </div>
       </div>

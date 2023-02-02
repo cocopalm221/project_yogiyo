@@ -78,7 +78,6 @@ const CateNav = ({ categorys }) => {
           className="cateAll-bt"
           onClick={() => {
             reFresh();
-            reFresh();
           }}
         >
           전체보기
@@ -112,7 +111,7 @@ const CateNav = ({ categorys }) => {
           <Link to={`/storeinfo/${gage.siSeq}`}>
             <s.storeinner key={gage.siSeq}>
               <div className="store-inner">
-                <img src={gage.siUri} alt="" />
+                <img src={`http://192.168.0.9:9244/store/images/${gage.siUri}`} alt="" />
                 <div className="storeinfo">
                   <span className="title">{gage.siName}</span>
                   <div>
@@ -120,7 +119,6 @@ const CateNav = ({ categorys }) => {
                       <StarRating starRatio={gage.average} />
                       <p className="text-sm">{gage.average}</p>
                     </span>
-                    {console.log(gage)}
                     <span>리뷰 {gage.reviewcnt}</span>
                     <span className="before:content-['|'] before:mx-2.5">
                       사장님댓글 {gage.ownerReviewCnt}
