@@ -72,7 +72,8 @@ const StoreInfo = () => {
     fetchData();
   }, []);
 
-  const cart = useSelector((state) => state.cart);
+  // const cart = useSelector((state) => state.cart);
+  // console.log(cart);
   return (
     <section className="flex gap-5 max-w-7xl mx-auto mb-2 mt-8">
       <section className="md:w-8/12 w-full">

@@ -6,8 +6,9 @@ import { v4 as uuid } from "uuid";
 import Modal from "../Modal";
 import convertToComma from "../../util/comma";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addCart, addProduct } from "../../store/cartSlice";
+import { useDispatch } from "react-redux";
+import { addCart } from "../../store/cartSlice";
+import { useNavigate } from "react-router";
 
 const ListItem = ({ menuItem, menuData, storeData }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -74,7 +75,7 @@ const ListItem = ({ menuItem, menuData, storeData }) => {
   useEffect(() => {
     setTotalPrice((menuItem.mniPrice + priceRadio + priceCheck) * goodCount);
   }, [priceRadio, priceCheck, goodCount]);
-
+  const navigate = useNavigate();
   return (
     <>
       <li
@@ -259,7 +260,14 @@ const ListItem = ({ menuItem, menuData, storeData }) => {
             >
               주문표에 추가
             </button>
-            <button className="bg-brand w-1/2">주문하기</button>
+            <button
+              className="bg-brand w-1/2"
+              onClick={() => {
+                navigate("/payment");
+              }}
+            >
+              주문하기
+            </button>
           </form>
         </Modal>
       )}
