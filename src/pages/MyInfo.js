@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Post from "../util/Post";
 import axios from "axios";
 import * as s from "../styles/Styles";
+import { useNavigate } from "react-router-dom";
 
 const MyInfo = () => {
   const user = useSelector((state) => state.userInfo);
@@ -14,13 +15,13 @@ const MyInfo = () => {
     address: user.miAddress,
   });
   const [popup, setPopup] = useState(false);
+  const navigate = useNavigate();
   const handleChange = (event) => {
     setEnroll_company({
       ...enroll_company,
       [event.target.name]: event.target.value,
     });
   };
-
 
   const handleComplete = (e) => {
     e.preventDefault();
@@ -38,7 +39,7 @@ const MyInfo = () => {
     };
 
     try {
-      axios
+      await axios
         .patch("http://192.168.0.9:9244/mypage/update", body)
         .then((response) => {
           if (response.data.status) {
@@ -53,18 +54,17 @@ const MyInfo = () => {
     }
   };
 
-  const onDelete = async () => {
-    let pw = prompt("비밀번호를 입력하세요");
-    let body = {
-      miPwd: pw,
-    };
-
+  const onDelete = async (e) => {
+    e.preventDefault();
     try {
       await axios
-        .post("http://192.168.0.9:9244/member/deleteMember", body)
+        .delete(
+          `http://192.168.0.9:9244/member/deleteMember?miSeq=${user.miSeq}`
+        )
         .then((response) => {
           if (response.data.status) {
             alert("회원탈퇴 성공");
+            navigate("/login");
           } else {
             alert("회원탈퇴 실패");
           }

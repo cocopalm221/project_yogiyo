@@ -11,9 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [userID, setUserId] = useState("");
   const [pw, setPw] = useState("");
-
   const dispatch = useDispatch();
-
   const SignInFunc = async (e) => {
     e.preventDefault();
     if (!userID) {
@@ -36,7 +34,7 @@ const Login = () => {
             alert("로그인 성공");
             dispatch(login(response.data.loginUser));
             console.log(response.data.loginUser);
-            navigate("/");
+            navigate('/');
           } else {
             alert("로그인 실패");
             console.log(response.data.status);

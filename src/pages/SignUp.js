@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SignDiv from "../styles/SignupCss";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 import axios from "axios";
 import Post from "../util/Post";
 
@@ -49,7 +49,7 @@ const SignUp = () => {
     e.preventDefault();
     let body = {
       miId: userId,
-      miPwd: setPw,
+      miPwd: pw,
       miEmail: email,
       miPhone: tel,
       miNickname: nickName,
@@ -64,6 +64,7 @@ const SignUp = () => {
         .then((response) => {
           if (response.data.status) {
             alert(response.data.message);
+            Navigate('/login');
           } else {
             alert("정보수정 실패");
           }
