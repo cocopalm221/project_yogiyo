@@ -6,6 +6,7 @@ import { BsFillCreditCardFill } from "react-icons/bs";
 import { BsCashCoin } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import convertToComma from "../util/comma";
+import Cart from "../components/Cart";
 
 const Payment = () => {
   const [enroll_company, setEnroll_company] = useState({
@@ -33,6 +34,17 @@ const Payment = () => {
     setpaySwitch(!paySwitch);
   };
 
+  const temp = cart.filter((item, i) => {
+    return (
+      cart.findIndex((item2) => {
+        return item.siName === item2.siName;
+      }) === i
+    );
+  });
+
+  const totalMoney = cart
+    .map((item) => item.totalPrice)
+    .reduce((sum, value) => (sum += value), 0);
   return (
     <s.payment>
       <div className="leftpay">
@@ -100,27 +112,28 @@ const Payment = () => {
           </div>
         </div>
       </div>
-
-      <div className="rightpay">
-        <h1>주문내역</h1>
-        {cart.map((item) => (
-          <div>
-            <div className="menulist" key={item.mniSeq}>
-              <div className="storename">{item.siName}</div>
-              <div className="menu ml-2">메뉴 : {item.mniName}</div>
-              <div className="option ml-2">옵션 : {item.pmName}</div>
-              <div className="menunum ml-2">수량 : {item.goodCount}개</div>
-              <div className="totalpay ml-2">
-                총 결제 금액 : {convertToComma(item.totalPrice)}{" "}
-              </div>
+      <section className="max-w-[370px] h-fit sticky top-2.5 min-w-[370px] rounded">
+        <div className="flex flex-col border">
+          <h2 className="text-xl border-b p-4 text-white bg-black">
+            주문 내역
+          </h2>
+          <p className="p-4 border-b">{temp[0].siName}</p>
+          {cart.map((item) => (
+            <div className="flex justify-between p-4" key={item.key}>
+              <p className="w-[200px]">
+                {item.mniName} {item.pmName && <span> : {item.pmName}</span>}
+              </p>
+              <p className="text-end">{convertToComma(item.totalPrice)}원</p>
             </div>
+          ))}
+          <div className="border-t p-4 text-end">
+            총 결제 금액: {convertToComma(totalMoney)}원
           </div>
-        ))}
-
-        <button className="clickpay" onClick={() => clickHandler()}>
-          결제하기
+        </div>
+        <button className="w-full bg-brand rounded-lg text-white p-3 mt-4">
+          결제 하기
         </button>
-      </div>
+      </section>
     </s.payment>
   );
 };
