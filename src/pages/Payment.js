@@ -6,7 +6,6 @@ import { BsFillCreditCardFill } from "react-icons/bs";
 import { BsCashCoin } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import convertToComma from "../util/comma";
-import Cart from "../components/Cart";
 
 const Payment = () => {
   const [enroll_company, setEnroll_company] = useState({

@@ -6,7 +6,7 @@ const cartSlice = createSlice({
   reducers: {
     addCart(state, action) {
       const find = state.find((item) => {
-        return item.siName !== action.payload.siName;
+        return item.siSeq !== action.payload.siSeq;
       });
 
       if (find) {

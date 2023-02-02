@@ -253,6 +253,7 @@ const ListItem = ({ menuItem, menuData, storeData }) => {
                     perPrice: totalPrice / goodCount,
                     // 가게 이름
                     siName: storeData.siName,
+                    siSeq: storeData.siSeq,
                   })
                 );
                 closeModal();
