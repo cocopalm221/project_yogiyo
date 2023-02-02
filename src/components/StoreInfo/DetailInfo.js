@@ -56,7 +56,9 @@ const DetailInfo = ({ infoData, storeData }) => {
               </div>
               <div className="info-content">
                 <div className="flex flex-col">
-                  <img src={data.onilmgPath} alt="사장님알림" />
+                  {data.onilmgPath && (
+                    <img src={data.onilmgPath} alt="사장님알림" />
+                  )}
                   <span>{data.sdiOwnerNotice}</span>
                 </div>
               </div>

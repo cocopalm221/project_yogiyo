@@ -83,7 +83,7 @@ const StoreInfo = () => {
           <p className="border-b p-4">{storeData.siName}</p>
           <div className="flex gap-5 py-2.5">
             <img
-              src={storeData.siUri}
+              src={`http://192.168.0.9:9244/store/images/${storeData.siUri}`}
               alt={storeData.siName}
               className="w-28 ml-2.5"
             />
