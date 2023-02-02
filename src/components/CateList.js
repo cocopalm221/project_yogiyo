@@ -21,12 +21,17 @@ const CateList = () => {
     <div className="cate-list">
       <s.bannersList>
         {gagelist.map((gagelist) => (
-          <li key={gagelist.cSeq} className="bg-rose-500">
+          <li key={gagelist.cSeq}>
             <Link to="/mainnav" className="text-center ">
               <img
                 src={gagelist.scImage}
                 alt={gagelist.scName}
-                style={{ background: "white", width: "200px", height: "200px" }}
+                style={{
+                  background: "white",
+                  width: "200px",
+                  height: "200px",
+                  border: "#fa0050",
+                }}
               />
             </Link>
           </li>
