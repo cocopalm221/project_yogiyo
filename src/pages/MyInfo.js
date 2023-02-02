@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useImperativeHandle, useState } from "react";
 import { useSelector } from "react-redux";
 import Post from "../util/Post";
 import axios from "axios";
@@ -21,9 +21,6 @@ const MyInfo = () => {
     });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
 
   const handleComplete = (e) => {
     e.preventDefault();
@@ -39,7 +36,7 @@ const MyInfo = () => {
       nickname: checkNickname,
       address: enroll_company.address,
     };
-    console.log(body);
+
     try {
       axios
         .patch("http://192.168.0.9:9244/mypage/update", body)
@@ -56,14 +53,14 @@ const MyInfo = () => {
     }
   };
 
-  const onDelete = async (e) => {
-    e.preventDefault();
+  const onDelete = async () => {
+    let pw = prompt("비밀번호를 입력하세요");
     let body = {
       miPwd: pw,
     };
-    console.log(body);
+
     try {
-      axios
+      await axios
         .post("http://192.168.0.9:9244/member/deleteMember", body)
         .then((response) => {
           if (response.data.status) {
@@ -76,16 +73,6 @@ const MyInfo = () => {
       console.log(error);
     }
   };
-
-  // useEffect(() => {
-  //   const newInfo = {
-  //     pw: user.miPwd,
-  //     newpw: "",
-  //     checkNickname: user.miNickname,
-  //     number: user.miPhone,
-  //   };
-  //   setUserData(newInfo);
-  // }, [user.miNickname, user.miPhone, user.miPwd]);
 
   return (
     <div className="col-span-9 max-w-5xl ml-8">
