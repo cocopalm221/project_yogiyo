@@ -83,7 +83,7 @@ const CateNav = ({ categorys }) => {
         >
           전체보기
         </button>
-        {categorys.map((category) => (
+        {categorys.slice(1).map((category) => (
           <li key={category.scSeq}>
             <button onClick={() => cateSearch(category.scName)}>
               {category.scName}
