@@ -19,8 +19,6 @@ const StoreInfo = () => {
   const [reviewData, setReviewData] = useState([]);
   const [infoData, setInfoData] = useState([]);
   const [tabCount, setTabCount] = useState(0);
-
-  //loading
   const [loading, setLoading] = useState(null);
 
   const { storeId } = useParams();

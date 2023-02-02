@@ -4,7 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const CateList = ({ banners }) => {
+const CateList = () => {
   const [gagelist, setGagelist] = useState([]);
 
   useEffect(() => {

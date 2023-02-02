@@ -22,9 +22,7 @@ const Header = () => {
   }, [user.miStatus]);
 
   const signout = () => {
-    // const { accessToken } = useSelector((state) => state.accessToken);
     dispatch(logout());
-    // dispatch(DELETE_TOKEN());
     return navigate("/");
   };
 
