@@ -124,13 +124,7 @@ export const bannersList = styled.ul`
     object-fit: contain;
     overflow: hidden;
     border-radius: 50%;
-    span {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #000;
-    }
+    border: 1px solid #fa0050;
   }
 `;
 
@@ -447,11 +441,6 @@ export const payment = styled.form`
       flex-direction: column;
       gap: 1rem 0;
       padding: 1rem;
-      h1 {
-        font-size: 1.8rem;
-        color: #000;
-        font-weight: 600;
-      }
       .storename {
         text-align: center;
         font-size: 1.5rem;

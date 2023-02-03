@@ -69,7 +69,7 @@ const Header = () => {
             </button>
           )}
 
-          <button className="menu" onClick={() => navigate("/storeInfo/12")}>
+          <button className="menu" onClick={() => navigate("/storeInfo/1")}>
             주문표
           </button>
         </div>
