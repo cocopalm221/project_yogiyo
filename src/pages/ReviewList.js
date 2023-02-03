@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 import { GrClose } from "react-icons/gr";
 import { ImStarFull } from "react-icons/im";
@@ -7,6 +9,8 @@ import Modal from "../components/Modal";
 import StarRating from "../components/StarRating";
 
 const ReviewList = () => {
+  const mynum = useSelector((state) => state.userInfo.miSeq);
+  const [myComment, setMycomment] = useState([]);
   const [reviewModalVisible, setReviewModalVisible] = useState(false);
   const [modalVisibleId, setModalVisibleId] = useState("");
   const closeModal = () => {
@@ -19,6 +23,18 @@ const ReviewList = () => {
     setModalVisibleId(id);
   };
 
+  const fetchCommentlist = async () => {
+    const res = await axios.get(
+      `http://192.168.0.9:9244/mypage/review?page=0&miSeq=${mynum}`
+    );
+    setMycomment(res.data.review.myReview);
+  };
+
+  useEffect(() => {
+    fetchCommentlist();
+  }, []);
+
+  console.log(myComment);
   return (
     <div className="col-span-9 max-w-5xl ml-8">
       <h1 className="p-4 font-bold text-2xl border-b-2 border-black">
@@ -27,26 +43,33 @@ const ReviewList = () => {
       {/* main */}
       <div className="grid lg:grid-cols-2 gap-4 mt-8">
         {/* 박스 map */}
-        <div
-          className="flex border border-[#999] rounded-lg p-4 relative"
-          onClick={openModal}
-        >
-          <div className="w-24">
-            <img src="/images/temp.png" alt="" className="w-full" />
-          </div>
-          <div className="p-4">
-            <p className="pb-1.5 text-xl">파스토보이</p>
-            <div className="flex items-center text-sm">
-              <span>배달주문</span>
-              <span className="px-1"> · </span>
-              <span>2022.10.15</span>
+        {myComment.map((item) => (
+          <div
+            className="flex border border-[#999] rounded-lg p-4 relative"
+            onClick={openModal}
+          >
+            <div className="w-24">
+              <img src="/images/temp.png" alt="" className="w-full" />
+            </div>
+            <div className="p-5">
+              <p className="pb-1.5 text-xl">{item.siName}</p>
+              <div className="flex-col gap-y-10 text-sm">
+                <p className="px-1">메뉴 이름 : {item.mniName}</p>
+                <p className="px-1">리뷰 등록일 : {item.reRegDt}</p>
+                <p className="px-1">
+                  <StarRating starRatio={item.reScore} />
+                </p>
+                <p className="px-1">리뷰 내용 : {item.reContent}</p>
+                <p className="px-1">사장님 댓글 내용 : {item.roContent}</p>
+                <span className="px-1">회원 번호 : {item.miSeq}</span>
+              </div>
+            </div>
+            <div className="flex flex-col absolute right-6 top-[50%] translate-y-[-50%]">
+              <button className="text-[#767676] text-sm pb-1">수정</button>
+              <button className="text-[#767676] text-sm">삭제</button>
             </div>
           </div>
-          <div className="flex flex-col absolute right-6 top-[50%] translate-y-[-50%]">
-            <button className="text-[#767676] text-sm pb-1">수정</button>
-            <button className="text-[#767676] text-sm">삭제</button>
-          </div>
-        </div>
+        ))}
       </div>
       {reviewModalVisible && (
         <Modal

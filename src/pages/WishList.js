@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ImHeart, ImStarFull } from "react-icons/im";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 const WishList = () => {
+  const mynum = useSelector((state) => state.userInfo.miSeq);
+  const [mywish, setMywish] = useState("");
+
+  useEffect(() => {
+    const fetchOrderlist = async () => {
+      const res = await axios.get(
+        `http://192.168.0.9:9244/mypage/store?page=0&miSeq=${mynum}`
+      );
+      setMywish(res.data.store);
+    };
+    fetchOrderlist();
+  }, []);
+
   return (
     <div className="col-span-9 max-w-5xl ml-8">
       <h1 className="p-4 font-bold text-2xl border-b-2 border-black">
@@ -10,26 +25,9 @@ const WishList = () => {
       {/* main */}
       <div className="grid lg:grid-cols-2 gap-4 mt-8">
         {/* 박스 map */}
-        <div className="flex border border-[#999] rounded-lg p-4 relative">
-          <div className="w-24">
-            <img src="/images/temp.png" alt="" className="w-full" />
-          </div>
-          <div className="p-4">
-            <p className="pb-1.5 text-xl">파스토보이</p>
-            <div className="flex items-center text-sm">
-              <ImStarFull color="#ffa400" size="20" />
-              <span className="pl-2">4.5</span>
-              <span className="pl-1"> (6,709)</span>
-              <span className="px-1"> · </span>
-              <span>포장가능</span>
-            </div>
-          </div>
-          <ImHeart
-            className="absolute right-6 top-[50%] translate-y-[-50%]"
-            color="#fa0050"
-            size="28"
-          />
-        </div>
+        {mywish.status === false && (
+          <h2 className="font-bold">{mywish.message}</h2>
+        )}
       </div>
     </div>
   );
