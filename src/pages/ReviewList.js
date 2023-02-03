@@ -131,7 +131,7 @@ const ReviewList = () => {
                     <section className="flex flex-col gap-2 ml-6 mt-3">
                       <h1 className="text-xl font-bold">{item.siName}</h1>
                       <div className="flex items-center">
-                        <p className="border text-sm px-1 border-[#999]">
+                        <p className="border text-xs p-1 border-[#999]">
                           배달주문
                         </p>
                         <p className="pl-4 text-sm">
