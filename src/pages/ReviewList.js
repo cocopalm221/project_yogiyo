@@ -53,7 +53,7 @@ const ReviewList = () => {
             </div>
             <div className="p-5">
               <p className="pb-1.5 text-xl">{item.siName}</p>
-              <div className="flex-col gap-y-10 text-sm">
+              <div className="flex-col gap-10 text-sm">
                 <p className="px-1">메뉴 이름 : {item.mniName}</p>
                 <p className="px-1">리뷰 등록일 : {item.reRegDt}</p>
                 <p className="px-1">

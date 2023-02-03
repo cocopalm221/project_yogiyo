@@ -23,10 +23,13 @@ const SignUp = () => {
     }
     if (!pw) {
       return alert("비밀번호를 입력하세요");
+    } else if (pw.match(/^[A-Za-z0-9]{8,20}$/) === null) {
+      alert("비밀번호 형식을 확인해주세요");
     }
     if (!pwCheck) {
       return alert("비밀번호 확인을 입력하세요");
     }
+
     if (pw !== pwCheck) {
       return alert("비밀번호는 같아야 합니다.");
     }
@@ -41,6 +44,12 @@ const SignUp = () => {
     }
     if (!email) {
       return alert("이메일을 입력하세요");
+    } else if (
+      email.match(
+        /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i
+      ) === null
+    ) {
+      return alert("이메일 형식을 확인해주세요");
     }
     if (!idCheck) {
       return alert("아이디 중복확인을 하세요");
@@ -64,7 +73,7 @@ const SignUp = () => {
         .then((response) => {
           if (response.data.status) {
             alert(response.data.message);
-            navigate('/login');
+            navigate("/login");
           } else {
             alert("정보수정 실패");
           }
