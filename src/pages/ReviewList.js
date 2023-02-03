@@ -57,15 +57,19 @@ const ReviewList = () => {
     }
   };
 
+  console.log(myComment);
+
   // console.log(myComment);
   return (
     <div className="col-span-9 max-w-5xl ml-8">
+    
       <h1 className="p-4 font-bold text-2xl border-b-2 border-black">
         리뷰 목록
       </h1>
       {/* main */}
       <div className="grid lg:grid-cols-2 gap-4 mt-8">
         {/* 박스 map */}
+        {myComment.length===0 && <p className="font-bold">리뷰목록이 없습니다.</p>}
         {myComment.map((item) => (
           <div className="flex border border-[#999] rounded-lg p-4 relative">
             <div className="w-24">
