@@ -26,7 +26,7 @@ const WishList = () => {
       <div className="grid lg:grid-cols-2 gap-4 mt-8">
         {/* 박스 map */}
         {mywish.status === false && (
-          <h2 className="font-bold">{mywish.message}</h2>
+          <p className="font-bold">{mywish.message}</p>
         )}
       </div>
     </div>
