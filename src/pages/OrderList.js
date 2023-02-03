@@ -48,17 +48,17 @@ const OrderList = () => {
             <div className="">
               <img src="/images/temp.png" alt="" className="w-3/4" />
             </div>
-            <div className="p-4">
-              <p className="pb-1.5 text-lg">매장명 : {item.storeName}</p>
-              <p className="pb-1.5 text-lg">주문번호 : {item.orderNum}</p>
-              <p className="pb-1.5 text-lg">주문일자 : {item.orderDate}</p>
-              <p className="pb-1.5 text-lg">메뉴명 : {item.menuName}</p>
-              <p className="pb-1.5 text-lg">총 수량 : {item.menuTotal}개</p>
-              <p className="pb-1.5 text-lg">
+            <div className="p-4 mr-20">
+              <p className="pb-1.5 text-base">매장명 : {item.storeName}</p>
+              <p className="pb-1.5 text-base">주문번호 : {item.orderNum}</p>
+              <p className="pb-1.5 text-base">주문일자 : {item.orderDate}</p>
+              <p className="pb-1.5 text-base">메뉴명 : {item.menuName}</p>
+              <p className="pb-1.5 text-base">총 수량 : {item.menuTotal}개</p>
+              <p className="pb-1.5 text-base">
                 총 가격 : {item.price?.toLocaleString()}원
               </p>{" "}
               <button
-                className="absolute right-0 top-[50%] translate-y-[-50%]"
+                className="absolute right-2 top-[50%] translate-y-[-50%]"
                 onClick={() => {
                   openModal(item.orderNum);
                 }}
