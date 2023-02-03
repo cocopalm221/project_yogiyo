@@ -33,6 +33,17 @@ const Payment = () => {
     setpaySwitch(!paySwitch);
   };
 
+  const temp = cart.filter((item, i) => {
+    return (
+      cart.findIndex((item2) => {
+        return item.siName === item2.siName;
+      }) === i
+    );
+  });
+
+  const totalMoney = cart
+    .map((item) => item.totalPrice)
+    .reduce((sum, value) => (sum += value), 0);
   return (
     <s.payment>
       <div className="leftpay">
@@ -100,27 +111,33 @@ const Payment = () => {
           </div>
         </div>
       </div>
-
-      <div className="rightpay">
-        <h1>주문내역</h1>
-        {cart.map((item) => (
-          <div>
-            <div className="menulist" key={item.mniSeq}>
-              <div className="storename">{item.siName}</div>
-              <div className="menu ml-2">메뉴 : {item.mniName}</div>
-              <div className="option ml-2">옵션 : {item.pmName}</div>
-              <div className="menunum ml-2">수량 : {item.goodCount}개</div>
-              <div className="totalpay ml-2">
-                총 결제 금액 : {convertToComma(item.totalPrice)}{" "}
-              </div>
+      <section className="max-w-[370px] h-fit sticky top-2.5 min-w-[370px]">
+        <div className="flex flex-col border rounded-t-xl overflow-hidden">
+          <h2 className="text-xl border-b px-4 py-2 text-white bg-black">
+            주문 내역
+          </h2>
+          <p className="px-4 py-2 border-b">{temp[0].siName}</p>
+          {cart.map((item) => (
+            <div
+              className="flex justify-between p-4 bg-[#fff8eb]"
+              key={item.key}
+            >
+              <p className="w-[200px]">
+                {item.mniName} {item.pmName && <span> : {item.pmName}</span>}
+              </p>
+              <p className="text-end font-bold">
+                {convertToComma(item.totalPrice)}원
+              </p>
             </div>
+          ))}
+          <div className="border-t px-4 py-3 text-end bg-[#fff8eb] text-brand font-bold">
+            총 결제 금액: {convertToComma(totalMoney)}원
           </div>
-        ))}
-
-        <button className="clickpay" onClick={() => clickHandler()}>
-          결제하기
+        </div>
+        <button className="w-full bg-brand rounded text-white p-3 mt-4">
+          결제 하기
         </button>
-      </div>
+      </section>
     </s.payment>
   );
 };

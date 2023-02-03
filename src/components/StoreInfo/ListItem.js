@@ -6,8 +6,9 @@ import { v4 as uuid } from "uuid";
 import Modal from "../Modal";
 import convertToComma from "../../util/comma";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addCart, addProduct } from "../../store/cartSlice";
+import { useDispatch } from "react-redux";
+import { addCart } from "../../store/cartSlice";
+import { useNavigate } from "react-router";
 
 const ListItem = ({ menuItem, menuData, storeData }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -74,7 +75,7 @@ const ListItem = ({ menuItem, menuData, storeData }) => {
   useEffect(() => {
     setTotalPrice((menuItem.mniPrice + priceRadio + priceCheck) * goodCount);
   }, [priceRadio, priceCheck, goodCount]);
-
+  const navigate = useNavigate();
   return (
     <>
       <li
@@ -229,12 +230,33 @@ const ListItem = ({ menuItem, menuData, storeData }) => {
           {/* modal footer */}
           <form
             className="flex fixed w-full bottom-0 text-white font-bold"
-            onClick={(e) => {
+            onSubmit={(e) => {
               e.preventDefault();
+              dispatch(
+                addCart({
+                  // 메뉴 키값
+                  key: uuid(),
+                  // 메뉴이름(로제떡볶이1~2인분)
+                  mniName: menuItem.mniName,
+                  // 플러스메뉴이름(순한맛,밀떢 같은거)
+                  pmName: pmList,
+                  // 총주문금액
+                  totalPrice: totalPrice,
+                  // 수량
+                  goodCount: goodCount,
+                  // 개당가격
+                  perPrice: totalPrice / goodCount,
+                  // 가게 이름
+                  siName: storeData.siName,
+                  siSeq: storeData.siSeq,
+                })
+              );
+              closeModal();
             }}
           >
+            <button className="bg-[#555] w-1/2 p-4">주문표에 추가</button>
             <button
-              className="bg-[#555] w-1/2 p-4"
+              className="bg-brand w-1/2"
               onClick={() => {
                 dispatch(
                   addCart({
@@ -252,14 +274,14 @@ const ListItem = ({ menuItem, menuData, storeData }) => {
                     perPrice: totalPrice / goodCount,
                     // 가게 이름
                     siName: storeData.siName,
+                    siSeq: storeData.siSeq,
                   })
                 );
-                closeModal();
+                navigate("/payment");
               }}
             >
-              주문표에 추가
+              주문하기
             </button>
-            <button className="bg-brand w-1/2">주문하기</button>
           </form>
         </Modal>
       )}

@@ -5,6 +5,7 @@ import OrderMenu from "../components/Myinfos/OrderMenu";
 
 const OrderList = () => {
   const mynum = useSelector((state) => state.userInfo.miSeq);
+  const mynum = useSelector((state) => state.userInfo.miSeq);
   const [myorder, setMyorder] = useState([]);
 
   useEffect(() => {

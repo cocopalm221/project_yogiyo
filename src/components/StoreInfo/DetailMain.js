@@ -1,10 +1,8 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import DetailSwiper from "./DetailSwiper";
 import MenuList from "./MenuList";
 
 const DetailMain = ({ menuData, storeData, repMenuData }) => {
-  const cart = useSelector((state) => state.cart);
   const menuList = menuData.filter((item, i) => {
     return (
       menuData.findIndex((item2) => {
