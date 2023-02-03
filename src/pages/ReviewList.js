@@ -41,7 +41,7 @@ const ReviewList = () => {
     };
     try {
       await axios
-        .post(
+        .get(
           `http://192.168.0.9:9244/mypage/deleteReview?reSeq=${reSeq}&miSeq=${mynum}`,
           body
         )
