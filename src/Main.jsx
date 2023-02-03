@@ -55,8 +55,8 @@ const Main = () => {
         loop={true}
         autoplay={true}
         style={{
-          width: "1500px",
-          height: "600px",
+          width: "1600px",
+          height: "500px",
           marginTop: 100 + "px",
           objectFit: "cover",
         }}

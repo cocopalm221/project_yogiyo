@@ -31,17 +31,17 @@ const OrderList = () => {
           <p className="font-bold">주문내역이 없습니다.</p>
         )}
         {myorder.map((item, idx) => (
-          <div className="flex border border-[#999] rounded-lg p-4 relative">
-            <div className="w-24">
-              <img src="/images/temp.png" alt="" className="w-full" />
+          <div className="flex items-center border border-[#999] rounded-lg p-4 relative">
+            <div className="">
+              <img src="/images/temp.png" alt="" className="w-3/4" />
             </div>
             <div className="p-4">
-              <p className="pb-1.5 text-xl">매장명 : {item.storeName}</p>
-              <p className="pb-1.5 text-xl">주문번호 : {item.orderNum}</p>
-              <p className="pb-1.5 text-xl">메뉴명 : {item.menuName}</p>
-              <p className="pb-1.5 text-xl">주문일자 : {item.orderDate}</p>
-              <p className="pb-1.5 text-xl">총 수량 : {item.menuTotal}</p>
-              <p className="pb-1.5 text-xl">
+              <p className="pb-1.5 text-lg">매장명 : {item.storeName}</p>
+              <p className="pb-1.5 text-lg">주문번호 : {item.orderNum}</p>
+              <p className="pb-1.5 text-lg">주문일자 : {item.orderDate}</p>
+              <p className="pb-1.5 text-lg">메뉴명 : {item.menuName}</p>
+              <p className="pb-1.5 text-lg">총 수량 : {item.menuTotal}개</p>
+              <p className="pb-1.5 text-lg">
                 총 가격 : {item.price?.toLocaleString()}원
               </p>
             </div>

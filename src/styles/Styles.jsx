@@ -125,6 +125,14 @@ export const bannersList = styled.ul`
     overflow: hidden;
     border-radius: 50%;
     border: 1px solid #fa0050;
+    p {
+      position: absolute;
+      top: 20%;
+      left: 20%;
+      /* transform: translate(-50%, -50%); */
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
   }
 `;
 
