@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import StarRating from "../StarRating";
 
-const ReviewForm = ({ closeModal, storeData }) => {
+const ReviewForm = ({ closeModal, oiOrderNum, storeData }) => {
   const [tClicked, setTClicked] = useState([false, false, false, false, false]);
   const [dClicked, setDClicked] = useState([false, false, false, false, false]);
   const [qClicked, setQClicked] = useState([false, false, false, false, false]);
@@ -14,10 +14,10 @@ const ReviewForm = ({ closeModal, storeData }) => {
   const tasteScore = [0, 1, 2, 3, 4];
   const deliveryScore = [0, 1, 2, 3, 4];
   const quantityScore = [0, 1, 2, 3, 4];
+  console.log(storeData);
 
   const user = useSelector((state) => state.userInfo);
 
-  console.log(user.miSeq);
   const handleStarClick = (arr, index, type) => {
     let clickStates = [...arr];
     for (let i = 0; i < 5; i++) {
@@ -27,7 +27,6 @@ const ReviewForm = ({ closeModal, storeData }) => {
     type === "delivery" && setDClicked(clickStates);
     type === "quantity" && setQClicked(clickStates);
   };
-
   let tScore = tClicked.filter(Boolean).length;
   let qScore = qClicked.filter(Boolean).length;
   let dScore = dClicked.filter(Boolean).length;
@@ -38,16 +37,22 @@ const ReviewForm = ({ closeModal, storeData }) => {
     let body = {
       score: average,
       content: text,
-      oiSeq: user.miSeq,
+      oiSeq: storeData.orderNum,
       tasteScore: tScore,
       quantityScore: qScore,
       deliveryScore: dScore,
     };
     try {
-      axios.put(
-        `http://192.168.0.114:9244/review/write?miSeq=${user.miSeq}`,
-        body
-      );
+      axios
+        .put(`http://192.168.0.9:9244/review/write?miSeq=${user.miSeq}`, body)
+        .then((res) => {
+          if (res.data.status) {
+            alert("리뷰가 등록되었습니다.");
+            closeModal();
+          } else {
+            alert("리뷰 등록 실패");
+          }
+        });
     } catch (error) {
       console.log(error);
     }
@@ -55,7 +60,7 @@ const ReviewForm = ({ closeModal, storeData }) => {
   return (
     <div className="text-center">
       <header className="relative flex items-center justify-between h-12 bg-[#fa0050] text-white px-4 font-bold text-lg">
-        <p>{storeData.siName}</p>
+        <p>{storeData.storeName}</p>
         <AiOutlineCloseSquare
           size="26"
           className="cursor-pointer"

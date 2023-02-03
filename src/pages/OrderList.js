@@ -2,10 +2,23 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import OrderMenu from "../components/Myinfos/OrderMenu";
+import Modal from "../components/Modal";
+import ReviewForm from "../components/StoreInfo/ReviewForm";
 
 const OrderList = () => {
   const mynum = useSelector((state) => state.userInfo.miSeq);
   const [myorder, setMyorder] = useState([]);
+  const [reviewModalVisible, setReviewModalVisible] = useState(false);
+  const [reviewModalVisibleId, setReviewModalVisibleId] = useState("");
+
+  const openModal = (id) => {
+    setReviewModalVisible(true);
+    setReviewModalVisibleId(id);
+  };
+  const closeModal = () => {
+    setReviewModalVisible(false);
+    setReviewModalVisibleId("");
+  };
 
   useEffect(() => {
     const fetchOrderlist = async () => {
@@ -43,9 +56,32 @@ const OrderList = () => {
               <p className="pb-1.5 text-lg">총 수량 : {item.menuTotal}개</p>
               <p className="pb-1.5 text-lg">
                 총 가격 : {item.price?.toLocaleString()}원
-              </p>
+              </p>{" "}
+              <button
+                className="absolute right-0 top-[50%] translate-y-[-50%]"
+                onClick={() => {
+                  openModal(item.orderNum);
+                }}
+              >
+                리뷰 작성
+              </button>
             </div>
-            <div className="absolute right-6 top-[50%] translate-y-[-50%]"></div>
+            <div className="absolute right-6 top-[50%] translate-y-[-50%]"></div>{" "}
+            {reviewModalVisible && reviewModalVisibleId === item.orderNum && (
+              <Modal
+                width={800}
+                height={900}
+                visible={reviewModalVisible}
+                top={50}
+                onClose={closeModal}
+              >
+                <ReviewForm
+                  closeModal={closeModal}
+                  oiOrderNum={item.oiOrderNum}
+                  storeData={item}
+                />
+              </Modal>
+            )}
           </div>
         ))}
       </div>
