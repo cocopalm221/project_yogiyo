@@ -15,15 +15,20 @@ const FindPw = () => {
 
   const onChangeNumber = (e) => {
     setNumber(e.target.value);
+  };
+  
+  useEffect(() => {
     if (number.length > 0) {
       setChecknum(false);
     } else if (number.length === 0) {
       setChecknum(true);
     }
-  };
-
-  console.log(number.length);
-  console.log(checknum);
+    if (id.length > 0) {
+      setCheckid(false);
+    } else if (id.length === 0) {
+      setCheckid(true);
+    }
+  }, [id, number]);
 
   const onChangeid = (e) => {
     setId(e.target.value);
