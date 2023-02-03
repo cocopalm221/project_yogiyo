@@ -9,7 +9,6 @@ import DetailMain from "../components/StoreInfo/DetailMain";
 import DetailReview from "../components/StoreInfo/DetailReview";
 import DetailInfo from "../components/StoreInfo/DetailInfo";
 import convertToComma from "../util/comma";
-import { useSelector } from "react-redux";
 import LoadingSpinner from "../components/LoadingSpinner";
 
 const StoreInfo = () => {
