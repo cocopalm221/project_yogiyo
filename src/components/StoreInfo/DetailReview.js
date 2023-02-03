@@ -83,7 +83,7 @@ const DetailReview = ({ reviewData, storeData }) => {
                 </span>
               </li>
               <li className="flex items-center w-full mt-3 gap-2">
-                <img src={data.riName} className="w-1/2 " alt={data.mniName} />
+                {/* <img src={data.riName} className="w-1/2 " alt={data.mniName} /> */}
               </li>
               <li>
                 <p className="text-[#d1bc44] text-sm my-3">{data.mniName}</p>
