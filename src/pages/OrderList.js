@@ -63,6 +63,7 @@ const OrderList = () => {
               </p>{" "}
               <button
                 className="absolute right-4 border p-1 rounded border-[#999] top-[50%] translate-y-[-50%] text-xs"
+
                 onClick={() => {
                   openModal(item.orderNum);
                 }}
