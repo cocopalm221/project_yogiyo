@@ -35,8 +35,7 @@ const Main = () => {
       <Swiper
         modules={[EffectCoverflow, Pagination, Navigation, Mousewheel]}
         slidesPerView={1}
-        spaceBetween={30}
-        // mousewheel={true}
+        spaceBetween={20}
         pagination={{
           clickable: true,
         }}
@@ -48,29 +47,62 @@ const Main = () => {
         grabCursor={true}
         coverflowEffect={{
           rotate: 15,
-          stretch: 5,
-          depth: 30,
+          stretch: 2,
           modifier: 2,
-          slideShadows: true,
         }}
+        mousewheel={true}
         className="mySwiper"
         loop={true}
         autoplay={true}
+        style={{
+          width: "1500px",
+          height: "600px",
+          marginTop: 100 + "px",
+          objectFit: "cover",
+        }}
       >
         <s.swiperPrev>
           <div className="swiper-button swiper-prev">
             <IoIosArrowBack />
           </div>
         </s.swiperPrev>
-        {banners.slice(0, 10).map((banner, idx) => (
-          <SwiperSlide
-            key={banner.id}
-            virtualIndex={idx}
-            style={{ textAlign: "center" }}
-          >
-            <img src={banner.url} alt="idx" style={{ display: "inline" }} />
-          </SwiperSlide>
-        ))}
+
+        <SwiperSlide style={{ textAlign: "center", overflow: "hidden" }}>
+          <img
+            src="/images/banner1.jpg"
+            alt=""
+            style={{ display: "inline", objectFit: "cover" }}
+          />
+        </SwiperSlide>
+        <SwiperSlide style={{ textAlign: "center", overflow: "hidden" }}>
+          <img
+            src="/images/banner2.jpg"
+            alt=""
+            style={{ display: "inline", objectFit: "cover" }}
+          />
+        </SwiperSlide>
+        <SwiperSlide style={{ textAlign: "center", overflow: "hidden" }}>
+          <img
+            src="/images/banner3.jpg"
+            alt=""
+            style={{ display: "inline", objectFit: "cover" }}
+          />
+        </SwiperSlide>
+        <SwiperSlide style={{ textAlign: "center", overflow: "hidden" }}>
+          <img
+            src="/images/banner4.jpg"
+            alt=""
+            style={{ display: "inline", objectFit: "cover" }}
+          />
+        </SwiperSlide>
+        <SwiperSlide style={{ textAlign: "center", overflow: "hidden" }}>
+          <img
+            src="/images/banner5.jpg"
+            alt=""
+            style={{ display: "inline", objectFit: "cover" }}
+          />
+        </SwiperSlide>
+
         <s.swiperNext>
           <div className="swiper-button swiper-next">
             <IoIosArrowForward />

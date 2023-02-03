@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SignDiv from "../styles/SignupCss";
-import { Navigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
 import Post from "../util/Post";
 
@@ -15,7 +15,7 @@ const SignUp = () => {
   const [enroll_company, setEnroll_company] = useState({
     address: "",
   });
-
+  const navigate = useNavigate();
   const registFunc = async (e) => {
     e.preventDefault();
     if (!userId) {
@@ -64,7 +64,7 @@ const SignUp = () => {
         .then((response) => {
           if (response.data.status) {
             alert(response.data.message);
-            Navigate('/login');
+            navigate('/login');
           } else {
             alert("정보수정 실패");
           }
