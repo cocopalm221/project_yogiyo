@@ -34,7 +34,30 @@ const ReviewList = () => {
     fetchCommentlist();
   }, []);
 
-  console.log(myComment);
+  const deleteComment = async (reSeq) => {
+    let body = {
+      reSeq: reSeq,
+      miSeq: mynum,
+    };
+    try {
+      await axios
+        .get(
+          `http://192.168.0.9:9244/mypage/deleteReview?reSeq=${reSeq}&miSeq=${mynum}`,
+          body
+        )
+        .then((res) => {
+          if (res.data.status) {
+            alert("리뷰 삭제 성공");
+          } else {
+            alert("리뷰 삭제 실패");
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // console.log(myComment);
   return (
     <div className="col-span-9 max-w-5xl ml-8">
       <h1 className="p-4 font-bold text-2xl border-b-2 border-black">
@@ -44,12 +67,14 @@ const ReviewList = () => {
       <div className="grid lg:grid-cols-2 gap-4 mt-8">
         {/* 박스 map */}
         {myComment.map((item) => (
-          <div
-            className="flex border border-[#999] rounded-lg p-4 relative"
-            onClick={openModal}
-          >
+          <div className="flex border border-[#999] rounded-lg p-4 relative">
             <div className="w-24">
-              <img src="/images/temp.png" alt="" className="w-full" />
+              <img
+                src="/images/temp.png"
+                onClick={() => openModal()}
+                alt=""
+                className="w-full"
+              />
             </div>
             <div className="p-5">
               <p className="pb-1.5 text-xl">{item.siName}</p>
@@ -66,7 +91,14 @@ const ReviewList = () => {
             </div>
             <div className="flex flex-col absolute right-6 top-[50%] translate-y-[-50%]">
               <button className="text-[#767676] text-sm pb-1">수정</button>
-              <button className="text-[#767676] text-sm">삭제</button>
+              <button
+                className="text-[#767676] text-sm"
+                onClick={() => {
+                  deleteComment(item.reSeq);
+                }}
+              >
+                삭제
+              </button>
             </div>
           </div>
         ))}
