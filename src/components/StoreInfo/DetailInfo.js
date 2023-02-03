@@ -56,8 +56,12 @@ const DetailInfo = ({ infoData, storeData }) => {
               </div>
               <div className="info-content">
                 <div className="flex flex-col">
-                  {data.onilmgPath && (
-                    <img src={data.onilmgPath} alt="사장님알림" />
+                  {data.oniImgPath && (
+                    <img
+                      src={`http://192.168.0.9:9244/notice/images/${data.oniImgPath}`}
+                      alt="사장님알림"
+                      className="pt-4 pb-8 w-10/12"
+                    />
                   )}
                   <span>{data.sdiOwnerNotice}</span>
                 </div>

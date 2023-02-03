@@ -41,6 +41,7 @@ const Payment = () => {
     );
   });
 
+  console.log(cart);
   const totalMoney = cart
     .map((item) => item.totalPrice)
     .reduce((sum, value) => (sum += value), 0);
@@ -123,7 +124,8 @@ const Payment = () => {
               key={item.key}
             >
               <p className="w-[200px]">
-                {item.mniName} {item.pmName && <span> : {item.pmName}</span>}
+                {item.mniName} {item.pmName && <span> : {item.pmName}</span>} x{" "}
+                {item.goodCount}
               </p>
               <p className="text-end font-bold">
                 {convertToComma(item.totalPrice)}원

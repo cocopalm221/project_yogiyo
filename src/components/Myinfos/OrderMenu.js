@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Optionlist from "./Optionlist";
+import Modal from "../Modal";
+import ReviewForm from "../StoreInfo/ReviewForm";
 
 const OrderMenu = (ordermenu) => {
   return (
     <>
       {ordermenu.ordermenu.map((item, idx) => (
-        <div className="flex-col" key={idx}>
-          <div className="pb-1.5 text-xl">메뉴명 : {item.mniName}</div>
-          <div className="pb-1.5 text-xl">수량 : {item.menuAmount}개</div>
-          <div className="pb-1.5 text-xl">가격 : {item.menuPrice}원</div>
+        <div className="flex-col text-sm gap-y-1.5" key={idx}>
+          <div>메뉴명 : {item.mniName}</div>
+          <div>수량 : {item.menuAmount}</div>
+          <div>가격 : {item.menuPrice}</div>
           <Optionlist optionlist={item.optionList} />
         </div>
       ))}
