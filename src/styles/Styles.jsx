@@ -110,7 +110,9 @@ export const showAll = styled.button`
 `;
 
 export const bannersList = styled.ul`
+  max-width: 1600px;
   width: 100%;
+  margin: 0 auto;
   padding: 5rem;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -118,8 +120,8 @@ export const bannersList = styled.ul`
   gap: 2rem;
 
   li {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     position: relative;
     object-fit: contain;
     overflow: hidden;

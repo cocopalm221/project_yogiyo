@@ -29,8 +29,8 @@ const CateList = () => {
                 alt={gagelist.scName}
                 style={{
                   background: "white",
-                  width: "200px",
-                  height: "200px",
+                  width: "220px",
+                  height: "220px",
                   objectFit: "contain",
                   overflow: "hidden",
                 }}

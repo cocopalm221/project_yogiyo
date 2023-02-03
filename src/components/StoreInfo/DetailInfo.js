@@ -45,9 +45,6 @@ const DetailInfoWrapper = styled.div`
 `;
 
 const DetailInfo = ({ infoData, storeData }) => {
-  console.log(infoData[0]?.sdiOwnerNotice);
-
-  console.log(typeof infoData[0]?.sdiOwnerNotice);
   return (
     <DetailInfoWrapper>
       {infoData.map((data) => (

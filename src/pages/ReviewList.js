@@ -61,7 +61,7 @@ const ReviewList = () => {
   const getFullDate = (_date) => {
     const year = new Date(_date).getFullYear();
     const month = new Date(_date).getMonth() + 1;
-    const day = new Date(_date).getDay();
+    const day = new Date(_date).getDate();
     return `${year}년 ${month}월 ${day}일`;
   };
   // console.log(myComment);
