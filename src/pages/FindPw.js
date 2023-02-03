@@ -32,9 +32,6 @@ const FindPw = () => {
 
   const onChangeid = (e) => {
     setId(e.target.value);
-    if (id === "") {
-      setCheckid(false);
-    }
   };
 
   const onSubmitHandler = async (e) => {
