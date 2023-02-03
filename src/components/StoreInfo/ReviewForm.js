@@ -132,10 +132,10 @@ const ReviewForm = ({ closeModal, oiOrderNum, storeData }) => {
 };
 const RatingBox = styled.div`
   display: flex;
-  gap: 10px;
   & svg {
     color: #c4c4c4;
     cursor: pointer;
+    padding: 4px;
   }
   :hover svg {
     color: #ffa400;

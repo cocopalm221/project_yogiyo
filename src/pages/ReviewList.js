@@ -7,6 +7,7 @@ import { ImStarFull } from "react-icons/im";
 import { TbMessageCircle2 } from "react-icons/tb";
 import Modal from "../components/Modal";
 import StarRating from "../components/StarRating";
+import timeForToday from "../util/date";
 
 const ReviewList = () => {
   const mynum = useSelector((state) => state.userInfo.miSeq);
@@ -57,127 +58,128 @@ const ReviewList = () => {
     }
   };
 
-  console.log(myComment);
-
+  const getFullDate = (_date) => {
+    const year = new Date(_date).getFullYear();
+    const month = new Date(_date).getMonth() + 1;
+    const day = new Date(_date).getDay();
+    return `${year}년 ${month}월 ${day}일`;
+  };
   // console.log(myComment);
   return (
     <div className="col-span-9 max-w-5xl ml-8">
-    
       <h1 className="p-4 font-bold text-2xl border-b-2 border-black">
         리뷰 목록
       </h1>
       {/* main */}
       <div className="grid lg:grid-cols-2 gap-4 mt-8">
         {/* 박스 map */}
-        {myComment.length===0 && <p className="font-bold">리뷰목록이 없습니다.</p>}
+        {myComment.length === 0 && (
+          <p className="font-bold">리뷰목록이 없습니다.</p>
+        )}
         {myComment.map((item) => (
-          <div className="flex border border-[#999] rounded-lg p-4 relative">
-            <div className="w-24">
-              <img
-                src="/images/temp.png"
-                onClick={() => openModal()}
-                alt=""
-                className="w-full"
-              />
-            </div>
-            <div className="p-5">
-              <p className="pb-1.5 text-xl">{item.siName}</p>
+          <div
+            className="border border-[#999] rounded-lg relative"
+            key={item.reSeq}
+          >
+            <div className="p-4">
+              <p className="text-xl">{item.siName}</p>
               <div className="flex-col gap-10 text-sm">
-                <p className="px-1">메뉴 이름 : {item.mniName}</p>
-                <p className="px-1">리뷰 등록일 : {item.reRegDt}</p>
-                <p className="px-1">
-                  <StarRating starRatio={item.reScore} />
-                </p>
-                <p className="px-1">리뷰 내용 : {item.reContent}</p>
-                <p className="px-1">사장님 댓글 내용 : {item.roContent}</p>
-                <span className="px-1">회원 번호 : {item.miSeq}</span>
+                <p>메뉴 이름 : {item.mniName}</p>
+                <p>배달주문 · {getFullDate(item.reRegDt)}</p>
+                {item.roContent && <p>사장님 댓글 내용 : {item.roContent}</p>}
+                {/* <span>회원 번호 : {item.miSeq}</span> */}
+              </div>{" "}
+              <div className="flex justify-end">
+                <button
+                  className="text-[#767676] text-sm mr-3"
+                  onClick={() => {
+                    openModal(item.reSeq);
+                  }}
+                >
+                  리뷰보기
+                </button>
+                <button
+                  className="text-[#767676] text-sm"
+                  onClick={() => {
+                    deleteComment(item.reSeq);
+                  }}
+                >
+                  리뷰삭제
+                </button>
               </div>
             </div>
-            <div className="flex flex-col absolute right-6 top-[50%] translate-y-[-50%]">
-              <button className="text-[#767676] text-sm pb-1">수정</button>
-              <button
-                className="text-[#767676] text-sm"
-                onClick={() => {
-                  deleteComment(item.reSeq);
-                }}
+            {reviewModalVisible && modalVisibleId === item.reSeq && (
+              <Modal
+                width={700}
+                top={40}
+                visible={reviewModalVisible}
+                onClose={closeModal}
               >
-                삭제
-              </button>
-            </div>
+                {console.log(item)}
+                {/* 헤더 */}
+                <div className="relative flex justify-between items-center h-12 bg-[#fa0050] text-white px-4 font-bold text-lg">
+                  <p>작성한 리뷰</p>
+                  <AiOutlineCloseSquare
+                    size="26"
+                    className="cursor-pointer"
+                    onClick={closeModal}
+                  />
+                </div>
+                {/* 내용 */}
+                <div className="py-8 px-8 overflow-y-auto overflow-x-hidden">
+                  <section className="flex">
+                    <section className="flex flex-col gap-2 ml-6 mt-3">
+                      <h1 className="text-xl font-bold">{item.siName}</h1>
+                      <div className="flex items-center">
+                        <p className="border text-sm px-1 border-[#999]">
+                          배달주문
+                        </p>
+                        <p className="pl-4 text-sm">
+                          {getFullDate(item.reRegDt)}
+                        </p>
+                      </div>
+                      <li className="flex items-center my-1">
+                        <StarRating starRatio={item.reScore} />
+                        <span className="flex items-center text-xs text-[#999] gap-1">
+                          <span className="text-[#e0e0e0]">ㅣ</span>
+                          맛 <ImStarFull color="#FFA400" size="17px" />{" "}
+                          {item.reTasteScore} 양
+                          <ImStarFull color="#FFA400" size="17px" />{" "}
+                          {item.reQuantityScore} 배달
+                          <ImStarFull color="#FFA400" size="17px" />{" "}
+                          {item.reDeliveryScore}
+                        </span>
+                      </li>
+                    </section>
+                  </section>
+                  <ul className="mt-4 ml-6">
+                    <li>
+                      <p className="text-[#d1bc44] text-sm my-3">
+                        {item.mniName}
+                      </p>
+                    </li>
+                    <li>
+                      <p className="mb-3">{item.reContent}</p>
+                    </li>
+                    {item.roContent && (
+                      <li className="bg-[#f0f0f0] rounded p-4">
+                        <div className="flex gap-2">
+                          <TbMessageCircle2
+                            className="scale-x-[-1]"
+                            size="20"
+                          />
+                          <strong>사장님</strong>
+                        </div>
+                        <div className="pl-6"></div>
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              </Modal>
+            )}
           </div>
         ))}
       </div>
-      {reviewModalVisible && (
-        <Modal
-          width={700}
-          height={800}
-          top={50}
-          visible={reviewModalVisible}
-          onClose={closeModal}
-        >
-          {/* 헤더 */}
-          <div className="relative flex justify-between items-center h-12 bg-[#fa0050] text-white px-4 font-bold text-lg">
-            <p>작성한 리뷰</p>
-            <AiOutlineCloseSquare
-              size="26"
-              className="cursor-pointer"
-              onClick={closeModal}
-            />
-          </div>
-          {/* 내용 */}
-          <div className="py-8 px-8 overflow-y-auto overflow-x-hidden h-[752px]">
-            <section className="flex">
-              <img src="/images/temp.png" alt="" className="w-32" />
-              <section className="flex flex-col gap-2 ml-6 mt-3">
-                <h1 className="text-xl font-bold">수우미칠곡본접</h1>
-                <div className="flex items-center">
-                  <p className="border text-sm px-1 border-[#999]">배달주문</p>
-                  <p className="pl-4">2022.10.15</p>
-                </div>
-                <li className="flex items-center my-1">
-                  <StarRating starRatio={3.4} />
-                  <span className="flex items-center text-xs text-[#999] gap-1">
-                    <span className="text-[#e0e0e0]">ㅣ</span>
-                    맛 <ImStarFull color="#FFA400" size="17px" /> 5 양
-                    <ImStarFull color="#FFA400" size="17px" /> 5 배달
-                    <ImStarFull color="#FFA400" size="17px" /> 5
-                  </span>
-                </li>
-              </section>
-            </section>
-            <ul className="mt-4">
-              <li className="flex items-center w-full mt-3 gap-2">
-                <img src="/images/menutemp.png" className="w-1/2 " alt="temp" />
-              </li>
-              <li>
-                <p className="text-[#d1bc44] text-sm my-3">
-                  페파로니피자/1(사이즈선택(중),추가 선택(요거트소스 추가))
-                </p>
-              </li>
-              <li>
-                <p className="mb-3">
-                  역시 피자는 네오피자만한게 없어요 가격이 인상되서 조금
-                  아쉽긴합니다 가성비 좋은 맛있는 피자
-                </p>
-              </li>
-              <li className="bg-[#f0f0f0] rounded p-4">
-                <div className="flex gap-2">
-                  <TbMessageCircle2 className="scale-x-[-1]" size="20" />
-                  <strong>사장님</strong>
-                </div>
-                <div className="pl-6">
-                  정말 죄송합니다...사진을 보니 너무 속상하네요 😭 다음에 이런
-                  일이 있으면 가게로 연락주세요. 바로 조치해드리겠습니다. 그랬던
-                  기사에겐 바로 얘기해서 다시 이런일 없도록 해야하는데...
-                  지나버리면 누군지 알 수가 없어서, 또 이런일이 반복될 수
-                  있어요. 다음엔 더욱 맛있게 드실 수 있도록 최선을 다하겠습니다.
-                  또 찾아주세요~❤️
-                </div>
-              </li>
-            </ul>
-          </div>
-        </Modal>
-      )}
     </div>
   );
 };
