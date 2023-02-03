@@ -531,3 +531,56 @@ export const myinfo = styled.form`
     }
   }
 `;
+
+// findid
+
+export const findid = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  padding: 1rem 0;
+  background: #f5f5f5;
+
+  .searchid {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 4rem 0;
+    img {
+      width: 200px;
+    }
+    p {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    .number {
+      label {
+        font-size: 1.5rem;
+        transform: translate(50%, 50%);
+      }
+      input {
+        width: 700px;
+        height: 50px;
+        border-radius: 20px;
+        outline: none;
+        padding: 1rem;
+        background: #EFEFEF;
+
+        margin-left: 2rem;
+      }
+    }
+  }
+  button {
+    font-size: 1.2rem;
+    font-weight: 550;
+    padding: 5px 10px;
+    background: #fa0050;
+    border-radius: 10px;
+    color: #ffffff;
+    transform: translateY(100px);
+  }
+`;

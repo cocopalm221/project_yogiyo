@@ -14,8 +14,7 @@ import MyPage from "./pages/MyPage";
 import ReviewList from "./pages/ReviewList";
 import OrderList from "./pages/OrderList";
 import MyInfo from "./pages/MyInfo";
-
-
+import FindID from "./pages/FindID";
 
 const App = () => {
   return (
@@ -26,6 +25,7 @@ const App = () => {
           <Route index element={<Main />} />
           <Route path="/mainnav" element={<MainNav />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/findid" element={<FindID />}></Route>
           <Route path="/payment" element={<Payment />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/storeinfo/:storeId" element={<StoreInfo />}></Route>

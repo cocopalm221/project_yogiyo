@@ -57,7 +57,7 @@ const ReviewList = () => {
     }
   };
 
-  console.log(myComment);
+
 
   // console.log(myComment);
   return (
