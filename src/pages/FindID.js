@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import * as s from "../styles/Styles";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import InfoModal from "../components/Myinfos/InfoModal";
 
 const FindID = () => {
   const navigate = useNavigate();
   const [number, setNumber] = useState("");
   const [checknum, setChecknum] = useState(true);
+  const [modalOpen, setModalOpen] = useState(true);
+  const [searchid, setSearchid] = useState('');
 
   const onChangeNumber = (e) => {
     setNumber(e.target.value);
@@ -26,7 +29,8 @@ const FindID = () => {
         .post("http://192.168.0.9:9244/member/searchId", body)
         .then((response) => {
           if (response.data.status) {
-            alert(response.data.UserId);
+            setSearchid(response.data.UserId);
+            setModalOpen(true);
           } else {
             alert("아이디 찾기 실패");
             console.log(response.data.status);
@@ -37,6 +41,7 @@ const FindID = () => {
     }
   };
 
+  console.log(searchid)
   return (
     <s.findid noValidate onSubmit={onSubmitHandler}>
       <div className="searchid">
@@ -64,6 +69,7 @@ const FindID = () => {
       <button type="submit" onSubmit={onSubmitHandler}>
         아이디 찾기
       </button>
+      {modalOpen && <InfoModal setModalOpen={setModalOpen} searchid={searchid} />}
     </s.findid>
   );
 };

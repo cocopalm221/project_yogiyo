@@ -568,7 +568,7 @@ export const findid = styled.form`
         border-radius: 20px;
         outline: none;
         padding: 1rem;
-        background: #EFEFEF;
+        background: #efefef;
 
         margin-left: 2rem;
       }
@@ -582,5 +582,84 @@ export const findid = styled.form`
     border-radius: 10px;
     color: #ffffff;
     transform: translateY(100px);
+  }
+`;
+
+export const findpw = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  padding: 1rem 0;
+  background: #f5f5f5;
+
+  .searchpw {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 4rem 0;
+    img {
+      width: 200px;
+    }
+    p {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    .number, .searchid {
+      label {
+        font-size: 1.5rem;
+        transform: translate(50%, 50%);
+      }
+      input {
+        width: 700px;
+        height: 50px;
+        border-radius: 20px;
+        outline: none;
+        padding: 1rem;
+        background: #efefef;
+        margin-left: 2rem;
+      }
+    }
+  }
+  button {
+    font-size: 1.2rem;
+    font-weight: 550;
+    padding: 5px 10px;
+    background: #fa0050;
+    border-radius: 10px;
+    color: #ffffff;
+    transform: translateY(100px);
+  }
+`;
+export const infomodal = styled.div`
+  position: absolute;
+  transform: translate((50%, 50%));
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #fa0050;
+  background: #bbacac;
+  transition: all 1s;
+  z-index: 10;
+  .inner {
+    display: flex;
+    flex-direction: column;
+    p {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 600;
+    }
+    .confirm {
+      text-align: center;
+      width: 200px;
+      height: 30px;
+      padding: 10px 20px;
+    }
   }
 `;

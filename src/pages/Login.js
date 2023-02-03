@@ -99,7 +99,7 @@ const Login = () => {
             >
               아이디 찾기
             </button>
-            <button className="findBt">비밀번호 찾기</button>
+            <button className="findBt" onClick={()=> navigate('/findpw')}>비밀번호 찾기</button>
           </div>
           <button onClick={(e) => SignInFunc(e)}>로그인</button>
           <button
