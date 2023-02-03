@@ -13,10 +13,16 @@ const FindID = () => {
 
   const onChangeNumber = (e) => {
     setNumber(e.target.value);
-    if (number === "") {
-      setChecknum(false);
-    }
   };
+  
+  useEffect(() => {
+    if (number.length > 0) {
+      setChecknum(false);
+    } else if (number.length === 0) {
+      setChecknum(true);
+    }
+  },[number]);
+
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
