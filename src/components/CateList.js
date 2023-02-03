@@ -20,7 +20,7 @@ const CateList = () => {
   return (
     <div className="cate-list">
       <s.bannersList>
-        {gagelist.slice(1).map((gagelist) => (
+        {gagelist.map((gagelist) => (
           <li key={gagelist.cSeq} className="bg-rose-500 relative">
             <p>{gagelist.scName}</p>
             <Link to="/mainnav">
