@@ -6,7 +6,6 @@ import { BsFillCreditCardFill } from "react-icons/bs";
 import { BsCashCoin } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import convertToComma from "../util/comma";
-import Cart from "../components/Cart";
 
 const Payment = () => {
   const [enroll_company, setEnroll_company] = useState({
@@ -112,25 +111,30 @@ const Payment = () => {
           </div>
         </div>
       </div>
-      <section className="max-w-[370px] h-fit sticky top-2.5 min-w-[370px] rounded">
-        <div className="flex flex-col border">
-          <h2 className="text-xl border-b p-4 text-white bg-black">
+      <section className="max-w-[370px] h-fit sticky top-2.5 min-w-[370px]">
+        <div className="flex flex-col border rounded-t-xl overflow-hidden">
+          <h2 className="text-xl border-b px-4 py-2 text-white bg-black">
             주문 내역
           </h2>
-          <p className="p-4 border-b">{temp[0].siName}</p>
+          <p className="px-4 py-2 border-b">{temp[0].siName}</p>
           {cart.map((item) => (
-            <div className="flex justify-between p-4" key={item.key}>
+            <div
+              className="flex justify-between p-4 bg-[#fff8eb]"
+              key={item.key}
+            >
               <p className="w-[200px]">
                 {item.mniName} {item.pmName && <span> : {item.pmName}</span>}
               </p>
-              <p className="text-end">{convertToComma(item.totalPrice)}원</p>
+              <p className="text-end font-bold">
+                {convertToComma(item.totalPrice)}원
+              </p>
             </div>
           ))}
-          <div className="border-t p-4 text-end">
+          <div className="border-t px-4 py-3 text-end bg-[#fff8eb] text-brand font-bold">
             총 결제 금액: {convertToComma(totalMoney)}원
           </div>
         </div>
-        <button className="w-full bg-brand rounded-lg text-white p-3 mt-4">
+        <button className="w-full bg-brand rounded text-white p-3 mt-4">
           결제 하기
         </button>
       </section>

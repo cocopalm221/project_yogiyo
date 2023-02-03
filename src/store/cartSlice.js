@@ -6,13 +6,13 @@ const cartSlice = createSlice({
   reducers: {
     addCart(state, action) {
       const find = state.find((item) => {
-        return item.siName !== action.payload.siName;
+        return item.siSeq !== action.payload.siSeq;
       });
 
       if (find) {
         if (
           window.confirm(
-            "다른 음식점에서 이미 담은 메뉴가 있습니다. 담긴 메뉴를 취소하고 새로운 음식점에서 메뉴를 담을까요?"
+            `다른 음식점에서 이미 담은 메뉴가 있습니다. \n담긴 메뉴를 취소하고 새로운 음식점에서 메뉴를 담을까요?`
           )
         ) {
           state.splice(0, state.length);
