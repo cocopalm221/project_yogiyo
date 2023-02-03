@@ -48,13 +48,13 @@ const ListItem = ({ menuItem, menuData, storeData }) => {
     }
   };
 
-  const handleCheck = (e) => {
-    const { checked, id: pm, value: prices } = e.target;
+  const handleCheck = (e, pm) => {
+    const { checked, id, value: prices } = e.target;
     if (checked) {
-      setCheckList([...checkList, pm]);
+      setCheckList([...checkList, id]);
       setOprionPriceCheck({ ...optionPriceCheck, [pm]: prices });
     } else {
-      setCheckList(checkList.filter((el) => el !== pm));
+      setCheckList(checkList.filter((el) => el !== id));
       setOprionPriceCheck({ ...optionPriceCheck, [pm]: 0 });
     }
   };
@@ -69,7 +69,7 @@ const ListItem = ({ menuItem, menuData, storeData }) => {
   // 플러스메뉴 리스트
   const pmList = [
     ...Object.values(radioList),
-    ...Object.values(checkList),
+    ...Object.keys(optionPriceCheck),
   ].toString();
 
   useEffect(() => {
@@ -139,12 +139,10 @@ const ListItem = ({ menuItem, menuData, storeData }) => {
                 <InputWrap key={uuid()}>
                   <h3 className="font-bold py-3">
                     {pluscate.pcName}
-                    {pluscate.pcEssentialChoice === 0 ? (
+                    {pluscate.pcEssentialChoice === 0 && (
                       <span className="text-xs font-normal ml-1.5 text-brand">
                         (필수선택)
                       </span>
-                    ) : (
-                      <span>(추가선택가능)</span>
                     )}
                   </h3>
 
@@ -173,12 +171,14 @@ const ListItem = ({ menuItem, menuData, storeData }) => {
                             <label className="flex text-sm cursor-pointer">
                               <input
                                 type="checkbox"
-                                id={pmItem.pmName}
+                                id={pmItem.pmSeq}
                                 name={pmItem.pcName}
                                 value={pmItem.pmPrice}
-                                onChange={handleCheck}
+                                onChange={(e) => {
+                                  handleCheck(e, pmItem.pmName);
+                                }}
                                 checked={
-                                  checkList.includes(pmItem.pmName)
+                                  checkList.includes(pmItem.pmSeq.toString())
                                     ? true
                                     : false
                                 }
