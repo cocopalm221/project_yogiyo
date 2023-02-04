@@ -11,8 +11,6 @@ const CateNav = ({ categorys }) => {
   const [gages, setGages] = useState([]);
   const [refresh, setRefresh] = useState([]);
   const [search, setSearch] = useState("");
-
-  //loading
   const [loading, setLoading] = useState(null);
 
   useEffect(() => {
@@ -27,7 +25,7 @@ const CateNav = ({ categorys }) => {
       }
     };
     fetchGage();
-    cateSearch(); 
+    cateSearch();
   }, []);
 
   const onSearch = async (e) => {
@@ -39,7 +37,6 @@ const CateNav = ({ categorys }) => {
         .get(`http://192.168.0.9:9244/api/search/siName?keyword=${search}`)
         .then((res) => setGages(res.data.store.list));
     }
-
     setSearch("");
   };
 
@@ -55,10 +52,6 @@ const CateNav = ({ categorys }) => {
     const filterData = refresh.filter((gage) => gage.scName === i);
     setGages(filterData);
   };
-
-  useEffect(() => {
-    
-  }, []);
 
   const reFresh = async () => {
     await axios
