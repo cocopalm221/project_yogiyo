@@ -16,7 +16,7 @@ const FindID = () => {
     if (number) {
       checkNum = true;
     }
-  },[number]);
+  };
 
 
   const onSubmitHandler = async (e) => {
