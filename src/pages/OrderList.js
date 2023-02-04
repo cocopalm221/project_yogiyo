@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import OrderMenu from "../components/Myinfos/OrderMenu";
 import Modal from "../components/Modal";
 import ReviewForm from "../components/StoreInfo/ReviewForm";
 
@@ -34,9 +33,6 @@ const OrderList = () => {
     fetchOrderlist();
   }, []);
 
-  {
-    console.log(myorder);
-  }
   return (
     <div className="col-span-9 max-w-5xl ml-8">
       <h1 className="p-4 font-bold text-2xl border-b-2 border-black">

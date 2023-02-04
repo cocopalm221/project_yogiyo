@@ -21,7 +21,7 @@ const CateList = () => {
     <div className="cate-list">
       <s.bannersList>
         {gagelist.map((gagelist) => (
-          <li key={gagelist.cSeq} className="bg-rose-500 relative">
+          <li key={gagelist.scSeq} className="bg-rose-500 relative">
             <p>{gagelist.scName}</p>
             <Link to="/mainnav">
               <img
