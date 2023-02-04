@@ -120,10 +120,10 @@ const CateNav = ({ categorys }) => {
                   <div>
                     <span className="text-lg text-yellow-400 drop-shadow-sm shadow-black flex items-center gap-2">
                       <StarRating starRatio={gage.average} />
-                      <p className="text-sm">{gage.average}</p>
+                      <p className="text-sm">{gage.average?.toFixed(1)}</p>
                     </span>
                     <span>리뷰 {gage.reviewcnt}</span>
-                    <span className="text-sm">I </span>
+                    <span className="text-sm"> I </span>
                     <span>사장님댓글 {gage.ownerReviewCnt}</span>
                     <br />
                     <span className="text-rose-600">요기서결제</span>
