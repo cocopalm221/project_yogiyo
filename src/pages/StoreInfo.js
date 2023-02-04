@@ -129,7 +129,9 @@ const StoreInfo = () => {
                     <HiOutlineSpeakerphone />
                     사장님 알림
                   </p>
-                  <pre className="truncate text-xs">{data.sdiOwnerNotice}</pre>
+                  <p className="truncate text-xs">
+                    {data.sdiOwnerNotice.split("<br/>").join(" ")}
+                  </p>
                 </div>
               )
           )}

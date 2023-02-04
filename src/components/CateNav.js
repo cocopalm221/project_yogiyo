@@ -111,7 +111,10 @@ const CateNav = ({ categorys }) => {
           <Link to={`/storeinfo/${gage.siSeq}`}>
             <s.storeinner key={gage.siSeq}>
               <div className="store-inner">
-                <img src={`http://192.168.0.9:9244/store/images/${gage.siUri}`} alt="" />
+                <img
+                  src={`http://192.168.0.9:9244/store/images/${gage.siUri}`}
+                  alt=""
+                />
                 <div className="storeinfo">
                   <span className="title">{gage.siName}</span>
                   <div>
@@ -120,17 +123,16 @@ const CateNav = ({ categorys }) => {
                       <p className="text-sm">{gage.average}</p>
                     </span>
                     <span>리뷰 {gage.reviewcnt}</span>
-                    <span className="before:content-['|'] before:mx-2.5">
-                      사장님댓글 {gage.ownerReviewCnt}
-                    </span>
+                    <span className="text-sm">I </span>
+                    <span>사장님댓글 {gage.ownerReviewCnt}</span>
                     <br />
                     <span className="text-rose-600">요기서결제</span>
-                    <span className="before:content-['|'] before:mx-2.5 text-gray-500">
+                    <span className="text-sm"> I </span>
+                    <span className="text-gray-500">
                       {gage.siMinOrderPrice}원 이상 배달
                     </span>
-                    <span className="before:content-['|'] before:mx-2.5 text-gray-500">
-                      {gage.diTime}
-                    </span>
+                    <span className="text-sm"> I </span>
+                    <span className="text-gray-500">{gage.diTime}</span>
                   </div>
                 </div>
               </div>

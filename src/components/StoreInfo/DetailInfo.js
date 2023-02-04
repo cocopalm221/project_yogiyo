@@ -43,6 +43,7 @@ const DetailInfoWrapper = styled.div`
     }
   }
 `;
+
 const DetailInfo = ({ infoData, storeData }) => {
   return (
     <DetailInfoWrapper>
@@ -63,7 +64,10 @@ const DetailInfo = ({ infoData, storeData }) => {
                       className="pt-4 pb-8 w-10/12"
                     />
                   )}
-                  <span>{data.sdiOwnerNotice}</span>
+                  <span
+                    className="w-full"
+                    dangerouslySetInnerHTML={{ __html: data.sdiOwnerNotice }}
+                  ></span>
                 </div>
               </div>
             </div>
@@ -137,7 +141,9 @@ const DetailInfo = ({ infoData, storeData }) => {
             </div>
             <div className="info-content">
               <div>
-                <span>{data.sdiOrigin}</span>
+                <span
+                  dangerouslySetInnerHTML={{ __html: data.sdiOrigin }}
+                ></span>
               </div>
             </div>
           </div>

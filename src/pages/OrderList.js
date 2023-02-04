@@ -33,6 +33,10 @@ const OrderList = () => {
     };
     fetchOrderlist();
   }, []);
+
+  {
+    console.log(myorder);
+  }
   return (
     <div className="col-span-9 max-w-5xl ml-8">
       <h1 className="p-4 font-bold text-2xl border-b-2 border-black">
@@ -44,21 +48,22 @@ const OrderList = () => {
           <p className="font-bold">주문내역이 없습니다.</p>
         )}
         {myorder.map((item, idx) => (
-          <div className="flex items-center border border-[#999] rounded-lg p-4 relative">
-            <div className="">
-              <img src="/images/temp.png" alt="" className="w-3/4" />
-            </div>
-            <div className="p-4">
-              <p className="pb-1.5 text-lg">매장명 : {item.storeName}</p>
-              <p className="pb-1.5 text-lg">주문번호 : {item.orderNum}</p>
-              <p className="pb-1.5 text-lg">주문일자 : {item.orderDate}</p>
-              <p className="pb-1.5 text-lg">메뉴명 : {item.menuName}</p>
-              <p className="pb-1.5 text-lg">총 수량 : {item.menuTotal}개</p>
-              <p className="pb-1.5 text-lg">
+          <div
+            className="flex items-center border border-[#999] rounded-lg relative p-2"
+            key={item.orderNum}
+          >
+            <div>
+              <p className="text-lg font-semibold">{item.storeName}</p>
+              {/* <p className="text-sm">주문번호 : {item.orderNum}</p> */}
+              <p className="text-sm">주문일자 : {item.orderDate}</p>
+              <p className="text-sm">메뉴명 : {item.menuName}</p>
+              <p className="text-sm">총 수량 : {item.menuTotal}개</p>
+              <p className="text-sm">
                 총 가격 : {item.price?.toLocaleString()}원
               </p>{" "}
               <button
-                className="absolute right-0 top-[50%] translate-y-[-50%]"
+                className="absolute right-4 border p-1 rounded border-[#999] top-[50%] translate-y-[-50%] text-xs"
+
                 onClick={() => {
                   openModal(item.orderNum);
                 }}

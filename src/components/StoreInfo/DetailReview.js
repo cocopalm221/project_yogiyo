@@ -11,8 +11,6 @@ const DetailReview = ({ reviewData, storeData }) => {
   const quantityScore = reviewData.map((data) => data.reQuantityScore);
   const deliveryScore = reviewData.map((data) => data.reDeliveryScore);
 
-  console.log(reviewData);
-
   return (
     <>
       <div className="flex justify-center items-center border border-t-0 py-7">
