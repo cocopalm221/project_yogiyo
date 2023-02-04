@@ -7,14 +7,14 @@ import InfoModal from "../components/Myinfos/InfoModal";
 const FindID = () => {
   const navigate = useNavigate();
   const [number, setNumber] = useState("");
-  const [checknum, setChecknum] = useState(true);
-  const [modalOpen, setModalOpen] = useState(true);
-  const [searchid, setSearchid] = useState('');
+  let checkNum = number === "" ? true : false;
+  const [modalOpen, setModalOpen] = useState(false);
+  const [searchid, setSearchid] = useState("");
 
   const onChangeNumber = (e) => {
     setNumber(e.target.value);
-    if (number === "") {
-      setChecknum(false);
+    if (number) {
+      checkNum = true;
     }
   };
 
@@ -41,7 +41,7 @@ const FindID = () => {
     }
   };
 
-  console.log(searchid)
+  console.log(searchid);
   return (
     <s.findid noValidate onSubmit={onSubmitHandler}>
       <div className="searchid">
@@ -63,13 +63,21 @@ const FindID = () => {
             onChange={onChangeNumber}
             autoFocus
           />
-          {checknum && <p style={{ color: "red" }}>전화번호를 입력하세요</p>}
+
+          {checkNum && (
+            <p style={{ color: "red", fontSize: "1rem" }}>
+              전화번호를 입력하세요
+            </p>
+          )}
         </div>
+        <button className="idbutton" type="submit" onSubmit={onSubmitHandler}>
+          아이디 찾기
+        </button>
       </div>
-      <button type="submit" onSubmit={onSubmitHandler}>
-        아이디 찾기
-      </button>
-      {modalOpen && <InfoModal setModalOpen={setModalOpen} searchid={searchid} />}
+
+      {modalOpen && (
+        <InfoModal setModalOpen={setModalOpen} searchid={searchid} />
+      )}
     </s.findid>
   );
 };

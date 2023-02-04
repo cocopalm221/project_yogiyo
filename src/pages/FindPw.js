@@ -8,27 +8,22 @@ const FindPw = () => {
   const navigate = useNavigate();
   const [number, setNumber] = useState("");
   const [id, setId] = useState("");
-  const [checknum, setChecknum] = useState(true);
-  const [checkid, setCheckid] = useState(true);
+  let checkNum = number === "" ? true : false;
+  let checkId = id === "" ? true : false;
   const [modalOpen, setModalOpen] = useState(false);
   const [searchpw, setSearchpw] = useState("");
 
   const onChangeNumber = (e) => {
     setNumber(e.target.value);
-    if (number.length > 0) {
-      setChecknum(false);
-    } else if (number.length === 0) {
-      setChecknum(true);
+    if (number) {
+      checkNum = true;
     }
   };
 
-  console.log(number.length);
-  console.log(checknum);
-
   const onChangeid = (e) => {
     setId(e.target.value);
-    if (id === "") {
-      setCheckid(false);
+    if (id) {
+      checkId = true;
     }
   };
 
@@ -48,7 +43,6 @@ const FindPw = () => {
             setModalOpen(true);
           } else {
             alert("아이디 찾기 실패");
-            console.log(response.data.status);
           }
         });
     } catch (error) {
@@ -57,57 +51,59 @@ const FindPw = () => {
   };
 
   return (
-    <s.findpw noValidate onSubmit={onSubmitHandler}>
-      <div className="searchpw">
-        <img
-          src="/images/logo2.png"
-          className="title"
-          alt="logo"
-          onClick={() => navigate("/")}
-        />
-        <p>비밀번호 찾기</p>
-        <div className="number">
-          <label htmlFor="searchid">전화번호</label>
-          <input
-            type="text"
-            placeholder="(필수)휴대폰 전화번호 입력(-포함)"
-            value={number}
-            id="searchid"
-            required
-            onChange={onChangeNumber}
-            autoFocus
+    <>
+      <s.findpw noValidate onSubmit={onSubmitHandler}>
+        <div className="searchpw">
+          <img
+            src="/images/logo2.png"
+            className="title"
+            alt="logo"
+            onClick={() => navigate("/")}
           />
-          {checknum && (
-            <p style={{ color: "red", fontSize: "1rem" }}>
-              전화번호를 입력하세요
-            </p>
-          )}
+          <p>비밀번호 찾기</p>
+          <div className="number">
+            <label htmlFor="searchid">전화번호</label>
+            <input
+              type="text"
+              placeholder="(필수)휴대폰 전화번호 입력(-포함)"
+              value={number}
+              id="searchid"
+              required
+              onChange={onChangeNumber}
+              autoFocus
+            />
+            {checkNum && (
+              <p style={{ color: "red", fontSize: "1rem" }}>
+                전화번호를 입력하세요
+              </p>
+            )}
+          </div>
+          <div className="searchid">
+            <label htmlFor="searchid">아이디</label>
+            <input
+              type="text"
+              placeholder="아이디를 입력하세요"
+              value={id}
+              id="searchid"
+              required
+              onChange={onChangeid}
+              autoFocus
+            />
+            {checkId && (
+              <p style={{ color: "red", fontSize: "1rem" }}>
+                아이디를 입력하세요
+              </p>
+            )}
+          </div>
+          <button type="submit" className="pwbutton" onSubmit={onSubmitHandler}>
+            비밀번호 찾기
+          </button>
         </div>
-        <div className="searchid">
-          <label htmlFor="searchid">아이디</label>
-          <input
-            type="text"
-            placeholder="아이디를 입력하세요"
-            value={id}
-            id="searchid"
-            required
-            onChange={onChangeid}
-            autoFocus
-          />
-          {checkid && (
-            <p style={{ color: "red", fontSize: "1rem" }}>
-              아이디를 입력하세요
-            </p>
-          )}
-        </div>
-      </div>
-      <button type="submit" onSubmit={onSubmitHandler}>
-        아이디 찾기
-      </button>
+      </s.findpw>
       {modalOpen && (
         <InfoModal setModalOpen={setModalOpen} searchid={searchpw} />
       )}
-    </s.findpw>
+    </>
   );
 };
 

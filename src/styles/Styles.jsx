@@ -547,9 +547,9 @@ export const findid = styled.form`
   .searchid {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    gap: 4rem 0;
+    gap: 3rem 0;
     img {
       width: 200px;
     }
@@ -566,22 +566,23 @@ export const findid = styled.form`
         width: 700px;
         height: 50px;
         border-radius: 20px;
-        outline: none;
         padding: 1rem;
         background: #efefef;
 
         margin-left: 2rem;
+        &:focus {
+          outline-color: #fa0050;
+        }
       }
     }
-  }
-  button {
-    font-size: 1.2rem;
-    font-weight: 550;
-    padding: 5px 10px;
-    background: #fa0050;
-    border-radius: 10px;
-    color: #ffffff;
-    transform: translateY(100px);
+    .idbutton {
+      font-size: 1.2rem;
+      font-weight: 550;
+      padding: 5px 10px;
+      background: #fa0050;
+      border-radius: 10px;
+      color: #ffffff;
+    }
   }
 `;
 
@@ -600,7 +601,7 @@ export const findpw = styled.form`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    gap: 4rem 0;
+    gap: 3rem 0;
     img {
       width: 200px;
     }
@@ -608,7 +609,8 @@ export const findpw = styled.form`
       font-size: 1.5rem;
       text-align: center;
     }
-    .number, .searchid {
+    .number,
+    .searchid {
       label {
         font-size: 1.5rem;
         transform: translate(50%, 50%);
@@ -617,21 +619,22 @@ export const findpw = styled.form`
         width: 700px;
         height: 50px;
         border-radius: 20px;
-        outline: none;
         padding: 1rem;
         background: #efefef;
         margin-left: 2rem;
+        &:focus {
+          outline-color: #fa0050;
+        }
       }
     }
-  }
-  button {
-    font-size: 1.2rem;
-    font-weight: 550;
-    padding: 5px 10px;
-    background: #fa0050;
-    border-radius: 10px;
-    color: #ffffff;
-    transform: translateY(100px);
+    .pwbutton {
+      font-size: 1.2rem;
+      font-weight: 550;
+      padding: 5px 10px;
+      background: #fa0050;
+      border-radius: 10px;
+      color: #ffffff;
+    }
   }
 `;
 export const infomodal = styled.div`
