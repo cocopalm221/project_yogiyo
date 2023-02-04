@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const CateList = () => {
   const [gagelist, setGagelist] = useState([]);
@@ -15,14 +17,21 @@ const CateList = () => {
       setGagelist(response.data.storeCate.storeCate);
     };
     fetchCate();
+    AOS.init();
   }, []);
 
   return (
     <div className="cate-list">
       <s.bannersList>
         {gagelist.map((gagelist) => (
-          <li key={gagelist.scSeq} className="bg-rose-500 relative">
-            <p>{gagelist.scName}</p>
+          <li
+            key={gagelist.scSeq}
+            className="bg-rose-500 relative"
+            data-aos="flip-right"
+            data-aos-duration="2000"
+            data-aos-mirror="true"
+          >
+            <p className="scName">{gagelist.scName}</p>
             <Link to="/mainnav">
               <img
                 src={`http://192.168.0.9:9244/cate/images/${gagelist.scImage}`}
