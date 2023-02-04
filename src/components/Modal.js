@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 
-const Modal = ({ visible, onClose, children, width, height, top }) => {
+const Modal = ({ visible, onClose, children, width, height, top, myComment }) => {
   useEffect(() => {
     document.body.style.cssText = `
     position: fixed; 
@@ -14,14 +14,14 @@ const Modal = ({ visible, onClose, children, width, height, top }) => {
       window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
     };
   }, []);
-
+  
   const onMaskClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose(e);
       e.stopPropagation();
     }
   };
-
+  console.log(myComment);
   return (
     <>
       <ModalWrapper visible={visible} onClick={onMaskClick}>

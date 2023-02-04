@@ -56,6 +56,7 @@ const MyInfo = () => {
 
   const onDelete = async (e) => {
     e.preventDefault();
+    
     try {
       await axios
         .delete(
