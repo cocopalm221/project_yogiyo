@@ -110,7 +110,7 @@ export const showAll = styled.button`
 `;
 
 export const bannersList = styled.ul`
-  max-width: 1600px;
+  max-width: 1700px;
   width: 100%;
   margin: 0 auto;
   padding: 5rem;
