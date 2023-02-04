@@ -51,7 +51,17 @@ const CateNav = ({ categorys }) => {
       .then((res) => setRefresh(res.data.list));
     const filterData = refresh.filter((gage) => gage.scName === i);
     setGages(filterData);
+    console.log(gages);
   };
+
+  useEffect(() => {
+    cateSearch();
+  }, []);
+  // useEffect(() => {
+  //   if (gages.length!==0) {
+  //     cateSearch();
+  //   }
+  // }, []);
 
   const reFresh = async () => {
     await axios

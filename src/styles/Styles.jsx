@@ -639,6 +639,7 @@ export const findpw = styled.form`
     }
   }
 `;
+
 export const infomodal = styled.div`
   position: absolute;
   transform: translate((50%, 50%));

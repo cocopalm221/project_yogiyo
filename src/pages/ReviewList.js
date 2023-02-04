@@ -64,7 +64,7 @@ const ReviewList = () => {
     const day = new Date(_date).getDate();
     return `${year}년 ${month}월 ${day}일`;
   };
-  // console.log(myComment);
+  
   return (
     <div className="col-span-9 max-w-5xl ml-8">
       <h1 className="p-4 font-bold text-2xl border-b-2 border-black">
@@ -115,7 +115,7 @@ const ReviewList = () => {
                 visible={reviewModalVisible}
                 onClose={closeModal}
               >
-                {console.log(item)}
+              
                 {/* 헤더 */}
                 <div className="relative flex justify-between items-center h-12 bg-[#fa0050] text-white px-4 font-bold text-lg">
                   <p>작성한 리뷰</p>
