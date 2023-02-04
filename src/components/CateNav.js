@@ -123,7 +123,7 @@ const CateNav = ({ categorys }) => {
                       <p className="text-sm">{gage.average}</p>
                     </span>
                     <span>리뷰 {gage.reviewcnt}</span>
-                    <span className="text-sm">I </span>
+                    <span className="text-sm"> I </span>
                     <span>사장님댓글 {gage.ownerReviewCnt}</span>
                     <br />
                     <span className="text-rose-600">요기서결제</span>
