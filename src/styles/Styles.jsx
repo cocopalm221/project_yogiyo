@@ -145,6 +145,7 @@ export const sortbt = styled.div`
     width: 200px;
     margin: 30px 338px 30px auto;
     box-shadow: 0 4px 5px 0 #00000026;
+    z-index: 100;
     #dropdown {
       left: 0;
       visibility: hidden;

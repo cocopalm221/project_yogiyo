@@ -27,16 +27,19 @@ const CateNav = ({ categorys }) => {
       }
     };
     fetchGage();
+    cateSearch(); 
   }, []);
 
-  const onSearch = (e) => {
+  const onSearch = async (e) => {
     e.preventDefault();
     if (search === null || search === "") {
       alert("검색어를 입력하세요");
     } else {
-      const filterData = gages.filter((gage) => gage.siName === search);
-      setGages(filterData);
+      await axios
+        .get(`http://192.168.0.9:9244/api/search/siName?keyword=${search}`)
+        .then((res) => setGages(res.data.store.list));
     }
+
     setSearch("");
   };
 
@@ -51,22 +54,40 @@ const CateNav = ({ categorys }) => {
       .then((res) => setRefresh(res.data.list));
     const filterData = refresh.filter((gage) => gage.scName === i);
     setGages(filterData);
-    console.log(gages);
   };
 
   useEffect(() => {
-    cateSearch();
+    
   }, []);
-  // useEffect(() => {
-  //   if (gages.length!==0) {
-  //     cateSearch();
-  //   }
-  // }, []);
 
   const reFresh = async () => {
     await axios
       .get("http://192.168.0.9:9244/api/alllist")
       .then((res) => setGages(res.data.list));
+  };
+
+  const minPrice = async () => {
+    await axios
+      .get("http://192.168.0.9:9244/api/min/scName?keyword=&page=0")
+      .then((res) => setGages(res.data.store.list));
+  };
+
+  const average = async () => {
+    await axios
+      .get("http://192.168.0.9:9244/api/average/scName?keyword=&page=0")
+      .then((res) => setGages(res.data.store.list));
+  };
+
+  const manyReview = async () => {
+    await axios
+      .get("http://192.168.0.9:9244/api/reviewcnt/scName?keyword=&page=0")
+      .then((res) => setGages(res.data.store.list));
+  };
+
+  const minDtime = async () => {
+    await axios
+      .get("http://192.168.0.9:9244/api/ditime/scName?keyword=&page=0")
+      .then((res) => setGages(res.data.store.list));
   };
 
   return (
@@ -103,23 +124,24 @@ const CateNav = ({ categorys }) => {
       <s.sortbt>
         <div className="sort-down">
           <input id="dropdown" type="checkbox" />
-          <label className="dropdownLabel" for="dropdown">
+          <label className="dropdownLabel" htmlFor="dropdown">
             <div>정렬 기준 선택</div>
             <RiArrowDownSFill className="caretIcon" />
           </label>
           <div className="downlist">
             <ul>
-              <li>리뷰 많은 순</li>
-              <li>댓글 많은 순</li>
-              <li>별점 높은 순</li>
+              <li onClick={() => minPrice()}>주문금액 낮은 순</li>
+              <li onClick={() => average()}>평점 높은 순</li>
+              <li onClick={() => manyReview()}>리뷰 많은 순</li>
+              <li onClick={() => minDtime()}>배달시간 많은 순</li>
             </ul>
           </div>
         </div>
       </s.sortbt>
       <s.stores>
         {gages.map((gage) => (
-          <Link to={`/storeinfo/${gage.siSeq}`}>
-            <s.storeinner key={gage.siSeq}>
+          <Link to={`/storeinfo/${gage.siSeq}`} key={gage.siSeq}>
+            <s.storeinner>
               <div className="store-inner">
                 <img
                   src={`http://192.168.0.9:9244/store/images/${gage.siUri}`}
