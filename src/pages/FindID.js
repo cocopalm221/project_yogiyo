@@ -18,7 +18,6 @@ const FindID = () => {
     }
   };
 
-
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
@@ -52,7 +51,7 @@ const FindID = () => {
           alt="logo"
           onClick={() => navigate("/")}
         />
-        <p>아이디 찾기</p>
+        <h2>아이디 찾기</h2>
         <div className="number">
           <label htmlFor="searchid">전화번호</label>
           <input
@@ -66,7 +65,7 @@ const FindID = () => {
           />
 
           {checkNum && (
-            <p style={{ color: "red", fontSize: "1rem" }}>
+            <p style={{ color: "red", marginTop: 10 + "px" }}>
               전화번호를 입력하세요
             </p>
           )}
