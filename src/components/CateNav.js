@@ -6,12 +6,34 @@ import { RiArrowDownSFill } from "react-icons/ri";
 import StarRating from "./StarRating";
 import axios from "axios";
 import LoadingSpinner from "./LoadingSpinner";
-
+import { motion, useScroll } from "framer-motion";
+import { useRef } from "react";
 const CateNav = ({ categorys }) => {
   const [gages, setGages] = useState([]);
   const [refresh, setRefresh] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(null);
+  const { scrollYProgress } = useScroll();
+  const emojiVariants = {
+    hidden: { opacity: 0, y: 100, rotateY: 300 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      rotateY: 0,
+      transition: {
+        rotateY: {
+          duration: 0.3,
+        },
+        y: {
+          type: "spring",
+          damping: 3,
+          stiffness: 50,
+          restDelta: 0.01,
+          duration: 0.3,
+        },
+      },
+    },
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -82,9 +104,12 @@ const CateNav = ({ categorys }) => {
       .get("http://192.168.0.9:9244/api/ditime/scName?keyword=&page=0")
       .then((res) => setGages(res.data.store.list));
   };
+  const scrollRef = useRef(null);
 
+  console.log(gages);
   return (
     <>
+      <motion.div className="bar" style={{ scaleX: scrollYProgress }} />
       <s.catenav>
         <form onSubmit={(e) => onSearch(e)}>
           <input
@@ -132,36 +157,45 @@ const CateNav = ({ categorys }) => {
         </div>
       </s.sortbt>
       <s.stores>
-        {gages.map((gage) => (
+        {gages.map((gage, i) => (
           <Link to={`/storeinfo/${gage.siSeq}`} key={gage.siSeq}>
-            <s.storeinner>
-              <div className="store-inner">
-                <img
-                  src={`http://192.168.0.9:9244/store/images/${gage.siUri}`}
-                  alt=""
-                />
-                <div className="storeinfo">
-                  <span className="title">{gage.siName}</span>
-                  <div>
-                    <span className="text-lg text-yellow-400 drop-shadow-sm shadow-black flex items-center gap-2">
-                      <StarRating starRatio={gage.average} />
-                      <p className="text-sm">{gage.average?.toFixed(1)}</p>
-                    </span>
-                    <span>리뷰 {gage.reviewcnt}</span>
-                    <span className="text-sm"> I </span>
-                    <span>사장님댓글 {gage.ownerReviewCnt}</span>
-                    <br />
-                    <span className="text-rose-600">요기서결제</span>
-                    <span className="text-sm"> I </span>
-                    <span className="text-gray-500">
-                      {gage.siMinOrderPrice}원 이상 배달
-                    </span>
-                    <span className="text-sm"> I </span>
-                    <span className="text-gray-500">{gage.diTime}</span>
+            <motion.div
+              className="emoji"
+              key={i}
+              variants={emojiVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ root: scrollRef, once: true, amount: 0.3 }}
+            >
+              <s.storeinner>
+                <div className="store-inner">
+                  <img
+                    src={`http://192.168.0.9:9244/store/images/${gage.siUri}`}
+                    alt=""
+                  />
+                  <div className="storeinfo">
+                    <span className="title">{gage.siName}</span>
+                    <div>
+                      <span className="text-lg text-yellow-400 drop-shadow-sm shadow-black flex items-center gap-2">
+                        <StarRating starRatio={gage.average} />
+                        <p className="text-sm">{gage.average?.toFixed(1)}</p>
+                      </span>
+                      <span>리뷰 {gage.reviewcnt}</span>
+                      <span className="text-sm"> I </span>
+                      <span>사장님댓글 {gage.ownerReviewCnt}</span>
+                      <br />
+                      <span className="text-rose-600">요기서결제</span>
+                      <span className="text-sm"> I </span>
+                      <span className="text-gray-500">
+                        {gage.siMinOrderPrice}원 이상 배달
+                      </span>
+                      <span className="text-sm"> I </span>
+                      <span className="text-gray-500">{gage.diTime}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </s.storeinner>
+              </s.storeinner>
+            </motion.div>
           </Link>
         ))}
       </s.stores>
