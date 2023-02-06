@@ -20,7 +20,7 @@ const CateList = () => {
     fetchCate();
     AOS.init();
   }, []);
-  
+
   const variants = {
     hidden: {
       opacity: 0.2,
@@ -50,9 +50,9 @@ const CateList = () => {
             whileHover={{ scale: 1.15 }}
             transition={{
               type: "spring",
-              bounce: 0.4,
-              stiffness: 700,
-              damping: 2.2,
+              bounce: 3,
+              stiffness: 600,
+              damping: 5,
               velocity: 3,
             }}
             drag
