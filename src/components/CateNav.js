@@ -157,7 +157,7 @@ const CateNav = ({ categorys }) => {
         </div>
       </s.sortbt>
       <s.stores>
-        {gages.slice(1).map((gage, i) => (
+        {gages.map((gage, i) => (
           <Link to={`/storeinfo/${gage.siSeq}`} key={gage.siSeq}>
             <motion.div
               className="emoji"
