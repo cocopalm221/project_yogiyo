@@ -655,15 +655,18 @@ export const findpw = styled.form`
 
 export const infomodal = styled.div`
   position: absolute;
-  transform: translate((50%, 50%));
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 400px;
-  height: 400px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 3px solid #fa0050;
-  background: #bbacac;
+  border: 1px solid #fa0050;
+  background: whitesmoke;
+  border-radius: 20px;
   transition: all 1s;
   z-index: 10;
   .inner {
@@ -678,7 +681,7 @@ export const infomodal = styled.div`
       text-align: center;
       width: 200px;
       height: 30px;
-      padding: 10px 20px;
+      padding: 5px 10px;
     }
   }
 `;
