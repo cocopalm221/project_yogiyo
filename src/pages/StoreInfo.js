@@ -11,6 +11,7 @@ import DetailInfo from "../components/StoreInfo/DetailInfo";
 import convertToComma from "../util/comma";
 import LoadingSpinner from "../components/LoadingSpinner";
 
+
 const StoreInfo = () => {
   const [storeAllData, setStoreAllData] = useState([]);
   const [repMenuData, setRepMenuData] = useState([]);
@@ -74,7 +75,9 @@ const StoreInfo = () => {
   // const cart = useSelector((state) => state.cart);
   // console.log(cart);
   return (
+    
     <section className="flex gap-5 max-w-7xl mx-auto mb-2 mt-8">
+      
       <section className="md:w-8/12 w-full">
         {/* top */}
         <div className="border rounded-t-xl">
