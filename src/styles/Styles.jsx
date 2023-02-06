@@ -543,9 +543,9 @@ export const findid = styled.form`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
-  padding: 1rem 0;
-  background: #f5f5f5;
+  /* height: 100vh; */
+  /* padding: 1rem 0; */
+  /* background: #f5f5f5; */
 
   .searchid {
     display: flex;
@@ -554,24 +554,30 @@ export const findid = styled.form`
     align-items: center;
     gap: 3rem 0;
     img {
-      width: 200px;
+      width: 8rem;
+      margin: 30px auto 60px;
     }
-    p {
+    h2 {
       font-size: 1.5rem;
       text-align: center;
+      font-weight: 500;
+      color: #fa0050;
+      padding: 10px 0px;
     }
     .number {
       label {
-        font-size: 1.5rem;
-        transform: translate(50%, 50%);
+        /* font-size: 1.5rem; */
+        /* transform: translate(50%, 50%); */
+        font-weight: 600;
+        margin-top: 8px;
       }
       input {
         width: 700px;
-        height: 50px;
-        border-radius: 20px;
-        padding: 1rem;
-        background: #efefef;
-
+        /* height: 50px; */
+        border-radius: 10px;
+        border: 1px solid #c6c6c6;
+        padding: 5px 20px;
+        /* background: #efefef; */
         margin-left: 2rem;
         &:focus {
           outline-color: #fa0050;
@@ -579,12 +585,18 @@ export const findid = styled.form`
       }
     }
     .idbutton {
-      font-size: 1.2rem;
-      font-weight: 550;
+      /* font-size: 1.2rem; */
       padding: 5px 10px;
       background: #fa0050;
-      border-radius: 10px;
+      border: 1px solid #fff;
       color: #ffffff;
+      border-radius: 25px;
+      font-weight: 600;
+      &:hover {
+        background-color: #fff;
+        color: #fa0050;
+        border: 1px solid #fa0050;
+      }
     }
   }
 `;
@@ -643,15 +655,18 @@ export const findpw = styled.form`
 
 export const infomodal = styled.div`
   position: absolute;
-  transform: translate((50%, 50%));
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 400px;
-  height: 400px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 3px solid #fa0050;
-  background: #bbacac;
+  border: 1px solid #fa0050;
+  background: whitesmoke;
+  border-radius: 20px;
   transition: all 1s;
   z-index: 10;
   .inner {
@@ -666,7 +681,7 @@ export const infomodal = styled.div`
       text-align: center;
       width: 200px;
       height: 30px;
-      padding: 10px 20px;
+      padding: 5px 10px;
     }
   }
 `;
