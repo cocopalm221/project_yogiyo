@@ -22,7 +22,7 @@ const OrderList = () => {
   useEffect(() => {
     const fetchOrderlist = async () => {
       const res = await axios.get(
-        `http://192.168.0.9:9244/mypage/briefOrder?miSeq=${mynum}`
+        `http://192.168.0.5:9244/mypage/briefOrder?miSeq=${mynum}`
       );
       if (res.data.list) {
         setMyorder(res.data.list);

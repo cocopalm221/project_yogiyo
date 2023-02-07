@@ -28,7 +28,7 @@ const Login = () => {
 
     try {
       await axios
-        .post("http://192.168.0.9:9244/member/login", body)
+        .post("http://192.168.0.5:9244/member/login", body)
         .then((response) => {
           if (response.data.status) {
             alert("로그인 성공");

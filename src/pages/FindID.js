@@ -26,7 +26,7 @@ const FindID = () => {
     };
     try {
       await axios
-        .post("http://192.168.0.9:9244/member/searchId", body)
+        .post("http://192.168.0.5:9244/member/searchId", body)
         .then((response) => {
           if (response.data.status) {
             setSearchid(response.data.UserId);

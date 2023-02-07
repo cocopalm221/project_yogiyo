@@ -7,7 +7,7 @@ const MainNav = () => {
 
   useEffect(()=>{
     const fetchCate = async () => {
-      const response = await axios.get('http://192.168.0.9:9244/mypage/storecate?page=0');
+      const response = await axios.get('http://192.168.0.5:9244/mypage/storecate?page=0');
       setCategory(response.data.storeCate.storeCate);
     }
     fetchCate();

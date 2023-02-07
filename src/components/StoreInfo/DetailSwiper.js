@@ -35,7 +35,7 @@ const DetailSwiper = ({ repMenuData }) => {
         <SwiperSlide key={item.mniSeq}>
           <div className="w-40 border">
             <img
-              src={`http://192.168.0.9:9244/menu/images/${item.mniImg}`}
+              src={`http://192.168.0.5:9244/menu/images/${item.mniImg}`}
               className="w-full"
               alt={item.mniName}
             />

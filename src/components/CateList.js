@@ -13,7 +13,7 @@ const CateList = () => {
   useEffect(() => {
     const fetchCate = async () => {
       const response = await axios.get(
-        "http://192.168.0.9:9244/mypage/storecate?page=0"
+        "http://192.168.0.5:9244/mypage/storecate?page=0"
       );
       setGagelist(response.data.storeCate.storeCate);
     };
@@ -64,7 +64,7 @@ const CateList = () => {
             <p className="scName">{gagelist.scName}</p>
             <Link to="/mainnav">
               <img
-                src={`http://192.168.0.9:9244/cate/images/${gagelist.scImage}`}
+                src={`http://192.168.0.5:9244/cate/images/${gagelist.scImage}`}
                 alt={gagelist.scName}
                 style={{
                   background: "white",

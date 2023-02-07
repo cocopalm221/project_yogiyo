@@ -69,7 +69,7 @@ const SignUp = () => {
     console.log(body);
     try {
       await axios
-        .put("http://192.168.0.9:9244/member/join", body)
+        .put("http://192.168.0.5:9244/member/join", body)
         .then((response) => {
           if (response.data.status) {
             alert(response.data.message);
@@ -93,7 +93,7 @@ const SignUp = () => {
       miId: userId,
     };
     axios
-      .post("http://192.168.0.9:9244/member/dupchkId", body)
+      .post("http://192.168.0.5:9244/member/dupchkId", body)
       .then((res) => {
         if (res.data.status) {
           setIdCheck(true);

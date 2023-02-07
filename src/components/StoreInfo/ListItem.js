@@ -87,7 +87,7 @@ const ListItem = ({ menuItem, menuData, storeData }) => {
         }}
       >
         <img
-          src={`http://192.168.0.9:9244/menu/images/${menuItem.mniImg}`}
+          src={`http://192.168.0.5:9244/menu/images/${menuItem.mniImg}`}
           alt={menuItem.mniName}
           className="w-36 mr-4 border"
         />

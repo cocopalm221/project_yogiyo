@@ -40,7 +40,7 @@ const MyInfo = () => {
 
     try {
       await axios
-        .patch("http://192.168.0.9:9244/mypage/update", body)
+        .patch("http://192.168.0.5:9244/mypage/update", body)
         .then((response) => {
           if (response.data.status) {
             alert("정보수정 성공");
@@ -60,7 +60,7 @@ const MyInfo = () => {
     try {
       await axios
         .delete(
-          `http://192.168.0.9:9244/member/deleteMember?miSeq=${user.miSeq}`
+          `http://192.168.0.5:9244/member/deleteMember?miSeq=${user.miSeq}`
         )
         .then((response) => {
           if (response.data.status) {

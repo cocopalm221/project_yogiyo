@@ -31,26 +31,26 @@ const StoreInfo = () => {
       };
 
       const resultStore = await axios.get(
-        "http://192.168.0.9:9244/api/alllist"
+        "http://192.168.0.5:9244/api/alllist"
       );
 
-      const resultMenu = await axios.get("http://192.168.0.9:9244/menu/list", {
+      const resultMenu = await axios.get("http://192.168.0.5:9244/menu/list", {
         params,
       });
       const resultInfo = await axios.get(
-        "http://192.168.0.9:9244/store/detail",
+        "http://192.168.0.5:9244/store/detail",
         {
           params,
         }
       );
       const resultReview = await axios.get(
-        "http://192.168.0.9:9244/store/review",
+        "http://192.168.0.5:9244/store/review",
         {
           params,
         }
       );
 
-      const resultRepMenu = await axios.get("http://192.168.0.9:9244/menu/", {
+      const resultRepMenu = await axios.get("http://192.168.0.5:9244/menu/", {
         params,
       });
       setStoreAllData(resultStore.data.list);
@@ -84,7 +84,7 @@ const StoreInfo = () => {
           <p className="border-b p-4">{storeData.siName}</p>
           <div className="flex gap-5 py-2.5">
             <img
-              src={`http://192.168.0.9:9244/store/images/${storeData.siUri}`}
+              src={`http://192.168.0.5:9244/store/images/${storeData.siUri}`}
               alt={storeData.siName}
               className="w-28 ml-2.5"
             />

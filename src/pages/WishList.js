@@ -10,7 +10,7 @@ const WishList = () => {
   useEffect(() => {
     const fetchOrderlist = async () => {
       const res = await axios.get(
-        `http://192.168.0.9:9244/mypage/store?page=0&miSeq=${mynum}`
+        `http://192.168.0.5:9244/mypage/store?page=0&miSeq=${mynum}`
       );
       setMywish(res.data.store);
     };
@@ -27,6 +27,9 @@ const WishList = () => {
         {/* 박스 map */}
         {mywish.status === false && (
           <p className="font-bold">{mywish.message}</p>
+        )}
+        {mywish.length === 0 && (
+          <p className="font-bold">주문내역이 없습니다.</p>
         )}
       </div>
     </div>

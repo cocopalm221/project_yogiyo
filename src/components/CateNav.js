@@ -39,7 +39,7 @@ const CateNav = ({ categorys }) => {
     setLoading(true);
     const fetchGage = async () => {
       try {
-        const result = await axios.get("http://192.168.0.9:9244/api/alllist");
+        const result = await axios.get("http://192.168.0.5:9244/api/alllist");
         setGages(result.data.list);
         setLoading(false);
       } catch (error) {
@@ -56,7 +56,7 @@ const CateNav = ({ categorys }) => {
       alert("검색어를 입력하세요");
     } else {
       await axios
-        .get(`http://192.168.0.9:9244/api/search/siName?keyword=${search}`)
+        .get(`http://192.168.0.5:9244/api/search/siName?keyword=${search}`)
         .then((res) => setGages(res.data.store.list));
     }
     setSearch("");
@@ -69,7 +69,7 @@ const CateNav = ({ categorys }) => {
 
   const cateSearch = (i) => {
     axios
-      .get("http://192.168.0.9:9244/api/alllist")
+      .get("http://192.168.0.5:9244/api/alllist")
       .then((res) => setRefresh(res.data.list));
     const filterData = refresh.filter((gage) => gage.scName === i);
     setGages(filterData);
@@ -77,31 +77,31 @@ const CateNav = ({ categorys }) => {
 
   const reFresh = async () => {
     await axios
-      .get("http://192.168.0.9:9244/api/alllist")
+      .get("http://192.168.0.5:9244/api/alllist")
       .then((res) => setGages(res.data.list));
   };
 
   const minPrice = async () => {
     await axios
-      .get("http://192.168.0.9:9244/api/min/scName?keyword=&page=0")
+      .get("http://192.168.0.5:9244/api/min/scName?keyword=&page=0")
       .then((res) => setGages(res.data.store.list));
   };
 
   const average = async () => {
     await axios
-      .get("http://192.168.0.9:9244/api/average/scName?keyword=&page=0")
+      .get("http://192.168.0.5:9244/api/average/scName?keyword=&page=0")
       .then((res) => setGages(res.data.store.list));
   };
 
   const manyReview = async () => {
     await axios
-      .get("http://192.168.0.9:9244/api/reviewcnt/scName?keyword=&page=0")
+      .get("http://192.168.0.5:9244/api/reviewcnt/scName?keyword=&page=0")
       .then((res) => setGages(res.data.store.list));
   };
 
   const minDtime = async () => {
     await axios
-      .get("http://192.168.0.9:9244/api/ditime/scName?keyword=&page=0")
+      .get("http://192.168.0.5:9244/api/ditime/scName?keyword=&page=0")
       .then((res) => setGages(res.data.store.list));
   };
   const scrollRef = useRef(null);
@@ -170,7 +170,7 @@ const CateNav = ({ categorys }) => {
               <s.storeinner>
                 <div className="store-inner">
                   <img
-                    src={`http://192.168.0.9:9244/store/images/${gage.siUri}`}
+                    src={`http://192.168.0.5:9244/store/images/${gage.siUri}`}
                     alt=""
                   />
                   <div className="storeinfo">

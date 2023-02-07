@@ -26,7 +26,7 @@ const ReviewList = () => {
 
   const fetchCommentlist = async () => {
     const res = await axios.get(
-      `http://192.168.0.9:9244/mypage/review?page=0&miSeq=${mynum}`
+      `http://192.168.0.5:9244/mypage/review?page=0&miSeq=${mynum}`
     );
     setMycomment(res.data.review.myReview);
   };
@@ -43,7 +43,7 @@ const ReviewList = () => {
     try {
       await axios
         .get(
-          `http://192.168.0.9:9244/mypage/deleteReview?reSeq=${reSeq}&miSeq=${mynum}`,
+          `http://192.168.0.5:9244/mypage/deleteReview?reSeq=${reSeq}&miSeq=${mynum}`,
           body
         )
         .then((res) => {
